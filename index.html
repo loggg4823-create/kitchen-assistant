@@ -8,23 +8,10 @@
 <meta name="apple-mobile-web-app-title" content="厨房助手">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#0d0d0d">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍🍳</text></svg>">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍🍳</text></svg>">
+<link rel="icon" href="icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
 <title>厨房小白配菜助手</title>
-<script>
-(function(){
-  var m = {
-    name:'厨房小白配菜助手',short_name:'厨房助手',start_url:location.href,
-    display:'standalone',orientation:'portrait',
-    background_color:'#0d0d0d',theme_color:'#0d0d0d',
-    icons:[{src:'data:image/svg+xml,'+encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍🍳</text></svg>"),sizes:'100x100',type:'image/svg+xml'}]
-  };
-  var b = new Blob([JSON.stringify(m)],{type:'application/json'});
-  var l = document.createElement('link');
-  l.rel='manifest';l.href=URL.createObjectURL(b);
-  document.head.appendChild(l);
-})();
-</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{

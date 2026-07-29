@@ -3,6 +3,9 @@ const CACHE_FILES = [
   './',
   './index.html',
   './recipes.js',
+  './manifest.json',
+  './icon-192.png',
+  './icon-512.png',
 ];
 
 self.addEventListener('install', event => {
