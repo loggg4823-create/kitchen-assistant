@@ -11,16 +11,17 @@
 <link rel="icon" href="icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="manifest" href="manifest.json">
-<title>厨房小白配菜助手</title>
+<title>厨房小白助手</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#0d0d0d;--surface:#1a1a1a;--surface2:#242424;--border:#333;
   --text:#e0e0e0;--text2:#999;--text3:#666;
   --accent:#ff6b35;--green:#2d8a4e;--green-bg:#0f2616;--yellow:#d49a00;--yellow-bg:#241e08;--red:#c84040;--red-bg:#2a1010;
+  --blue:#4da3ff;--blue-bg:#0d1a2a;--blue-border:#1a3a5a;
   --radius:10px;--radius-sm:6px;--radius-lg:16px;
 }
-body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);min-height:100dvh;overflow-x:hidden;-webkit-tap-highlight-color:transparent;padding-bottom:70px}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);min-height:100dvh;overflow-x:hidden;-webkit-tap-highlight-color:transparent;padding-bottom:64px}
 
 /* ─── 顶部搜索 ─── */
 .top-bar{position:sticky;top:0;z-index:10;background:var(--bg);padding:10px 12px 6px}
@@ -32,6 +33,10 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .clear-btn{font-size:16px;cursor:pointer;color:var(--text3);display:none;flex-shrink:0;line-height:1}
 .clear-btn:active{color:var(--text)}
 
+/* ─── 视图切换 ─── */
+.view{display:none}
+.view.active{display:block}
+
 /* ─── 分类标签 ─── */
 .cat-scroll{display:flex;gap:6px;padding:6px 12px 8px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;white-space:nowrap}
 .cat-scroll::-webkit-scrollbar{display:none}
@@ -40,6 +45,10 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .cat-chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 .cat-tag{color:var(--yellow)}
 .cat-tag.active{background:var(--yellow);color:#000;border-color:var(--yellow)}
+
+/* ─── 组合模式入口 ─── */
+.combo-entry{margin:0 12px 8px;padding:10px;border:1px dashed var(--border);border-radius:var(--radius);background:var(--surface);color:var(--text2);font-size:13px;text-align:center;cursor:pointer;user-select:none}
+.combo-entry:active{background:var(--surface2);color:var(--accent);border-color:var(--accent)}
 
 /* ─── 统计信息 ─── */
 .result-count{padding:0 12px 6px;font-size:12px;color:var(--text3)}
@@ -54,17 +63,27 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .recipe-card .r-meta .diff{color:var(--yellow)}
 .recipe-card .r-meta .time{color:var(--accent)}
 .recipe-card .r-method{font-size:11px;color:var(--text2);margin-top:4px}
+.recipe-card .flag-mark{position:absolute;top:6px;right:8px;font-size:14px}
+
+/* ─── 知识网格（食材/原理列表） ─── */
+.k-grid{padding:0 12px 80px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.k-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px;cursor:pointer;transition:all .15s;user-select:none;position:relative}
+.k-card:active{transform:scale(.97);background:var(--surface2)}
+.k-card .emoji{font-size:30px;display:block;margin-bottom:4px}
+.k-card .k-name{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px}
+.k-card .k-trigger{font-size:11px;color:var(--text3);line-height:1.4}
 
 /* ─── 无结果 ─── */
 .no-result{text-align:center;padding:60px 20px;color:var(--text3);grid-column:1/-1}
 .no-result .big{font-size:48px;display:block;margin-bottom:10px}
 .no-result .sub{font-size:13px;color:var(--text3);margin-top:4px}
 
-/* ─── 底部 ─── */
-.bottom-bar{position:fixed;bottom:0;left:0;right:0;z-index:10;background:var(--bg);border-top:1px solid var(--border);padding:8px 12px;padding-bottom:max(8px,env(safe-area-inset-bottom))}
-.combo-btn{width:100%;padding:13px;border-radius:var(--radius);background:var(--surface);border:1px dashed var(--border);color:var(--text2);font-size:15px;cursor:pointer;transition:all .15s;text-align:center}
-.combo-btn:active{background:var(--surface2);border-color:var(--accent);color:var(--accent)}
-.combo-btn .icon{font-size:16px}
+/* ─── 底部导航 ─── */
+.bottom-bar{position:fixed;bottom:0;left:0;right:0;z-index:10;background:var(--bg);border-top:1px solid var(--border);padding-bottom:env(safe-area-inset-bottom)}
+.tab-nav{display:flex}
+.tab-item{flex:1;text-align:center;padding:12px 0 10px;font-size:13px;color:var(--text2);cursor:pointer;user-select:none;transition:color .15s}
+.tab-item:active{transform:scale(.95)}
+.tab-item.active{color:var(--accent);font-weight:600}
 
 /* ─── 详情覆盖层 ─── */
 .overlay{position:fixed;inset:0;z-index:100;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:env(safe-area-inset-bottom);display:none}
@@ -74,6 +93,18 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .overlay-back:active{opacity:.7}
 .overlay-title{font-size:18px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .overlay-body{padding:14px;max-width:640px;margin:0 auto}
+
+/* ─── 30秒预演 ─── */
+.preview-box{background:var(--surface);border:1px solid var(--accent);border-radius:var(--radius);padding:12px;margin-bottom:16px}
+.preview-title{font-size:13px;font-weight:600;color:var(--accent);margin-bottom:8px}
+.preview-row{font-size:13px;color:var(--text2);line-height:1.7}
+.preview-row b{color:var(--text)}
+
+/* ─── 标记按钮 ─── */
+.flag-row{display:flex;gap:8px;margin-bottom:16px}
+.flag-btn{flex:1;padding:9px;border-radius:var(--radius);font-size:13px;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;user-select:none}
+.flag-btn:active{transform:scale(.95)}
+.flag-btn.on{color:var(--green);border-color:var(--green);background:var(--green-bg)}
 
 /* ─── 菜谱元信息 ─── */
 .recipe-meta{display:flex;flex-wrap:wrap;gap:8px 14px;background:var(--surface);border-radius:var(--radius);padding:14px;margin-bottom:16px;border:1px solid var(--border)}
@@ -92,7 +123,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .seasoning-chip.req{border-color:var(--accent);color:var(--text)}
 .seasoning-chip .alt{color:var(--text3);font-size:11px;margin-left:4px}
 
-/* ─── 步骤 ─── */
+/* ─── 步骤（状态信号优先） ─── */
 .steps-section{margin-bottom:16px}
 .steps-section h3{font-size:15px;font-weight:600;margin-bottom:10px;color:var(--text)}
 .step-card{background:var(--surface);border-radius:var(--radius);padding:14px;margin-bottom:10px;border:1px solid var(--border)}
@@ -100,11 +131,13 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .step-num{background:var(--accent);color:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
 .step-name{font-size:15px;font-weight:600}
 .step-duration{font-size:12px;color:var(--text3);margin-left:auto;flex-shrink:0}
-.step-instr{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:8px;padding-left:34px}
 .step-judge{font-size:13px;color:var(--green);background:var(--green-bg);padding:8px 12px;border-radius:var(--radius-sm);margin:0 0 6px 34px;line-height:1.5}
 .step-judge::before{content:"✅ ";font-size:12px}
+.step-instr{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:8px;padding-left:34px}
 .step-novice{font-size:13px;color:var(--yellow);background:var(--yellow-bg);padding:8px 12px;border-radius:var(--radius-sm);margin:0 0 0 34px;line-height:1.5}
 .step-novice::before{content:"💡 ";font-size:12px}
+.step-authority{font-size:13px;color:var(--blue);background:var(--blue-bg);border:1px solid var(--blue-border);padding:8px 12px;border-radius:var(--radius-sm);margin:6px 0 0 34px;line-height:1.5}
+.step-authority::before{content:"🎯 唯一口径：";font-weight:600}
 
 /* ─── 搞砸补救 ─── */
 .rescue-section{margin-bottom:16px}
@@ -117,6 +150,49 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .tips-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:16px}
 .tips-section h3{font-size:15px;font-weight:600;margin-bottom:6px;color:var(--yellow)}
 .tips-section .txt{font-size:14px;color:var(--text2);line-height:1.6}
+
+/* ─── 关联原理（可展开） ─── */
+.related-section{margin-bottom:16px}
+.related-section h3{font-size:15px;font-weight:600;margin-bottom:10px;color:var(--text)}
+.related-details{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px;overflow:hidden}
+.related-details summary{padding:12px 14px;font-size:14px;font-weight:600;color:var(--text);cursor:pointer;list-style:none;user-select:none}
+.related-details summary::before{content:'📖 '}
+.related-details summary::-webkit-details-marker{display:none}
+.related-details[open] summary{border-bottom:1px solid var(--border)}
+.related-body{padding:12px 14px}
+.related-body .k-grid{padding:0}
+.related-body .k-card{margin-bottom:8px}
+
+/* ─── 知识详情 ─── */
+.k-trigger-box{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px;font-size:13px;color:var(--yellow);line-height:1.6;margin-bottom:12px}
+.k-trigger-box::before{content:'⏰ 什么时候想起它：';font-weight:600}
+.k-rule{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:12px}
+.k-branch{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px;margin-bottom:8px}
+.k-branch .kb-source{font-size:13px;font-weight:600;color:var(--text)}
+.k-branch .kb-fix{font-size:13px;color:var(--text2);line-height:1.5;margin-top:4px}
+.k-why{font-size:13px;color:var(--green);background:var(--green-bg);padding:10px 12px;border-radius:var(--radius-sm);line-height:1.6;margin:12px 0}
+.k-why::before{content:'💭 为什么：';font-weight:600}
+
+/* ─── 食材详情字段 ─── */
+.ing-field{margin-bottom:12px}
+.ing-field .if-label{font-size:12px;color:var(--text3);margin-bottom:4px;font-weight:600}
+.ing-field .if-txt{font-size:14px;color:var(--text2);line-height:1.6;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px}
+
+/* ─── 记录区 ─── */
+.log-section{margin-bottom:16px}
+.log-section h3{font-size:15px;font-weight:600;margin-bottom:10px;color:var(--text)}
+.log-btns{display:flex;gap:8px;margin-bottom:8px}
+.log-btn{flex:1;padding:10px;border-radius:var(--radius);font-size:14px;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;user-select:none;transition:all .15s}
+.log-btn:active{transform:scale(.95)}
+.log-btn.good.on{color:var(--green);background:var(--green-bg);border-color:var(--green)}
+.log-btn.ok.on{color:var(--yellow);background:var(--yellow-bg);border-color:var(--yellow)}
+.log-btn.bad.on{color:var(--red);background:var(--red-bg);border-color:var(--red)}
+.log-note-row{display:flex;gap:8px;margin-bottom:8px}
+.log-note-row input{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px;color:var(--text);font-size:14px;outline:none;min-width:0}
+.log-save{padding:10px 16px;border-radius:var(--radius);background:var(--accent);color:#fff;border:none;font-size:14px;cursor:pointer}
+.log-save:active{opacity:.8}
+.log-history{font-size:12px;color:var(--text3)}
+.log-history .lh-item{margin-bottom:4px;line-height:1.5}
 
 /* ─── 组合模式覆盖层 ─── */
 .combo-overlay{position:fixed;inset:0;z-index:90;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:env(safe-area-inset-bottom);display:none}
@@ -148,18 +224,33 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
   </div>
 </div>
 
-<!-- 分类标签 -->
-<div class="cat-scroll" id="catBar"></div>
+<!-- 菜谱视图 -->
+<div class="view active" id="viewRecipes">
+  <div class="cat-scroll" id="catBar"></div>
+  <div class="combo-entry" id="comboBtn">🥘 组合模式 — 选食材，看能做什么菜</div>
+  <div class="result-count" id="resultCount"></div>
+  <div class="grid" id="recipeGrid"></div>
+</div>
 
-<!-- 统计 -->
-<div class="result-count" id="resultCount"></div>
+<!-- 食材视图 -->
+<div class="view" id="viewIngredients">
+  <div class="result-count" id="ingCount"></div>
+  <div class="k-grid" id="ingList"></div>
+</div>
 
-<!-- 菜谱网格 -->
-<div class="grid" id="recipeGrid"></div>
+<!-- 原理视图 -->
+<div class="view" id="viewPrinciples">
+  <div class="result-count" id="prCount"></div>
+  <div class="k-grid" id="prList"></div>
+</div>
 
-<!-- 底部组合模式入口 -->
+<!-- 底部导航 -->
 <div class="bottom-bar">
-  <button class="combo-btn" id="comboBtn"><span class="icon">🥘</span> 组合模式 — 选食材，看能做什么菜</button>
+  <div class="tab-nav">
+    <div class="tab-item active" data-tab="recipes">📖 菜谱</div>
+    <div class="tab-item" data-tab="ingredients">🥦 食材</div>
+    <div class="tab-item" data-tab="principles">💡 原理</div>
+  </div>
 </div>
 
 <!-- 菜谱详情覆盖层 -->
@@ -186,9 +277,19 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
   </div>
 </div>
 
+<!-- 知识覆盖层（食材/原理共用） -->
+<div class="overlay" id="knowOverlay">
+  <div class="overlay-header">
+    <button class="overlay-back" id="knowBack">← 返回</button>
+    <span class="overlay-title" id="knowTitle">知识</span>
+  </div>
+  <div class="overlay-body" id="knowBody"></div>
+</div>
+
 <script src="recipes.js"></script>
+<script src="knowledge.js"></script>
 <script>
-// 菜谱数据由 recipes.js 提供（通过全局 RECIPES）
+// 数据由 recipes.js（RECIPES）和 knowledge.js（PRINCIPLES/INGREDIENTS）提供
 
 // ═══════════════════════════════════════════
 // 分类系统
@@ -205,7 +306,6 @@ const CATEGORIES = [
   {key:'快手',label:'快手',type:'tag'},
   {key:'下饭',label:'下饭',type:'tag'},
   {key:'懒人',label:'懒人',type:'tag'},
-  {key:'空气炸锅',label:'空气炸锅',type:'tag'},
 ];
 
 // 用于组合模式的所有食材集合
@@ -219,6 +319,27 @@ function getAllIngredients(){
 }
 
 // ═══════════════════════════════════════════
+// 本地存储：做过/拿手标记 + 每次记录
+// ═══════════════════════════════════════════
+function getFlags(id){
+  try{ return JSON.parse(localStorage.getItem('ka_flags_'+id))||{}; }catch(e){ return {}; }
+}
+function setFlag(id,key,val){
+  const f = getFlags(id);
+  f[key]=val;
+  localStorage.setItem('ka_flags_'+id, JSON.stringify(f));
+}
+function getLogs(id){
+  try{ return JSON.parse(localStorage.getItem('ka_log_'+id))||[]; }catch(e){ return []; }
+}
+function addLog(id,rating,note){
+  const logs = getLogs(id);
+  logs.push({t:new Date().toLocaleDateString('zh-CN',{month:'numeric',day:'numeric'}), r:rating, n:note||''});
+  if(logs.length>12) logs.shift();
+  localStorage.setItem('ka_log_'+id, JSON.stringify(logs));
+}
+
+// ═══════════════════════════════════════════
 // DOM 引用
 // ═══════════════════════════════════════════
 const $search = document.getElementById('searchInput');
@@ -226,6 +347,10 @@ const $clear = document.getElementById('clearBtn');
 const $catBar = document.getElementById('catBar');
 const $count = document.getElementById('resultCount');
 const $grid = document.getElementById('recipeGrid');
+const $ingCount = document.getElementById('ingCount');
+const $ingList = document.getElementById('ingList');
+const $prCount = document.getElementById('prCount');
+const $prList = document.getElementById('prList');
 const $detailOverlay = document.getElementById('detailOverlay');
 const $detailBack = document.getElementById('detailBack');
 const $detailTitle = document.getElementById('detailTitle');
@@ -237,6 +362,10 @@ const $comboIngGrid = document.getElementById('comboIngGrid');
 const $comboCount = document.getElementById('comboCount');
 const $comboResult = document.getElementById('comboResult');
 const $comboResultTitle = document.getElementById('comboResultTitle');
+const $knowOverlay = document.getElementById('knowOverlay');
+const $knowBack = document.getElementById('knowBack');
+const $knowTitle = document.getElementById('knowTitle');
+const $knowBody = document.getElementById('knowBody');
 
 // ═══════════════════════════════════════════
 // 状态
@@ -244,6 +373,31 @@ const $comboResultTitle = document.getElementById('comboResultTitle');
 let activeCat = 'all';
 let searchQuery = '';
 let comboSelected = new Set();
+let activeTab = 'recipes';
+let knowType = 'principle';   // 知识列表当前类型
+let knowPage = 'list';        // list | detail
+
+// ═══════════════════════════════════════════
+// Tab 切换
+// ═══════════════════════════════════════════
+function switchTab(tab){
+  activeTab = tab;
+  // 清空搜索——搜索词是 tab 上下文相关的，跨 tab 保留会造成"切过去什么都没了"的错觉
+  searchQuery = '';
+  $search.value = '';
+  $clear.style.display = 'none';
+  document.querySelectorAll('.tab-item').forEach(t=>t.classList.toggle('active', t.dataset.tab===tab));
+  document.getElementById('viewRecipes').classList.toggle('active', tab==='recipes');
+  document.getElementById('viewIngredients').classList.toggle('active', tab==='ingredients');
+  document.getElementById('viewPrinciples').classList.toggle('active', tab==='principles');
+  $search.placeholder = tab==='recipes' ? '搜食材、菜名...' : (tab==='ingredients' ? '搜食材，如：鸡胸肉' : '搜原理，如：去腥');
+  renderCurrent();
+}
+function renderCurrent(){
+  if(activeTab==='recipes') renderGrid();
+  else if(activeTab==='ingredients') renderIngList();
+  else renderPrList();
+}
 
 // ═══════════════════════════════════════════
 // 渲染分类
@@ -254,7 +408,6 @@ function renderCats(){
     return `<div class="cat-chip${c.key===activeCat?' active':''}${isTag?' cat-tag':''}" data-key="${c.key}">${c.label}</div>`;
   }).join('');
 }
-
 function setCat(key){
   activeCat = key;
   renderCats();
@@ -266,18 +419,13 @@ function setCat(key){
 // ═══════════════════════════════════════════
 function filterRecipes(){
   let list = RECIPES;
-
   if(activeCat !== 'all'){
     const cat = CATEGORIES.find(c=>c.key===activeCat);
     if(cat){
-      if(cat.type === 'category'){
-        list = list.filter(r=>r.category===activeCat);
-      }else if(cat.type === 'tag'){
-        list = list.filter(r=>r.tags.includes(activeCat));
-      }
+      if(cat.type === 'category') list = list.filter(r=>r.category===activeCat);
+      else if(cat.type === 'tag') list = list.filter(r=>r.tags.includes(activeCat));
     }
   }
-
   if(searchQuery){
     const q = searchQuery.toLowerCase();
     list = list.filter(r=>{
@@ -289,7 +437,6 @@ function filterRecipes(){
         r.tools.some(t=>t.includes(q));
     });
   }
-
   return list;
 }
 
@@ -299,19 +446,22 @@ function filterRecipes(){
 function starStr(d){
   return '★'.repeat(d)+'☆'.repeat(3-d);
 }
-
+function cardFlags(id){
+  const f = getFlags(id);
+  if(f.fav) return '<span class="flag-mark">⭐</span>';
+  if(f.done) return '<span class="flag-mark">✓</span>';
+  return '';
+}
 function renderGrid(){
   const list = filterRecipes();
-
   $count.textContent = `共 ${list.length} 道菜`;
-
   if(!list.length){
     $grid.innerHTML = `<div class="no-result"><span class="big">🔍</span>没找到匹配的菜谱<div class="sub">试试其他食材或换个分类</div></div>`;
     return;
   }
-
   $grid.innerHTML = list.map(r=>`
     <div class="recipe-card" data-id="${r.id}">
+      ${cardFlags(r.id)}
       <span class="emoji">${r.emoji}</span>
       <div class="r-name">${r.name}</div>
       <div class="r-meta">
@@ -324,15 +474,158 @@ function renderGrid(){
 }
 
 // ═══════════════════════════════════════════
-// 渲染详情
+// 渲染食材列表
 // ═══════════════════════════════════════════
+function renderIngList(){
+  const list = INGREDIENTS.filter(i=>{
+    if(!searchQuery) return true;
+    const q = searchQuery.toLowerCase();
+    return i.name.includes(q) || i.about.includes(q);
+  });
+  $ingCount.textContent = `共 ${list.length} 种食材`;
+  if(!list.length){
+    $ingList.innerHTML = `<div class="no-result"><span class="big">🥦</span>没找到这个食材<div class="sub">试试：鸡胸肉、虾、西兰花、鸡蛋...</div></div>`;
+    return;
+  }
+  $ingList.innerHTML = list.map(i=>`
+    <div class="k-card" data-ing="${i.id}">
+      <span class="emoji">${i.emoji}</span>
+      <div class="k-name">${i.name}</div>
+      <div class="k-trigger">${i.about}</div>
+    </div>
+  `).join('');
+}
+
+// ═══════════════════════════════════════════
+// 渲染原理列表
+// ═══════════════════════════════════════════
+function renderPrList(){
+  const list = PRINCIPLES.filter(p=>{
+    if(!searchQuery) return true;
+    const q = searchQuery.toLowerCase();
+    return p.name.includes(q) || p.trigger.includes(q);
+  });
+  $prCount.textContent = `共 ${list.length} 条原理`;
+  if(!list.length){
+    $prList.innerHTML = `<div class="no-result"><span class="big">💡</span>没找到这个原理<div class="sub">试试：去腥、火候、熟没熟...</div></div>`;
+    return;
+  }
+  $prList.innerHTML = list.map(p=>`
+    <div class="k-card" data-pr="${p.id}">
+      <span class="emoji">${p.emoji}</span>
+      <div class="k-name">${p.name}</div>
+      <div class="k-trigger">${p.trigger}</div>
+    </div>
+  `).join('');
+}
+
+// ═══════════════════════════════════════════
+// 知识覆盖层：列表 / 详情
+// ═══════════════════════════════════════════
+function openKnowList(type){
+  knowType = type;
+  knowPage = 'list';
+  $knowTitle.textContent = type==='ingredient' ? '🥦 食材' : '💡 原理';
+  const cards = type==='ingredient'
+    ? INGREDIENTS.map(i=>`<div class="k-card" data-ing="${i.id}"><span class="emoji">${i.emoji}</span><div class="k-name">${i.name}</div><div class="k-trigger">${i.about}</div></div>`).join('')
+    : PRINCIPLES.map(p=>`<div class="k-card" data-pr="${p.id}"><span class="emoji">${p.emoji}</span><div class="k-name">${p.name}</div><div class="k-trigger">${p.trigger}</div></div>`).join('');
+  $knowBody.innerHTML = `<div class="k-grid" style="padding:0">${cards}</div>`;
+  openOverlay($knowOverlay);
+}
+function closeKnow(){
+  $knowOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function openOverlay(el){
+  el.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  el.scrollTop = 0;
+}
+function closeOverlay(el){
+  el.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// 原理卡正文（不包含关联菜谱部分，供内嵌复用）
+function principleBody(p){
+  let h = `<div class="k-trigger-box">${p.trigger}</div>`;
+  h += `<div class="k-rule">${p.rule}</div>`;
+  p.branches.forEach(b=>{
+    h += `<div class="k-branch"><div class="kb-source">${b.source}</div><div class="kb-fix">→ ${b.fix}</div></div>`;
+  });
+  h += `<div class="k-why">${p.why}</div>`;
+  return h;
+}
+function recipeCardsHTML(ids){
+  return ids.map(id=>{
+    const r = RECIPES.find(x=>x.id===id);
+    if(!r) return '';
+    return `<div class="k-card" data-recipe="${id}"><span class="emoji">${r.emoji}</span><div class="k-name">${r.name}</div><div class="k-trigger">${r.cookMethod} · ⏱${r.time}分</div></div>`;
+  }).join('');
+}
+function renderPrDetail(id){
+  const p = PRINCIPLES.find(x=>x.id===id);
+  if(!p) return;
+  knowPage = 'detail';
+  $knowTitle.textContent = p.emoji+' '+p.name;
+  let h = principleBody(p);
+  if(p.relatedRecipes && p.relatedRecipes.length){
+    h += `<div class="related-section"><h3>🍽️ 用到它的菜</h3><div class="k-grid" style="padding:0">${recipeCardsHTML(p.relatedRecipes)}</div></div>`;
+  }
+  $knowBody.innerHTML = h;
+  $knowOverlay.scrollTop = 0;
+}
+function renderIngDetail(id){
+  const i = INGREDIENTS.find(x=>x.id===id);
+  if(!i) return;
+  knowPage = 'detail';
+  $knowTitle.textContent = i.emoji+' '+i.name;
+  let h = `<div class="k-trigger-box">${i.about}</div>`;
+  h += `<div class="ing-field"><div class="if-label">🔍 怎么看新鲜</div><div class="if-txt">${i.fresh}</div></div>`;
+  h += `<div class="ing-field"><div class="if-label">📦 能放几天</div><div class="if-txt">${i.keep}</div></div>`;
+  h += `<div class="ing-field"><div class="if-label">🔪 预处理</div><div class="if-txt">${i.prep}</div></div>`;
+  h += `<div class="ing-field"><div class="if-label">📏 生熟比</div><div class="if-txt">${i.shrink}</div></div>`;
+  if(i.dishes && i.dishes.length){
+    h += `<div class="related-section"><h3>🍽️ 最简单的做法</h3><div class="k-grid" style="padding:0">${recipeCardsHTML(i.dishes)}</div></div>`;
+  }
+  if(i.principles && i.principles.length){
+    h += `<div class="related-section"><h3>📖 要懂的原理</h3><div class="k-grid" style="padding:0">${i.principles.map(pid=>{
+      const p = PRINCIPLES.find(x=>x.id===pid);
+      return p?`<div class="k-card" data-pr="${p.id}"><span class="emoji">${p.emoji}</span><div class="k-name">${p.name}</div><div class="k-trigger">${p.trigger}</div></div>`:'';
+    }).join('')}</div></div>`;
+  }
+  $knowBody.innerHTML = h;
+  $knowOverlay.scrollTop = 0;
+}
+
+// ═══════════════════════════════════════════
+// 渲染菜谱详情（状态信号优先）
+// ═══════════════════════════════════════════
+function hasOilStep(recipe){
+  return recipe.steps.some(s=>s.oil) || /煎|炒|炸|淋油/.test(recipe.cookMethod||'');
+}
 function openDetail(id){
   const recipe = RECIPES.find(r=>r.id===id);
   if(!recipe) return;
-
   $detailTitle.textContent = recipe.emoji+' '+recipe.name;
 
   let html = '';
+
+  // 30秒预演
+  html += `<div class="preview-box"><div class="preview-title">⚡ 30秒预演（先读这里，再决定做不做）</div>`;
+  html += `<div class="preview-row">⏱ 总耗时约 <b>${recipe.time}分钟</b></div>`;
+  if(recipe.yield) html += `<div class="preview-row">🍽️ 出锅量：<b>${recipe.yield}</b></div>`;
+  if(recipe.texture) html += `<div class="preview-row">🎯 口感目标：<b>${recipe.texture}</b></div>`;
+  if(recipe.pan) html += `<div class="preview-row">🍳 用锅：<b>${recipe.pan}</b></div>`;
+  if(recipe.pitfalls) html += `<div class="preview-row">⚠️ ${recipe.pitfalls}</div>`;
+  html += `</div>`;
+
+  // 做过/拿手标记
+  const fl = getFlags(id);
+  html += `<div class="flag-row">
+    <button class="flag-btn${fl.done?' on':''}" id="flagDone">✅ 做过</button>
+    <button class="flag-btn${fl.fav?' on':''}" id="flagFav">⭐ 拿手菜</button>
+  </div>`;
 
   // 元信息
   html += `<div class="recipe-meta">`;
@@ -342,13 +635,12 @@ function openDetail(id){
   if(recipe.tools && recipe.tools.length){
     html += `<div class="meta-item">🔧 工具 <span class="val">${recipe.tools.join('、')}</span></div>`;
   }
-  // 主料
   html += `<div class="tags-row">`;
   recipe.mainIngredients.forEach(ing=>{
-    html += `<span class="mini-tag ing">${ing}</span>`;
+    html += `<span class="mini-tag ing" data-inglook="${ing}">${ing}</span>`;
   });
   recipe.subIngredients.forEach(ing=>{
-    html += `<span class="mini-tag">${ing}</span>`;
+    html += `<span class="mini-tag" data-inglook="${ing}">${ing}</span>`;
   });
   recipe.tools.forEach(t=>{
     html += `<span class="mini-tag tool">${t}</span>`;
@@ -364,17 +656,47 @@ function openDetail(id){
     html += `</div></div>`;
   }
 
-  // 步骤
+  // 涉油安全提示
+  if(hasOilStep(recipe)){
+    const p = PRINCIPLES.find(x=>x.id==='she-you-an-quan');
+    if(p){
+      html += `<div class="related-section"><h3>⚠️ 这菜涉及热油</h3><details class="related-details" open><summary>涉油安全（防溅+起火应对）</summary><div class="related-body">${principleBody(p)}</div></details></div>`;
+    }
+  }
+
+  // 步骤（判断信号在前，动作在后）
   html += `<div class="steps-section"><h3>📝 步骤</h3>`;
   recipe.steps.forEach(s=>{
     html += `<div class="step-card">`;
     html += `<div class="step-header"><span class="step-num">${s.stepNum}</span><span class="step-name">${s.emoji} ${s.title}</span><span class="step-duration">${s.duration}分钟</span></div>`;
-    html += `<div class="step-instr">${s.instruction}</div>`;
     html += `<div class="step-judge">${s.judge}</div>`;
+    html += `<div class="step-instr">${s.instruction}</div>`;
     if(s.noviceNote) html += `<div class="step-novice">${s.noviceNote}</div>`;
+    if(s.authority) html += `<div class="step-authority">${s.authority}</div>`;
     html += `</div>`;
   });
   html += `</div>`;
+
+  // 关联原理（可展开）
+  if(recipe.relatedKnowledge && recipe.relatedKnowledge.length){
+    html += `<div class="related-section"><h3>📖 做之前懂这几个原理</h3>`;
+    recipe.relatedKnowledge.forEach(pid=>{
+      const p = PRINCIPLES.find(x=>x.id===pid);
+      if(p){
+        html += `<details class="related-details"><summary>${p.name}</summary><div class="related-body">${principleBody(p)}</div></details>`;
+      }
+    });
+    html += `</div>`;
+  }
+
+  // 改造版
+  if(recipe.variations && recipe.variations.length){
+    html += `<div class="related-section"><h3>🔀 改造版</h3>`;
+    recipe.variations.forEach(v=>{
+      html += `<details class="related-details"><summary>${v.name}</summary><div class="related-body"><div class="ing-field"><div class="if-txt">${v.text}</div></div></div></details>`;
+    });
+    html += `</div>`;
+  }
 
   // 搞砸补救
   if(recipe.rescue && recipe.rescue.length){
@@ -390,15 +712,79 @@ function openDetail(id){
     html += `<div class="tips-section"><h3>💡 小贴士</h3><div class="txt">${recipe.tips}</div></div>`;
   }
 
-  $detailBody.innerHTML = html;
-  $detailOverlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  $detailOverlay.scrollTop = 0;
-}
+  // 这次怎么样（记录）
+  const logs = getLogs(id);
+  html += `<div class="log-section"><h3>📝 这次做得怎么样？</h3>`;
+  html += `<div class="log-btns">
+    <button class="log-btn good" data-r="good">😋 好吃</button>
+    <button class="log-btn ok" data-r="ok">🙂 还行</button>
+    <button class="log-btn bad" data-r="bad">😅 翻车</button></div>`;
+  html += `<div class="log-note-row"><input id="logNote" placeholder="一句话：咸了？老了？不香？下次改什么..." maxlength="60"><button class="log-save" id="logSave">记录</button></div>`;
+  html += `<div class="log-history" id="logHistory"></div></div>`;
 
+  $detailBody.innerHTML = html;
+
+  // 记录区：历史
+  const $logHistory = document.getElementById('logHistory');
+  $logHistory.innerHTML = logs.slice().reverse().map(l=>{
+    return `<div class="lh-item">${l.t} ${l.r==='good'?'😋':l.r==='ok'?'🙂':'😅'} ${l.n||'（没写备注）'}</div>`;
+  }).join('') || '<div class="lh-item">还没有记录。做一次，记一句，下次就改它——一次只改一个变量。</div>';
+
+  // flag 按钮
+  let curRating = null;
+  const $flagDone = document.getElementById('flagDone');
+  const $flagFav = document.getElementById('flagFav');
+  $flagDone.addEventListener('click',()=>{
+    const on = !getFlags(id).done;
+    setFlag(id,'done',on);
+    $flagDone.classList.toggle('on',on);
+    renderGrid();
+  });
+  $flagFav.addEventListener('click',()=>{
+    const on = !getFlags(id).fav;
+    setFlag(id,'fav',on);
+    $flagFav.classList.toggle('on',on);
+    renderGrid();
+  });
+
+  // 评级 + 记录
+  document.querySelectorAll('.log-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.log-btn').forEach(b=>b.classList.remove('on'));
+      curRating = btn.dataset.r;
+      btn.classList.add('on');
+    });
+  });
+  document.getElementById('logSave').addEventListener('click',()=>{
+    const note = document.getElementById('logNote').value.trim();
+    if(!curRating && !note) return;
+    addLog(id, curRating||'ok', note);
+    document.getElementById('logNote').value = '';
+    document.querySelectorAll('.log-btn').forEach(b=>b.classList.remove('on'));
+    curRating = null;
+    const logs2 = getLogs(id);
+    document.getElementById('logHistory').innerHTML = logs2.slice().reverse().map(l=>{
+      return `<div class="lh-item">${l.t} ${l.r==='good'?'😋':l.r==='ok'?'🙂':'😅'} ${l.n||''}</div>`;
+    }).join('');
+  });
+
+  // 主料标签点击 → 食材知识
+  $detailBody.querySelectorAll('[data-inglook]').forEach(tag=>{
+    tag.style.cursor = 'pointer';
+    tag.addEventListener('click',()=>{
+      const ing = INGREDIENTS.find(i=>i.name===tag.dataset.inglook);
+      if(ing){
+        closeDetail();
+        openKnowList('ingredient');
+        renderIngDetail(ing.id);
+      }
+    });
+  });
+
+  openOverlay($detailOverlay);
+}
 function closeDetail(){
-  $detailOverlay.classList.remove('open');
-  document.body.style.overflow = '';
+  closeOverlay($detailOverlay);
 }
 
 // ═══════════════════════════════════════════
@@ -408,27 +794,20 @@ function openCombo(){
   comboSelected = new Set();
   renderComboIngs();
   renderComboResult();
-  $comboOverlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  $comboOverlay.scrollTop = 0;
+  openOverlay($comboOverlay);
 }
-
 function closeCombo(){
-  $comboOverlay.classList.remove('open');
-  document.body.style.overflow = '';
+  closeOverlay($comboOverlay);
 }
-
 function toggleComboIng(name){
-  if(comboSelected.has(name)){
-    comboSelected.delete(name);
-  }else{
+  if(comboSelected.has(name)) comboSelected.delete(name);
+  else{
     if(comboSelected.size >= 5) return;
     comboSelected.add(name);
   }
   renderComboIngs();
   renderComboResult();
 }
-
 function renderComboIngs(){
   const allIngs = getAllIngredients();
   $comboIngGrid.innerHTML = allIngs.map(name=>`
@@ -436,7 +815,6 @@ function renderComboIngs(){
   `).join('');
   $comboCount.textContent = `已选 ${comboSelected.size} 种食材（选 2～5 种）`;
 }
-
 function renderComboResult(){
   if(comboSelected.size < 2){
     $comboResultTitle.style.display = 'none';
@@ -448,18 +826,17 @@ function renderComboResult(){
     const allIngs = [...r.mainIngredients, ...r.subIngredients];
     return sels.every(s=>allIngs.some(i=>i.includes(s)||s.includes(i)));
   });
-
   if(!matched.length){
     $comboResultTitle.style.display = 'block';
     $comboResultTitle.textContent = '😅 没找到同时包含这些食材的菜谱，试试换几种食材';
     $comboResult.innerHTML = '';
     return;
   }
-
   $comboResultTitle.style.display = 'block';
   $comboResultTitle.textContent = `🎯 找到 ${matched.length} 道菜：`;
   $comboResult.innerHTML = matched.map(r=>`
     <div class="recipe-card" data-id="${r.id}">
+      ${cardFlags(r.id)}
       <span class="emoji">${r.emoji}</span>
       <div class="r-name">${r.name}</div>
       <div class="r-meta">
@@ -474,6 +851,9 @@ function renderComboResult(){
 // ═══════════════════════════════════════════
 // 事件绑定（事件代理）
 // ═══════════════════════════════════════════
+document.querySelectorAll('.tab-item').forEach(t=>{
+  t.addEventListener('click',()=>switchTab(t.dataset.tab));
+});
 
 // 分类点击
 $catBar.addEventListener('click',e=>{
@@ -486,21 +866,47 @@ $grid.addEventListener('click',e=>{
   const card = e.target.closest('.recipe-card');
   if(card) openDetail(card.dataset.id);
 });
+// 食材卡片点击 → 食材知识
+$ingList.addEventListener('click',e=>{
+  const card = e.target.closest('.k-card');
+  if(card && card.dataset.ing){
+    openKnowList('ingredient');
+    renderIngDetail(card.dataset.ing);
+  }
+});
+// 原理卡片点击 → 原理知识
+$prList.addEventListener('click',e=>{
+  const card = e.target.closest('.k-card');
+  if(card && card.dataset.pr){
+    openKnowList('principle');
+    renderPrDetail(card.dataset.pr);
+  }
+});
 
 // 详情覆盖层
 $detailBack.addEventListener('click',closeDetail);
 
+// 知识覆盖层（代理：食材卡/原理卡/菜谱卡）
+$knowBody.addEventListener('click',e=>{
+  const ing = e.target.closest('[data-ing]');
+  if(ing){ renderIngDetail(ing.dataset.ing); return; }
+  const pr = e.target.closest('[data-pr]');
+  if(pr){ renderPrDetail(pr.dataset.pr); return; }
+  const rc = e.target.closest('[data-recipe]');
+  if(rc){ closeKnow(); openDetail(rc.dataset.recipe); }
+});
+$knowBack.addEventListener('click',()=>{
+  if(knowPage==='detail') openKnowList(knowType);
+  else closeKnow();
+});
+
 // 组合模式
 $comboBtn.addEventListener('click',openCombo);
 $comboBack.addEventListener('click',closeCombo);
-
-// 组合模式食材选择
 $comboIngGrid.addEventListener('click',e=>{
   const chip = e.target.closest('.combo-ing-chip');
   if(chip) toggleComboIng(chip.dataset.ing);
 });
-
-// 组合模式结果点击
 $comboResult.addEventListener('click',e=>{
   const card = e.target.closest('.recipe-card');
   if(card){
@@ -513,14 +919,13 @@ $comboResult.addEventListener('click',e=>{
 $search.addEventListener('input',()=>{
   searchQuery = $search.value.trim();
   $clear.style.display = searchQuery ? 'block' : 'none';
-  renderGrid();
+  renderCurrent();
 });
-
 $clear.addEventListener('click',()=>{
   $search.value = '';
   searchQuery = '';
   $clear.style.display = 'none';
-  renderGrid();
+  renderCurrent();
 });
 
 // ESC 关闭覆盖层
@@ -528,6 +933,7 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){
     if($detailOverlay.classList.contains('open')) closeDetail();
     if($comboOverlay.classList.contains('open')) closeCombo();
+    if($knowOverlay.classList.contains('open')) closeKnow();
   }
 });
 

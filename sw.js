@@ -1,8 +1,9 @@
-const CACHE_NAME = 'kitchen-assistant-v1';
+const CACHE_NAME = 'kitchen-assistant-v2';
 const CACHE_FILES = [
   './',
   './index.html',
   './recipes.js',
+  './knowledge.js',
   './manifest.json',
   './icon-192.png',
   './icon-512.png',

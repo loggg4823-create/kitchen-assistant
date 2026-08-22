@@ -18,14 +18,14 @@ const RECIPES = [
     {problem:'吃起来涩口',fix:'菠菜本身有草酸，正常。下次水里多加点盐能去涩味'},
   ]},
 
-  {id:'bai-zhuo-xia',name:'白灼虾',emoji:'🦐',difficulty:1,time:5,cookMethod:'水煮',category:'水产',tags:['快手','请客','清淡'],tools:['煮锅'],mainIngredients:['虾'],subIngredients:['姜'],seasonings:[{name:'生抽',required:true},{name:'料酒',required:false,alt:'不放也行，姜片去腥足够'}],steps:[
-    {stepNum:1,title:'处理虾',duration:1,emoji:'🔪',instruction:'虾冲洗干净。用剪刀剪掉虾须和虾枪（尖刺部分）。不用开背去虾线——白灼整只煮最嫩。',judge:'虾须剪干净，虾体完整没有断。',noviceNote:'不要去虾线！生虾去虾线肉会散。熟了再挑更方便'},
-    {stepNum:2,title:'煮虾',duration:2,emoji:'🍲',instruction:'锅中水加姜片烧开，放入虾。煮到全部变红、虾身卷曲成C形——约2分钟。',judge:'虾全红，虾身卷成C形。不能还是直的（没熟），也不能卷成O形（老了）。',noviceNote:'虾的形状就是温度计：直=生，C=正好，O=老了！看到卷C立刻捞'},
+  {id:'bai-zhuo-xia',name:'白灼虾',emoji:'🦐',difficulty:1,time:5,cookMethod:'水煮',category:'水产',tags:['快手','请客','清淡'],tools:['煮锅'],mainIngredients:['虾'],subIngredients:['姜'],seasonings:[{name:'生抽',required:true},{name:'料酒',required:false,alt:'不放也行，姜片去腥足够'}],yield:'成品约一盘：一人吃约半斤，熟后铺满盘底一层、不叠。',texture:'弹——卷成C形就停，多一秒都是O形。',pan:'煮锅就行（不粘锅铁锅都行，这菜不粘锅）。',pitfalls:'只有两个坑：①虾线没挑干净（开背挑线时浅一点）②煮过头卷成O形（看到C形立刻捞）。',relatedKnowledge:['qu-xing','shu-mei-shu','kou-gan-mu-biao'],steps:[
+    {stepNum:1,title:'处理虾',duration:1,emoji:'🔪',instruction:'活虾先冰镇 5-10 分钟（冷冻层或冰水泡），不跳了再处理。然后冲洗干净，剪掉虾须和虾枪（尖刺部分）。开背，挑出虾线。',judge:'背上的黑线挑干净了，虾体完整没断。',noviceNote:'开背浅浅一刀能打开就行，别切断。剪刀剪虾枪时小心扎手'},
+    {stepNum:2,title:'煮虾',duration:2,emoji:'🍲',instruction:'锅中水加姜片烧开，放入虾。一直盯着虾身，看到卷成C形立刻捞。',judge:'虾身卷成C形。不能还是直的（没熟），也不能卷成O形（老了）。',noviceNote:'别数时间，看形状：直=生，C=正好，O=老了。看到C形立刻关火捞虾',authority:'为什么听C形不听“变色”？虾入水瞬间就变红，变色信号来得太早，按它捞出来不熟。C形是肌肉收缩到位的信号，误差小。别的教程说“变色就行”——别信，以C形为准'},
     {stepNum:3,title:'调蘸水',duration:1,emoji:'🥣',instruction:'小碗倒生抽，可以加点姜末、蒜末。虾剥壳蘸着吃。',judge:'虾肉白嫩弹牙，蘸了酱油后咸鲜适中。',noviceNote:'虾头别扔——吸一下虾黄，精华！'},
   ],rescue:[
-    {problem:'虾煮老了卷成O形',fix:'剥壳后凉拌，加生抽香醋香油拌一拌也好吃。下次水大开下锅，变色就捞'},
-    {problem:'虾没煮熟还是直的',fix:'回锅里再煮30秒。必须全熟，虾生吃可能拉肚子'},
-  ],tips:'冻虾也可以白灼，解冻透就行。比活虾差一点但80%味道。'},
+    {problem:'虾煮老了卷成O形',fix:'剥壳后凉拌，加生抽香醋香油拌一拌也好吃。下次看到C形立刻捞，别等'},
+    {problem:'虾没煮熟还是直的',fix:'回锅再煮30秒，看到C形立刻捞。必须全熟，虾生吃可能拉肚子'},
+  ],tips:'冻虾也可以白灼，解冻透擦干就行。比活虾差一点但有80%味道。'},
 
   {id:'shui-zhu-ji-xiong',name:'水煮鸡胸肉',emoji:'🍗',difficulty:1,time:10,cookMethod:'水煮',category:'肉类',tags:['快手','清淡','备餐'],tools:['煮锅'],mainIngredients:['鸡胸肉'],subIngredients:['姜'],seasonings:[{name:'生抽',required:true},{name:'料酒',required:false,alt:'用姜片去腥足够'},{name:'白胡椒粉',required:false,alt:'不放也行，去腥用姜就够了'}],steps:[
     {stepNum:1,title:'切鸡胸肉',duration:2,emoji:'🔪',instruction:'鸡胸肉横着纹路切成两片（厚度减半），不要切断。如果太厚就片成两片。',judge:'每片厚度差不多，约一指厚。',noviceNote:'一整块煮外面老了里面还是生的。片薄煮受热均匀不柴'},
@@ -203,14 +203,14 @@ const RECIPES = [
   ],tips:'这道菜成本不到3块钱但好吃到舔盘。真正的穷人美食。'},
 
   // ════════ 三、蒸菜 ════════
-  {id:'zheng-shui-dan',name:'蒸水蛋',emoji:'🥚',difficulty:2,time:12,cookMethod:'蒸',category:'禽蛋',tags:['快手','清淡','懒人'],tools:['蒸锅','碗'],mainIngredients:['鸡蛋'],subIngredients:['葱'],seasonings:[{name:'盐',required:true},{name:'生抽',required:false,alt:'不放也行，蒸好了淋一点更香'},{name:'香油',required:false,alt:'不放也行'}],steps:[
-    {stepNum:1,title:'打蛋液',duration:2,emoji:'🥚',instruction:'鸡蛋打碗里，加一小撮盐。用筷子搅匀打散。加温水（蛋和水的比例1:1.5），继续搅匀。',judge:'蛋液和水完全融合，没有蛋清丝。表面有少量泡沫。',noviceNote:'要用温水（手摸不烫）！冷水蒸出来不嫩，热水直接成蛋花汤'},
-    {stepNum:2,title:'过滤去泡',duration:1,emoji:'🥣',instruction:'蛋液用滤网过滤到蒸碗里（或拿勺子撇掉表面的泡沫）。盖上一层保鲜膜或扣个盘子。',judge:'蛋液表面没有气泡，光滑得像水面。',noviceNote:'不过滤不盖保鲜膜→蒸出来表面全是蜂窝坑。这一步决定了颜值'},
-    {stepNum:3,title:'上锅蒸',duration:8,emoji:'♨️',instruction:'蒸锅水开后转中小火，放入蛋碗蒸8分钟。关火再闷2分钟。',judge:'蛋羹表面光滑如镜，用勺子舀起来颤巍巍的。没有蜂窝孔。',noviceNote:'一定要转中小火！大火蒸=必出蜂窝。水开后转小火再放碗'},
-    {stepNum:4,title:'调味',duration:1,emoji:'🥣',instruction:'取出蒸蛋，淋上半勺生抽和几滴香油。撒葱花。',judge:'蒸蛋口感像布丁一样嫩滑，入口即化。',noviceNote:'生抽沿碗边淋下去，别直接倒在蛋面上——会破坏光滑表面'},
+  {id:'zheng-shui-dan',name:'蒸水蛋',emoji:'🥚',difficulty:2,time:12,cookMethod:'蒸',category:'禽蛋',tags:['快手','清淡','懒人'],tools:['蒸锅','碗'],mainIngredients:['鸡蛋'],subIngredients:['葱'],seasonings:[{name:'盐',required:true},{name:'生抽',required:false,alt:'不放也行，蒸好了淋一点更香'},{name:'香油',required:false,alt:'不放也行'}],yield:'成品约一小碗：2个蛋蒸出一碗蛋羹，够一顿早餐或配饭。',texture:'嫩滑——像布丁一样颤巍巍，不是硬块也不是蛋花汤。',pan:'蒸锅+深碗（碗口别太浅，蛋液会扑出来）。',pitfalls:'三个坑：①用了冷水或热水（必须温水）②没滤泡没盖膜（表面蜂窝）③大火蒸（必出蜂窝）。',relatedKnowledge:['huo-hou','shu-mei-shu','kou-gan-mu-biao'],steps:[
+    {stepNum:1,title:'打蛋液',duration:2,emoji:'🥚',instruction:'鸡蛋打碗里，加一小撮盐（拇指和食指捏起的量）。筷子搅匀打散。加温水（手摸不烫）——用量法：半个蛋壳装满水，倒3次进碗（这就是标准的1:1.5），继续搅匀。',judge:'蛋液和水完全融合，没有蛋清丝。表面有少量泡沫。',noviceNote:'蛋壳就是量杯！半个蛋壳装满水×3次=标准水量，不用猜。冷水蒸出来不嫩，热水直接成蛋花汤'},
+    {stepNum:2,title:'过滤去泡',duration:1,emoji:'🥣',instruction:'蛋液用滤网过滤到蒸碗里（或拿勺子撇掉表面泡沫）。盖上一层保鲜膜或扣个盘子。',judge:'蛋液表面没有气泡，光滑得像水面。',noviceNote:'不过滤不盖保鲜膜→蒸出来表面全是蜂窝坑。这一步决定了颜值'},
+    {stepNum:3,title:'上锅蒸',duration:8,emoji:'♨️',instruction:'蒸锅水开后转中小火，放入蛋碗。蒸到蛋液表面凝固、轻轻晃动碗，蛋羹整体跟着颤——大约8分钟，以状态为准。关火再焖2分钟。',judge:'蛋羹表面光滑如镜，晃动碗时整体颤巍巍，没有蜂窝孔。',noviceNote:'一定要转中小火！大火蒸=必出蜂窝。判断熟没熟看“晃动碗它跟着颤”，别死盯时间',authority:'为什么听“晃动”不听时间？你的蒸锅大小、水量、碗深浅都会改变时间，8分钟只是参考。蛋羹熟没熟只有它自己知道：晃动碗，中间还水汪汪就再蒸一会儿，整体跟着颤就是好了'},
+    {stepNum:4,title:'调味',duration:1,emoji:'🥣',instruction:'取出蒸蛋，淋半勺生抽（沿碗边转一圈的量）和几滴香油。撒葱花。',judge:'蒸蛋口感像布丁一样嫩滑，入口即化。',noviceNote:'生抽沿碗边淋下去，别直接倒在蛋面上——会破坏光滑表面'},
   ],rescue:[
-    {problem:'蒸出来全是蜂窝孔',fix:'下次一定要用温水+过滤气泡+中小火。这次可以淋上生抽葱花假装是故意的'},
-    {problem:'蛋水分离析出水了',fix:'倒掉析出的水，味道不影响。下次蛋水比例调到1:1.3'},
+    {problem:'蒸出来全是蜂窝孔',fix:'下次用温水+滤泡+中小火，三件事缺一不可。这次淋上生抽葱花，假装是故意的'},
+    {problem:'蛋水分离析出水了',fix:'倒掉析出的水，味道不影响。下次水再少一点（半个蛋壳装满水×2次半）'},
   ],tips:'蒸水蛋是检验厨房水平的试金石——步骤不多但细节决定成败。'},
 
   {id:'duo-jiao-zheng-yu-pian',name:'剁椒蒸鱼片',emoji:'🐟',difficulty:1,time:10,cookMethod:'蒸',category:'水产',tags:['快手','下饭'],tools:['蒸锅','盘子'],mainIngredients:['巴沙鱼'],subIngredients:['剁椒','姜'],seasonings:[{name:'蒸鱼豉油',required:false,alt:'用生抽可以'},{name:'食用油',required:true}],steps:[
@@ -484,4 +484,59 @@ const RECIPES = [
     {problem:'太辣了吃不下',fix:'加牛奶或豆浆能中和辣味。下次火锅底料少放一半'},
     {problem:'味道太淡不够味',fix:'加盐或者再加一小块火锅底料。或者调个蘸碟：生抽+醋+蒜末'},
   ],tips:'火锅底料推荐：海底捞清油或者好人家。半块够两个人吃。冰箱里剩菜都能煮。'},
+
+  // ════════ 八、家常炒菜（从老乡鸡开源菜谱改编，家庭版+教学化） ════════
+  {id:'gong-bao-ji-ding',name:'宫保鸡丁',emoji:'🍗',difficulty:2,time:20,cookMethod:'炒',category:'肉类',tags:['下饭','解馋','盖饭'],tools:['炒锅','炒勺'],mainIngredients:['鸡腿肉'],subIngredients:['胡萝卜','花生米','大葱','干辣椒'],seasonings:[{name:'生抽',required:true},{name:'醋',required:true},{name:'糖',required:true},{name:'料酒',required:false,alt:'不放也行，味道差一点'},{name:'淀粉',required:true},{name:'盐',required:false,alt:'碗汁有咸味，一般不用加'},{name:'食用油',required:true}],yield:'成品约一盘——够吃2顿盖浇饭。',texture:'鸡丁嫩+花生脆+酸甜微辣。',pan:'不粘锅（鸡丁容易粘锅，不粘锅新手友好）。',pitfalls:'四个坑：①不上浆（鸡丁柴）②碗汁比例错（酸甜失衡）③干辣椒炒糊（发苦）④鸡丁炒太久（老）。',relatedKnowledge:['qu-xing','huo-hou','shu-mei-shu','kou-gan-mu-biao','wei-dao-yan-shou'],steps:[
+    {stepNum:1,title:'备料+调碗汁',duration:5,emoji:'🔪',instruction:'鸡腿肉去骨切丁（约指尖大）。胡萝卜切丁，大葱切段，干辣椒剪成小段。碗里调宫保汁：生抽2勺+醋1勺+糖1勺+料酒半勺+淀粉半勺+水2勺，搅匀。',judge:'鸡丁大小均匀，碗汁搅匀没有淀粉疙瘩。',noviceNote:'碗汁提前调好！炒菜时手忙脚乱再调汁必翻车——这是"备料先行"的标准示范'},
+    {stepNum:2,title:'腌鸡丁（上浆）',duration:10,emoji:'🥣',instruction:'鸡丁加料酒1勺、生抽半勺、淀粉1勺、食用油1勺，用手抓匀，腌10分钟。',judge:'鸡丁均匀裹上浆，碗底没有多余水分。',noviceNote:'上浆是鸡丁嫩的关键——淀粉在表面形成保护膜锁住水分，炒的时候不柴',authority:'为什么鸡丁必须上浆？——不上浆直接炒，鸡丁表面水分瞬间蒸发，炒出来又干又柴。淀粉保护膜+快炒=嫩。这一步别省'},
+    {stepNum:3,title:'滑炒鸡丁',duration:2,emoji:'🔥',instruction:'锅烧热倒油（比平时多一点），油微微冒烟下鸡丁，快速划散，炒到全部变白立刻盛出。',judge:'鸡丁全部变白、表面微微金黄，没有粉色。',noviceNote:'鸡丁变白=熟了，再炒就老。这一步全程大火只要1-2分钟',oil:true},
+    {stepNum:4,title:'爆香+炒配菜',duration:2,emoji:'🌶️',instruction:'锅里的油留着，下干辣椒和葱段，小火炒香（10秒），下胡萝卜丁，中火炒到微软。',judge:'干辣椒变深红（没糊），葱香出来，胡萝卜微软。',noviceNote:'干辣椒小火炒！大火10秒就糊，糊了发苦整盘废',oil:true},
+    {stepNum:5,title:'回锅+碗汁收尾',duration:1,emoji:'🥘',instruction:'鸡丁回锅，倒入调好的宫保汁，大火翻炒到汁水裹匀变浓稠，加花生米，翻两下出锅。',judge:'汤汁浓稠裹在每块鸡丁上，没有稀汤。花生米还是脆的。',noviceNote:'花生米出锅前最后放！放早了吸水变软就不脆了',oil:true},
+  ],rescue:[
+    {problem:'鸡丁炒老了发柴',fix:'这盘浇点汁将就吃。下次一定上浆+变白立刻盛出'},
+    {problem:'碗汁太酸或太甜',fix:'酸了加半勺糖，甜了加半勺醋，回锅翻两下平衡'},
+    {problem:'干辣椒糊了发苦',fix:'把糊的挑出来。下次干辣椒用小火炒或者晚点放'},
+    {problem:'花生米不脆了',fix:'下次出锅前最后放花生米，翻两下就出锅'},
+  ],tips:'花生米买超市现成的熟花生米最省事。怕辣少放干辣椒，辣味在辣椒不在汁。'},
+
+  {id:'nong-jia-xiao-chao-rou',name:'农家小炒肉',emoji:'🥩',difficulty:2,time:15,cookMethod:'炒',category:'肉类',tags:['下饭','快手'],tools:['炒锅','炒勺'],mainIngredients:['五花肉','青椒'],subIngredients:['蒜'],seasonings:[{name:'生抽',required:true},{name:'老抽',required:false,alt:'没有就颜色浅一点，味道一样'},{name:'盐',required:false,alt:'酱油有咸味，一般不用加'},{name:'食用油',required:true}],yield:'成品约一盘——够吃2顿盖浇饭。',texture:'肉片焦香+青椒脆+辣。',pan:'不粘锅（肉片薄容易粘）。',pitfalls:'三个坑：①肉切不薄（冻30分钟再切）②青椒炒过火（软塌不脆）③盐放多（酱油本身咸）。',relatedKnowledge:['qu-xing','huo-hou','shu-mei-shu','wei-dao-yan-shou','she-you-an-quan'],steps:[
+    {stepNum:1,title:'备料',duration:3,emoji:'🔪',instruction:'五花肉切薄片，肥肉和瘦肉分开切、分开放。青椒斜切块，蒜拍碎切片。',judge:'肉片薄厚均匀，肥瘦肉分开放，青椒块大小一致。',noviceNote:'肉不好切就冷冻30分钟再切——冻硬了好切薄。肉片越薄越好吃'},
+    {stepNum:2,title:'煸肥肉出油',duration:3,emoji:'🔥',instruction:'锅烧热，倒一点点油，下肥肉片，中火煸炒到出油、边缘焦黄。',judge:'肥肉变透明、边缘焦黄，锅底有一层猪油。',noviceNote:'这步是香味的来源——煸出来的猪油是这道菜的灵魂。别怕油多，等会炒青椒全靠它',authority:'为什么肥肉先下？——肥肉煸出的猪油让整道菜香，瘦肉直接下会柴，青椒用猪油炒才香。顺序不能乱',oil:true},
+    {stepNum:3,title:'下瘦肉+蒜',duration:2,emoji:'🥩',instruction:'下瘦肉片，大火炒到变色，加蒜片炒香。',judge:'肉片全部变色没有粉色，蒜香出来了。',noviceNote:'瘦肉炒到变色就停——再炒就老了',oil:true},
+    {stepNum:4,title:'调味盛出',duration:2,emoji:'🥣',instruction:'加生抽2勺、老抽半勺（有就加），翻炒到肉片均匀上色，盛出来暂存。',judge:'肉片均匀上色，锅里的油和肉分开（肉不粘连）。',noviceNote:'肉先盛出来！不然等会炒青椒，肉会被炒老'},
+    {stepNum:5,title:'炒青椒',duration:2,emoji:'🫑',instruction:'锅里的猪油留着，下青椒块，大火翻炒到表皮微皱、变软。',judge:'青椒表皮微皱、颜色变深，还带一点脆。',noviceNote:'青椒大火快炒！断生就停，炒过头就软塌不脆了',oil:true},
+    {stepNum:6,title:'合炒出锅',duration:1,emoji:'🥘',instruction:'肉片回锅，和青椒一起大火翻炒几下。尝一下，淡了就加一点点盐，出锅。',judge:'肉片裹上辣香，青椒断生还脆，咸淡合适。',noviceNote:'先尝再放盐！酱油已经咸了，手一抖就咸了。淡了能补，咸了难救',oil:true},
+  ],rescue:[
+    {problem:'青椒炒软塌了不脆',fix:'下次青椒下锅大火快炒，断生就出锅。这盘当配菜拌饭吃掉'},
+    {problem:'咸了',fix:'加一点点糖和醋救场，或者配白米饭吃'},
+    {problem:'肉切不均匀',fix:'味道一样不影响。下次冷冻30分钟再切'},
+  ],tips:'螺丝椒最配这道菜，没有就用普通青椒。想要更香加一勺豆豉。'},
+
+  {id:'yu-xiang-rou-si',name:'鱼香肉丝',emoji:'🥕',difficulty:2,time:20,cookMethod:'炒',category:'肉类',tags:['下饭','快手','盖饭'],tools:['炒锅','炒勺'],mainIngredients:['猪里脊','木耳','胡萝卜'],subIngredients:['青椒','葱','姜','蒜'],seasonings:[{name:'生抽',required:true},{name:'醋',required:true},{name:'糖',required:true},{name:'料酒',required:false,alt:'不放也行'},{name:'淀粉',required:true},{name:'食用油',required:true}],yield:'成品约一盘，汁多——盖浇饭之王，够2顿。',texture:'肉丝嫩+配菜脆+酸甜咸鲜。',pan:'不粘锅（肉丝容易粘）。',pitfalls:'三个坑：①鱼香汁糖醋比例（2勺醋+1.5勺糖）②肉丝柴（上浆+变白就盛出）③葱姜蒜末省不得（鱼香味的来源）。',relatedKnowledge:['qu-xing','huo-hou','shu-mei-shu','wei-dao-yan-shou','kou-gan-mu-biao'],steps:[
+    {stepNum:1,title:'备料+调鱼香汁',duration:5,emoji:'🔪',instruction:'里脊肉切丝，木耳泡发切丝，胡萝卜切丝，青椒切丝，葱姜蒜切末。碗里调鱼香汁：生抽2勺+醋2勺+糖1.5勺+料酒1勺+淀粉1勺+水3勺，搅匀。',judge:'所有丝粗细均匀，鱼香汁调好没有疙瘩。',noviceNote:'鱼香汁的糖醋比例是关键：2勺醋配1.5勺糖，酸甜平衡。先按这个调，尝了再微调'},
+    {stepNum:2,title:'腌肉丝（上浆）',duration:10,emoji:'🥣',instruction:'肉丝加料酒1勺、生抽半勺、淀粉1勺、食用油1勺，抓匀腌10分钟。',judge:'肉丝均匀裹浆，不粘连。',noviceNote:'和宫保鸡丁一样——上浆=不柴的保证'},
+    {stepNum:3,title:'滑炒肉丝',duration:2,emoji:'🔥',instruction:'油热下肉丝，划散，炒到全部变白盛出。',judge:'肉丝全部变白、散开不粘连。',noviceNote:'变白就盛出！大火快炒，多一秒都老',oil:true},
+    {stepNum:4,title:'炒配菜',duration:2,emoji:'🧄',instruction:'锅里的油留一点，下葱姜蒜末炒香（蒜末是灵魂，多放），下胡萝卜丝和木耳丝炒到微软。',judge:'蒜香呛鼻，胡萝卜丝微软，木耳丝卷曲。',noviceNote:'蒜末不能省！鱼香味的核心就是蒜香',authority:'为什么叫鱼香却没有鱼？——鱼香味是川菜的复合味型：葱姜蒜的香+糖醋的酸甜。蒜末是灵魂，省了它这道菜直接变酱油炒肉丝',oil:true},
+    {stepNum:5,title:'回锅+碗汁收尾',duration:2,emoji:'🥘',instruction:'肉丝回锅，倒入鱼香汁，大火翻炒到汤汁浓稠裹匀，下青椒丝，翻两下出锅。',judge:'汤汁浓稠裹匀每根肉丝，青椒丝还脆，没有稀汤。',noviceNote:'看到汤汁变浓稠挂勺就是好了，别炒到汤汁全干',oil:true},
+  ],rescue:[
+    {problem:'太酸或太甜',fix:'酸了加半勺糖，甜了加半勺醋，回锅翻两下'},
+    {problem:'肉丝柴',fix:'下次上浆+变白就盛出。这盘多淋点汁泡着吃'},
+    {problem:'汤汁稀挂不住',fix:'下次淀粉加量。这盘勾一点水淀粉（半勺淀粉+2勺水）回锅炒10秒'},
+  ],tips:'没有笋丝没关系，胡萝卜+木耳+青椒就是经典家常版。木耳提前半小时温水泡发。'},
+
+  {id:'xia-ren-zheng-ji-dan',name:'虾仁蒸鸡蛋',emoji:'🥚',difficulty:2,time:15,cookMethod:'蒸',category:'禽蛋',tags:['快手','清淡','懒人'],tools:['蒸锅','碗'],mainIngredients:['鸡蛋','虾仁'],subIngredients:['葱'],seasonings:[{name:'盐',required:true},{name:'生抽',required:false,alt:'不放也行，蒸好了淋一点更香'},{name:'料酒',required:false,alt:'腌虾仁用，不放腥一点'},{name:'香油',required:false,alt:'不放也行'}],yield:'2个蛋+5-6只虾仁=一碗，一人份正好。',texture:'蛋嫩滑+虾仁弹。',pan:'蒸锅+深碗（碗口别太浅）。',pitfalls:'三个坑：①虾仁放太早（沉底+蒸老）②盐多（虾仁腌过有咸味）③大火蒸（蜂窝）。',relatedKnowledge:['qu-xing','huo-hou','shu-mei-shu','kou-gan-mu-biao'],steps:[
+    {stepNum:1,title:'处理虾仁',duration:3,emoji:'🦐',instruction:'虾仁解冻（或剥鲜虾），开背挑虾线，加料酒1勺+一小撮盐腌5分钟。',judge:'虾线挑干净，虾仁裹着薄薄一层腌料。',noviceNote:'冻虾仁直接买处理好的也行，省事。鲜虾记得先冰镇再剥，不跳'},
+    {stepNum:2,title:'打蛋液',duration:2,emoji:'🥚',instruction:'鸡蛋打碗里加一小撮盐搅匀。加温水（手摸不烫）——半个蛋壳装满水倒3次。再搅匀，滤泡，盖保鲜膜。',judge:'蛋液光滑无泡，像水面。',noviceNote:'和蒸水蛋一模一样——蛋壳量水×3，温水，滤泡，一个都不能少'},
+    {stepNum:3,title:'蒸到半凝固',duration:5,emoji:'♨️',instruction:'蒸锅水开转中小火，蛋碗上锅，蒸到蛋液表面凝固、里面还微微晃动（约5分钟）。',judge:'蛋液表面凝固，晃动碗里面还有一点点晃。',noviceNote:'这里只蒸半熟！等会还要放虾仁再蒸，全熟再放虾仁就蒸太老了'},
+    {stepNum:4,title:'放虾仁再蒸',duration:4,emoji:'🦐',instruction:'开盖，把虾仁摆在蛋面上，继续蒸3-4分钟，到虾仁变红卷曲、蛋羹整体凝固。',judge:'虾仁变红卷成C形，蛋羹晃动时整体颤巍巍，没有蜂窝。',noviceNote:'虾仁卷成C形=正好，卷成O形=老了。看到C形立刻关火',authority:'为什么虾仁要等蛋半熟再放？——一起放，虾仁会沉到碗底，而且蛋要蒸8分钟，虾仁跟着蒸那么久早老了。半熟时放，虾仁浮在表面，只蒸3-4分钟，正好弹'},
+    {stepNum:5,title:'调味出锅',duration:1,emoji:'🥣',instruction:'取出，淋半勺生抽（沿碗边转一圈）和几滴香油，撒葱花。',judge:'蛋羹像布丁一样嫩滑，虾仁弹牙。',noviceNote:'生抽沿碗边淋，别倒在蛋面上——破坏光滑表面'},
+  ],variations:[
+    {name:'蛤蜊蒸蛋（蛤蜊已处理好）',text:'蛤蜊肉（已熟）直接铺碗底，再倒蛋液，其他步骤完全一样。盐减半！蛤蜊自带咸味，蒸的时候会渗进蛋液。不用管蛤蜊熟没熟——它已经熟了，蛋熟它就熟。'},
+    {name:'蛤蜊蒸蛋（从活蛤蜊开始）',text:'活蛤蜊盐水泡2小时吐沙（关键！不吐沙会硌牙）→ 水开下锅焯到开口立刻捞（别久煮，鲜味会跑）→ 肉摆碗底 → 从本菜第2步开始。焯蛤蜊的水千万别用，腥。'},
+    {name:'肉末蒸蛋',text:'猪肉末加生抽料酒腌5分钟，炒熟铺在蛋液表面（或直接拌进蛋液），其他步骤一样。'},
+  ],rescue:[
+    {problem:'虾仁沉底了',fix:'下次等蛋半凝固再放。这次不影响吃'},
+    {problem:'蛋蒸出蜂窝孔',fix:'同蒸水蛋——温水+滤泡+中小火，三件事缺一不可'},
+    {problem:'虾仁蒸老卷成O形',fix:'下次放虾仁后少蒸1分钟，看到C形就关火'},
+  ],tips:'蒸蛋是万能加料容器——虾仁、蛤蜊、肉末、火腿丁都能加，加料之前先想：这个料熟了吗？没熟要先处理熟。'},
 ];
