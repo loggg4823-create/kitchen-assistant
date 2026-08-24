@@ -100,6 +100,12 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .preview-row{font-size:13px;color:var(--text2);line-height:1.7}
 .preview-row b{color:var(--text)}
 
+/* ─── 开火后节奏（记忆锚点） ─── */
+.flow-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px;margin-bottom:16px}
+.flow-title{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px}
+.flow-steps{font-size:16px;font-weight:600;color:var(--text);line-height:2;display:flex;flex-wrap:wrap;align-items:center;column-gap:8px}
+.flow-arrow{color:var(--accent);opacity:.5;font-weight:400}
+
 /* ─── 标记按钮 ─── */
 .flag-row{display:flex;gap:8px;margin-bottom:16px}
 .flag-btn{flex:1;padding:9px;border-radius:var(--radius);font-size:13px;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;user-select:none}
@@ -619,6 +625,17 @@ function openDetail(id){
   if(recipe.pan) html += `<div class="preview-row">🍳 用锅：<b>${recipe.pan}</b></div>`;
   if(recipe.pitfalls) html += `<div class="preview-row">⚠️ ${recipe.pitfalls}</div>`;
   html += `</div>`;
+
+  // 开火后节奏（记忆锚点：进厨房前记这串，防漏步）
+  const flowSteps = recipe.steps.filter(s=>!s.prep);
+  if(flowSteps.length >= 2){
+    html += `<div class="flow-box"><div class="flow-title">🧭 开火后节奏（进厨房前记这串，防漏步）</div><div class="flow-steps">`;
+    flowSteps.forEach((s,i)=>{
+      if(i>0) html += `<span class="flow-arrow">→</span>`;
+      html += `<span class="flow-step">${s.title}</span>`;
+    });
+    html += `</div></div>`;
+  }
 
   // 做过/拿手标记
   const fl = getFlags(id);

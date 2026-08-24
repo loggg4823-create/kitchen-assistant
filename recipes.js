@@ -1,7 +1,7 @@
 const RECIPES = [
   // ════════════ 一、水煮+蘸水 ════════════
   {id:'bai-zhuo-xi-lan-hua',name:'白灼西兰花',emoji:'🥦',difficulty:1,time:8,cookMethod:'水煮',category:'蔬菜',tags:['快手','清淡'],tools:['煮锅'],mainIngredients:['西兰花'],subIngredients:[],seasonings:[{name:'生抽',required:true},{name:'蚝油',required:false,alt:'不放也行，直接蘸生抽'},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'切西兰花',duration:3,emoji:'🔪',instruction:'西兰花花朝上梗朝下，从花蕾中间切下去分成小朵。每朵乒乓球大小。梗去皮切片，筷子尖厚。',judge:'小朵大小均匀，梗片薄厚一致。',noviceNote:'花蕾切太小会碎成渣，切太大里面煮不熟。乒乓球大小最合适'},
+    {stepNum:1,title:'切西兰花',prep:true,duration:3,emoji:'🔪',instruction:'西兰花花朝上梗朝下，从花蕾中间切下去分成小朵。每朵乒乓球大小。梗去皮切片，筷子尖厚。',judge:'小朵大小均匀，梗片薄厚一致。',noviceNote:'花蕾切太小会碎成渣，切太大里面煮不熟。乒乓球大小最合适'},
     {stepNum:2,title:'煮西兰花',duration:3,emoji:'🍲',instruction:'锅中加半锅水烧开，加一小撮盐和几滴油。放入西兰花，大火煮3分钟。捞出来装盘。',judge:'筷子能戳透茎部，花蕾翠绿不发黄。',noviceNote:'水没烧开就下锅→煮出来是黄的。一定要等水翻滚冒大泡再下'},
     {stepNum:3,title:'调蘸水',duration:1,emoji:'🥣',instruction:'小碗里倒2勺生抽，加半勺蚝油（有就放）。如果喜欢辣可以加点小米辣。',judge:'蘸水颜色均匀，咸淡适中。',noviceNote:'生抽别倒太多——咸。先少倒，不够再加'},
   ],rescue:[
@@ -10,16 +10,16 @@ const RECIPES = [
   ],tips:'西兰花梗别扔！去皮切片一起煮，比花蕾甜。'},
 
   {id:'shui-zhu-bo-cai',name:'水煮菠菜',emoji:'🥬',difficulty:1,time:5,cookMethod:'水煮',category:'蔬菜',tags:['快手','清淡','懒人'],tools:['煮锅'],mainIngredients:['菠菜'],subIngredients:[],seasonings:[{name:'生抽',required:true},{name:'香油',required:false,alt:'不放也行，直接蘸生抽'}],steps:[
-    {stepNum:1,title:'洗菠菜',duration:1,emoji:'💧',instruction:'菠菜去根，冲洗干净泥沙。大的叶子可以撕成两半。',judge:'水变清没有泥沙，根部没有黑泥。',noviceNote:'菠菜根部最容易藏泥——掰开冲'},
+    {stepNum:1,title:'洗菠菜',prep:true,duration:1,emoji:'💧',instruction:'菠菜去根，冲洗干净泥沙。大的叶子可以撕成两半。',judge:'水变清没有泥沙，根部没有黑泥。',noviceNote:'菠菜根部最容易藏泥——掰开冲'},
     {stepNum:2,title:'煮菠菜',duration:1,emoji:'🍲',instruction:'锅中水大开，放入菠菜。煮40秒到1分钟，叶子变深绿就捞。不要煮超过1分钟。',judge:'叶子变深绿软塌，梗还带一点脆。',noviceNote:'菠菜熟得飞快！多煮10秒就开始发黄出涩味。看着变色就赶紧捞'},
-    {stepNum:3,title:'调味',duration:1,emoji:'🥣',instruction:'捞出装盘，淋上生抽和几滴香油（有就加）。或者直接蘸生抽吃。',judge:'菠菜颜色翠绿，盘子底没有太多水。',noviceNote:'煮完别带太多水装盘——会冲淡味道。捞的时候抖一抖'},
+    {stepNum:3,title:'调味',prep:true,duration:1,emoji:'🥣',instruction:'捞出装盘，淋上生抽和几滴香油（有就加）。或者直接蘸生抽吃。',judge:'菠菜颜色翠绿，盘子底没有太多水。',noviceNote:'煮完别带太多水装盘——会冲淡味道。捞的时候抖一抖'},
   ],rescue:[
     {problem:'煮太久发黄发黑',fix:'加几滴醋拌一下能改善味道。下次水开后下锅默数40秒就捞'},
     {problem:'吃起来涩口',fix:'菠菜本身有草酸，正常。下次水里多加点盐能去涩味'},
   ]},
 
   {id:'bai-zhuo-xia',name:'白灼虾',emoji:'🦐',difficulty:1,time:5,cookMethod:'水煮',category:'水产',tags:['快手','请客','清淡'],tools:['煮锅'],mainIngredients:['虾'],subIngredients:['姜'],seasonings:[{name:'生抽',required:true},{name:'料酒',required:false,alt:'不放也行，姜片去腥足够'}],yield:'成品约一盘：一人吃约半斤，熟后铺满盘底一层、不叠。',texture:'弹——卷成C形就停，多一秒都是O形。',pan:'煮锅就行（不粘锅铁锅都行，这菜不粘锅）。',pitfalls:'只有两个坑：①虾线没挑干净（开背挑线时浅一点）②煮过头卷成O形（看到C形立刻捞）。',relatedKnowledge:['qu-xing','shu-mei-shu','kou-gan-mu-biao'],steps:[
-    {stepNum:1,title:'处理虾',duration:1,emoji:'🔪',instruction:'活虾先冰镇 5-10 分钟（冷冻层或冰水泡），不跳了再处理。然后冲洗干净，剪掉虾须和虾枪（尖刺部分）。开背，挑出虾线。',judge:'背上的黑线挑干净了，虾体完整没断。',noviceNote:'开背浅浅一刀能打开就行，别切断。剪刀剪虾枪时小心扎手'},
+    {stepNum:1,title:'处理虾',prep:true,duration:1,emoji:'🔪',instruction:'活虾先冰镇 5-10 分钟（冷冻层或冰水泡），不跳了再处理。然后冲洗干净，剪掉虾须和虾枪（尖刺部分）。开背，挑出虾线。',judge:'背上的黑线挑干净了，虾体完整没断。',noviceNote:'开背浅浅一刀能打开就行，别切断。剪刀剪虾枪时小心扎手'},
     {stepNum:2,title:'煮虾',duration:2,emoji:'🍲',instruction:'锅中水加姜片烧开，放入虾。一直盯着虾身，看到卷成C形立刻捞。',judge:'虾身卷成C形。不能还是直的（没熟），也不能卷成O形（老了）。',noviceNote:'别数时间，看形状：直=生，C=正好，O=老了。看到C形立刻关火捞虾',authority:'为什么听C形不听“变色”？虾入水瞬间就变红，变色信号来得太早，按它捞出来不熟。C形是肌肉收缩到位的信号，误差小。别的教程说“变色就行”——别信，以C形为准'},
     {stepNum:3,title:'调蘸水',duration:1,emoji:'🥣',instruction:'小碗倒生抽，可以加点姜末、蒜末。虾剥壳蘸着吃。',judge:'虾肉白嫩弹牙，蘸了酱油后咸鲜适中。',noviceNote:'虾头别扔——吸一下虾黄，精华！'},
   ],rescue:[
@@ -28,7 +28,7 @@ const RECIPES = [
   ],tips:'冻虾也可以白灼，解冻透擦干就行。比活虾差一点但有80%味道。'},
 
   {id:'shui-zhu-ji-xiong',name:'水煮鸡胸肉',emoji:'🍗',difficulty:1,time:10,cookMethod:'水煮',category:'肉类',tags:['快手','清淡','备餐'],tools:['煮锅'],mainIngredients:['鸡胸肉'],subIngredients:['姜'],seasonings:[{name:'生抽',required:true},{name:'料酒',required:false,alt:'用姜片去腥足够'},{name:'白胡椒粉',required:false,alt:'不放也行，去腥用姜就够了'}],steps:[
-    {stepNum:1,title:'切鸡胸肉',duration:2,emoji:'🔪',instruction:'鸡胸肉横着纹路切成两片（厚度减半），不要切断。如果太厚就片成两片。',judge:'每片厚度差不多，约一指厚。',noviceNote:'一整块煮外面老了里面还是生的。片薄煮受热均匀不柴'},
+    {stepNum:1,title:'切鸡胸肉',prep:true,duration:2,emoji:'🔪',instruction:'鸡胸肉横着纹路切成两片（厚度减半），不要切断。如果太厚就片成两片。',judge:'每片厚度差不多，约一指厚。',noviceNote:'一整块煮外面老了里面还是生的。片薄煮受热均匀不柴'},
     {stepNum:2,title:'煮鸡胸',duration:6,emoji:'🍲',instruction:'锅中加水和姜片，烧开后转中小火（水微微冒泡不是翻滚）。放入鸡胸肉煮6分钟。关火盖盖子焖2分钟。',judge:'筷子夹开中间完全白色，没有粉色透明部分。',noviceNote:'大火煮=肉柴！一定要转中小火。水微微冒泡不是翻滚沸腾'},
     {stepNum:3,title:'切片蘸料',duration:2,emoji:'🔪',instruction:'鸡胸肉捞出稍微晾凉，顺着纹路切成片（顺纹切不散）。蘸生抽吃。',judge:'肉片白嫩不柴，切开没有粉色。',noviceNote:'顺着纹路切——切断纹路肉会散。顺着切才成片'},
   ],rescue:[
@@ -37,7 +37,7 @@ const RECIPES = [
   ],tips:'一次多煮两块，冰箱冷藏可以放3天。做沙拉或三明治超方便。'},
 
   {id:'qing-zheng-ba-sha-yu',name:'清蒸巴沙鱼',emoji:'🐟',difficulty:1,time:10,cookMethod:'蒸',category:'水产',tags:['快手','清淡','懒人'],tools:['蒸锅','盘子'],mainIngredients:['巴沙鱼'],subIngredients:['姜','葱'],seasonings:[{name:'蒸鱼豉油',required:false,alt:'用生抽代替也行'},{name:'料酒',required:false,alt:'用姜片去腥就够了'}],steps:[
-    {stepNum:1,title:'解冻摆盘',duration:2,emoji:'🔪',instruction:'巴沙鱼柳解冻透，冲洗一下用厨房纸吸干水分。放盘子里，铺上姜片和葱段。',judge:'鱼表面干爽没有大量积水。',noviceNote:'一定要吸干水分！水分越多蒸出来越腥'},
+    {stepNum:1,title:'解冻摆盘',prep:true,duration:2,emoji:'🔪',instruction:'巴沙鱼柳解冻透，冲洗一下用厨房纸吸干水分。放盘子里，铺上姜片和葱段。',judge:'鱼表面干爽没有大量积水。',noviceNote:'一定要吸干水分！水分越多蒸出来越腥'},
     {stepNum:2,title:'上锅蒸',duration:6,emoji:'♨️',instruction:'蒸锅水开后放入鱼盘，大火蒸6分钟。关火后不要开盖，再焖1分钟。',judge:'鱼肉完全变白不透明，用筷子能轻松夹开。',noviceNote:'水开再放鱼！冷水上锅蒸出来肉质老。时间到了立刻关火'},
     {stepNum:3,title:'淋酱油',duration:1,emoji:'🥣',instruction:'端出鱼盘，倒掉盘子里蒸出来的水（腥水）。淋上蒸鱼豉油或生抽。',judge:'鱼肉白嫩，酱油均匀裹在鱼肉上。',noviceNote:'盘子里的水一定要倒掉！那是最腥的。倒干净再淋酱油'},
   ],rescue:[
@@ -46,16 +46,16 @@ const RECIPES = [
   ],tips:'巴沙鱼是新手最友好的鱼——没刺、肉嫩、不腥、怎么做都好吃。'},
 
   {id:'shui-zhu-dou-ya',name:'水煮豆芽',emoji:'🌱',difficulty:1,time:3,cookMethod:'水煮',category:'蔬菜',tags:['快手','清淡','懒人'],tools:['煮锅'],mainIngredients:['豆芽'],subIngredients:[],seasonings:[{name:'生抽',required:true},{name:'醋',required:false,alt:'不放也行，加点醋更爽口'},{name:'辣椒油',required:false,alt:'不放就是清淡版'}],steps:[
-    {stepNum:1,title:'洗豆芽',duration:1,emoji:'💧',instruction:'豆芽冲洗两遍，沥干水。如果有豆壳浮起来就捞掉。',judge:'水变清，没有漂浮的豆壳。',noviceNote:'豆芽非常脆弱，别用手搓——用水冲就行'},
+    {stepNum:1,title:'洗豆芽',prep:true,duration:1,emoji:'💧',instruction:'豆芽冲洗两遍，沥干水。如果有豆壳浮起来就捞掉。',judge:'水变清，没有漂浮的豆壳。',noviceNote:'豆芽非常脆弱，别用手搓——用水冲就行'},
     {stepNum:2,title:'焯水',duration:1,emoji:'🍲',instruction:'锅中水大开，放入豆芽。煮30-40秒立刻捞出。不要超过1分钟。',judge:'豆芽变微透明，但还是脆的，没有变软。',noviceNote:'豆芽10秒就半熟！看着变透明就捞。多煮20秒就开始出水变软'},
-    {stepNum:3,title:'调味',duration:1,emoji:'🥣',instruction:'捞出装盘，淋上生抽和醋（有就加）。拌一拌就能吃。',judge:'豆芽脆嫩爽口，没有生豆腥味。',noviceNote:'不要加盐——生抽已经够咸了。先尝尝再决定加不加'},
+    {stepNum:3,title:'调味',prep:true,duration:1,emoji:'🥣',instruction:'捞出装盘，淋上生抽和醋（有就加）。拌一拌就能吃。',judge:'豆芽脆嫩爽口，没有生豆腥味。',noviceNote:'不要加盐——生抽已经够咸了。先尝尝再决定加不加'},
   ],rescue:[
     {problem:'煮太软出水一摊水',fix:'把水倒掉，加点生抽和醋拌一下当凉菜。下次水大开下锅30秒就捞'},
     {problem:'有豆腥味',fix:'水里加一小撮盐再焯水能去腥。已经做好的加醋和辣椒油盖住腥味'},
   ]},
 
   {id:'bai-zhuo-qiu-kui',name:'白灼秋葵',emoji:'🫑',difficulty:1,time:8,cookMethod:'水煮',category:'蔬菜',tags:['快手','清淡'],tools:['煮锅'],mainIngredients:['秋葵'],subIngredients:[],seasonings:[{name:'生抽',required:true},{name:'蚝油',required:false,alt:'不放也行，生抽就够了'},{name:'蒜',required:false,alt:'没有蒜也能吃，就是少点香味'}],steps:[
-    {stepNum:1,title:'洗秋葵',duration:2,emoji:'💧',instruction:'秋葵用清水冲洗，用厨房纸擦干表面绒毛。切掉头上黑蒂（只切最硬的那一小圈）。',judge:'蒂切得干净，秋葵完整没切破肚子。',noviceNote:'只切蒂不要切破秋葵肚子！切破黏液会流出来——营养全跑了'},
+    {stepNum:1,title:'洗秋葵',prep:true,duration:2,emoji:'💧',instruction:'秋葵用清水冲洗，用厨房纸擦干表面绒毛。切掉头上黑蒂（只切最硬的那一小圈）。',judge:'蒂切得干净，秋葵完整没切破肚子。',noviceNote:'只切蒂不要切破秋葵肚子！切破黏液会流出来——营养全跑了'},
     {stepNum:2,title:'煮秋葵',duration:3,emoji:'🍲',instruction:'锅中水加少许盐烧开，放入整根秋葵煮3分钟。不要切！整根煮。',judge:'颜色变深绿，筷子夹起来有点软垂，不直挺了。',noviceNote:'严禁切了煮！秋葵的黏液是精华。整根煮才能锁住'},
     {stepNum:3,title:'蘸料',duration:1,emoji:'🥣',instruction:'秋葵捞出来装盘。生抽+蚝油调成蘸汁，可以加点蒜末。整根蘸着吃。',judge:'咬一口外脆内滑，黏液拉丝。蘸了酱油鲜甜。',noviceNote:'秋葵不要煮超过4分钟——黏液全跑水里就剩空壳了'},
   ],rescue:[
@@ -64,16 +64,16 @@ const RECIPES = [
   ]},
 
   {id:'shui-zhu-wa-wa-cai',name:'水煮娃娃菜',emoji:'🥬',difficulty:1,time:6,cookMethod:'水煮',category:'蔬菜',tags:['快手','清淡','懒人'],tools:['煮锅'],mainIngredients:['娃娃菜'],subIngredients:[],seasonings:[{name:'生抽',required:true},{name:'蚝油',required:false,alt:'不放也行，生抽够味了'}],steps:[
-    {stepNum:1,title:'切娃娃菜',duration:1,emoji:'🔪',instruction:'娃娃菜对半切开（纵向），从根部切到叶子。根部不要切断，让每半片叶子还连在根部上。',judge:'两半大小均匀，根部相连叶子不散。',noviceNote:'根部不要切到底！留一点连着，煮的时候才不会散成一锅叶子'},
+    {stepNum:1,title:'切娃娃菜',prep:true,duration:1,emoji:'🔪',instruction:'娃娃菜对半切开（纵向），从根部切到叶子。根部不要切断，让每半片叶子还连在根部上。',judge:'两半大小均匀，根部相连叶子不散。',noviceNote:'根部不要切到底！留一点连着，煮的时候才不会散成一锅叶子'},
     {stepNum:2,title:'煮娃娃菜',duration:4,emoji:'🍲',instruction:'锅中水烧开，根部朝下先入锅煮30秒，再全部放入水中。煮3分钟。',judge:'根部变半透明，叶子软了但不烂。筷子能戳透根部。',noviceNote:'根部比叶子厚很多！先煮根部30秒再全入锅，不然根熟了叶子烂了'},
-    {stepNum:3,title:'调味出锅',duration:1,emoji:'🥣',instruction:'捞出装盘（根部朝同一方向摆好看）。淋上生抽和蚝油。',judge:'娃娃菜软嫩，根部没有白硬。',noviceNote:'煮完的汤别倒！这汤甜甜的可以喝或者煮面'},
+    {stepNum:3,title:'调味出锅',prep:true,duration:1,emoji:'🥣',instruction:'捞出装盘（根部朝同一方向摆好看）。淋上生抽和蚝油。',judge:'娃娃菜软嫩，根部没有白硬。',noviceNote:'煮完的汤别倒！这汤甜甜的可以喝或者煮面'},
   ],rescue:[
     {problem:'根部还硬的咬不动',fix:'切成小段回锅再煮1分钟。下次根部朝下多煮30秒'},
     {problem:'叶子煮烂了根部还没熟',fix:'下次切的时候从根部切深一点，让每片叶子更分开'},
   ]},
 
   {id:'zheng-hong-shu',name:'蒸红薯',emoji:'🍠',difficulty:1,time:20,cookMethod:'蒸',category:'主食',tags:['快手','备餐','清淡'],tools:['蒸锅'],mainIngredients:['红薯'],subIngredients:[],seasonings:[],steps:[
-    {stepNum:1,title:'洗红薯',duration:2,emoji:'💧',instruction:'红薯用刷子刷洗干净表皮泥土。两头各切掉一点点。不用去皮！整个蒸。',judge:'表面没有明显泥土，两头切平了。',noviceNote:'千万别去皮！带皮蒸糖分才能锁住。去皮蒸出来水唧唧的不甜'},
+    {stepNum:1,title:'洗红薯',prep:true,duration:2,emoji:'💧',instruction:'红薯用刷子刷洗干净表皮泥土。两头各切掉一点点。不用去皮！整个蒸。',judge:'表面没有明显泥土，两头切平了。',noviceNote:'千万别去皮！带皮蒸糖分才能锁住。去皮蒸出来水唧唧的不甜'},
     {stepNum:2,title:'上锅蒸',duration:18,emoji:'♨️',instruction:'蒸锅水开后放入红薯，大火蒸18分钟。关火后不着急开盖，焖3分钟更甜。',judge:'筷子能轻松戳穿整个红薯。有糖汁从表皮渗出最好。',noviceNote:'小个的红薯15分钟就够，大的要20分钟以上。用筷子戳一下最保险'},
     {stepNum:3,title:'开吃',duration:0,emoji:'🍴',instruction:'红薯稍微晾凉（别烫嘴），撕开皮就能吃。皮不要吃。',judge:'中间软糯，颜色金黄，甜味足。没有白硬芯。',noviceNote:'刚出鍋巨烫！放凉2分钟再剥皮。不要心急'},
   ],rescue:[
@@ -82,9 +82,9 @@ const RECIPES = [
   ],tips:'要想更甜：蒸好关火后别开盖，用余温焖5分钟。糖化更充分。'},
 
   {id:'zheng-tu-dou',name:'蒸土豆',emoji:'🥔',difficulty:1,time:20,cookMethod:'蒸',category:'主食',tags:['快手','备餐','清淡'],tools:['蒸锅'],mainIngredients:['土豆'],subIngredients:[],seasonings:[{name:'盐',required:true},{name:'黑胡椒粉',required:false,alt:'不放也行，蘸盐就很好吃'},{name:'黄油',required:false,alt:'没有黄油用香油也行'}],steps:[
-    {stepNum:1,title:'洗土豆',duration:2,emoji:'💧',instruction:'土豆刷洗干净表皮。如果芽眼有发芽要挖掉（发绿的部分有毒不能吃）。不用去皮，整个蒸。',judge:'表面干净，芽眼挖干净了。',noviceNote:'发芽发绿的土豆有毒！绿色部分和芽要全部挖掉。没发芽的不用去皮'},
+    {stepNum:1,title:'洗土豆',prep:true,duration:2,emoji:'💧',instruction:'土豆刷洗干净表皮。如果芽眼有发芽要挖掉（发绿的部分有毒不能吃）。不用去皮，整个蒸。',judge:'表面干净，芽眼挖干净了。',noviceNote:'发芽发绿的土豆有毒！绿色部分和芽要全部挖掉。没发芽的不用去皮'},
     {stepNum:2,title:'上锅蒸',duration:18,emoji:'♨️',instruction:'蒸锅水开后放入土豆，大火蒸18分钟。关火焖2分钟。',judge:'筷子轻松戳穿整个土豆，中间没有硬芯。皮微微裂开。',noviceNote:'装盘时土豆之间留点空隙——蒸汽流通才熟得快'},
-    {stepNum:3,title:'调味',duration:1,emoji:'🧂',instruction:'稍微晾凉，剥皮（皮一撕就掉）。撒上盐和黑胡椒，或者蘸生抽吃。也可以压成泥。',judge:'土豆绵软起沙，中间没有白硬芯。皮一撕就掉。',noviceNote:'刚出锅别徒手剥——烫！用叉子叉住再剥皮'},
+    {stepNum:3,title:'调味',prep:true,duration:1,emoji:'🧂',instruction:'稍微晾凉，剥皮（皮一撕就掉）。撒上盐和黑胡椒，或者蘸生抽吃。也可以压成泥。',judge:'土豆绵软起沙，中间没有白硬芯。皮一撕就掉。',noviceNote:'刚出锅别徒手剥——烫！用叉子叉住再剥皮'},
   ],rescue:[
     {problem:'中间还有硬芯没熟',fix:'放回去再蒸5分钟。太大的土豆对半切开再蒸'},
     {problem:'蒸出来水唧唧的',fix:'放回锅里不盖盖子大火收一下水分。下次不要切块蒸'},
@@ -92,9 +92,9 @@ const RECIPES = [
 
   // ════════ 二、煮完+淋油/浇汁 ════════
   {id:'suan-rong-xi-lan-hua',name:'蒜蓉西兰花',emoji:'🥦',difficulty:1,time:12,cookMethod:'煮+淋油',category:'蔬菜',tags:['快手','下饭'],tools:['煮锅','炒勺'],mainIngredients:['西兰花'],subIngredients:['大蒜'],seasonings:[{name:'生抽',required:true},{name:'蚝油',required:false,alt:'不放也行，少点鲜味'},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'切西兰花',duration:3,emoji:'🔪',instruction:'西兰花花朝上梗朝下，从花蕾中间切下去分成小朵。每朵乒乓球大小。梗去皮切片，筷子尖厚。',judge:'每朵大小均匀，梗片筷子尖厚。切完桌上没有满桌碎屑。',noviceNote:'花蕾切太小会掉碎屑——用刀尖先划口子再掰开'},
+    {stepNum:1,title:'切西兰花',prep:true,duration:3,emoji:'🔪',instruction:'西兰花花朝上梗朝下，从花蕾中间切下去分成小朵。每朵乒乓球大小。梗去皮切片，筷子尖厚。',judge:'每朵大小均匀，梗片筷子尖厚。切完桌上没有满桌碎屑。',noviceNote:'花蕾切太小会掉碎屑——用刀尖先划口子再掰开'},
     {stepNum:2,title:'煮西兰花',duration:3,emoji:'🍲',instruction:'锅中加水烧开，加一小撮盐和几滴油。放入西兰花，大火煮3分钟。',judge:'筷子戳茎部轻松戳透，花蕾颜色鲜亮翠绿。',noviceNote:'水没大开就下锅，煮出来是黄的不是绿的'},
-    {stepNum:3,title:'调蒜蓉酱',duration:1,emoji:'🧄',instruction:'大蒜切成蒜末放碗里。加2勺生抽、半勺蚝油（有就加）。',judge:'蒜末均匀，酱汁颜色一致。',noviceNote:'蒜末大的生小的糊——尽量切均匀'},
+    {stepNum:3,title:'调蒜蓉酱',prep:true,duration:1,emoji:'🧄',instruction:'大蒜切成蒜末放碗里。加2勺生抽、半勺蚝油（有就加）。',judge:'蒜末均匀，酱汁颜色一致。',noviceNote:'蒜末大的生小的糊——尽量切均匀'},
     {stepNum:4,title:'淋油激香',duration:1,emoji:'🔥',instruction:'煮好的西兰花捞出装盘。锅烧干倒2勺油，烧到油面微微冒烟（约30秒）。关火，把热油淋在蒜末上。',judge:'听到滋啦一声，闻到蒜香。蒜末微微金黄。',noviceNote:'油不够热淋上去没声音——生蒜味冲。油一定要烧到冒烟才关火'},
   ],rescue:[
     {problem:'花蕾黄了散了煮过头',fix:'当蒜蓉西兰花泥吃。下次水开后煮2分钟就捞'},
@@ -103,7 +103,7 @@ const RECIPES = [
   ],tips:'西兰花梗别扔！去皮切片一起煮，比花蕾还好吃。'},
 
   {id:'cong-you-jin-zhen-gu',name:'葱油金针菇',emoji:'🍄',difficulty:1,time:8,cookMethod:'煮+淋油',category:'菌菇',tags:['快手','清淡'],tools:['煮锅'],mainIngredients:['金针菇'],subIngredients:['葱'],seasonings:[{name:'生抽',required:true},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'处理金针菇',duration:2,emoji:'🔪',instruction:'金针菇切掉根部（约2cm），用手散开成小束。冲洗一下沥干。',judge:'根部切干净，金针菇散成小束不粘连。',noviceNote:'根部切多切少看颜色——最下面土黄色部分切掉就行。别切太多浪费'},
+    {stepNum:1,title:'处理金针菇',prep:true,duration:2,emoji:'🔪',instruction:'金针菇切掉根部（约2cm），用手散开成小束。冲洗一下沥干。',judge:'根部切干净，金针菇散成小束不粘连。',noviceNote:'根部切多切少看颜色——最下面土黄色部分切掉就行。别切太多浪费'},
     {stepNum:2,title:'煮金针菇',duration:2,emoji:'🍲',instruction:'锅中水烧开，放入金针菇煮2分钟。捞出装盘。',judge:'金针菇变软弯曲，体积缩小一些。',noviceNote:'金针菇煮超过3分钟缩成一小坨嚼不动像橡皮筋——定时2分钟'},
     {stepNum:3,title:'做葱油',duration:2,emoji:'🔥',instruction:'金针菇上撒葱花。锅烧干倒2勺油，放葱段炸到葱变焦黄。把热油连同葱一起淋在金针菇上，再淋生抽。',judge:'听到滋啦声，葱香四溢。金针菇裹上油和酱油。',noviceNote:'葱炸到焦黄就关火，别炸黑了会苦'},
   ],rescue:[
@@ -112,7 +112,7 @@ const RECIPES = [
   ]},
 
   {id:'hao-you-sheng-cai',name:'蚝油生菜',emoji:'🥬',difficulty:1,time:6,cookMethod:'煮+淋油',category:'蔬菜',tags:['快手','下饭'],tools:['煮锅'],mainIngredients:['生菜'],subIngredients:['蒜'],seasonings:[{name:'蚝油',required:true},{name:'生抽',required:true},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'洗生菜',duration:1,emoji:'💧',instruction:'生菜用手撕成大块（不用刀切）。冲洗干净沥干。',judge:'叶片完整，没有刀切的褐色边缘。',noviceNote:'手撕不用刀！刀切伤口氧化会发红，手撕才好看'},
+    {stepNum:1,title:'洗生菜',prep:true,duration:1,emoji:'💧',instruction:'生菜用手撕成大块（不用刀切）。冲洗干净沥干。',judge:'叶片完整，没有刀切的褐色边缘。',noviceNote:'手撕不用刀！刀切伤口氧化会发红，手撕才好看'},
     {stepNum:2,title:'焯生菜',duration:1,emoji:'🍲',instruction:'锅中水大开，放入生菜焯水30秒。变软就立刻捞出装盘。',judge:'生菜变软颜色变深绿，不超过1分钟。',noviceNote:'生菜焯水超过1分钟完全软烂，甜味全无只剩菜腥味'},
     {stepNum:3,title:'调蚝油汁',duration:2,emoji:'🔥',instruction:'小锅加少许油，放入蒜末炒香。加2勺蚝油、1勺生抽、2勺水，煮到冒泡。淋在生菜上。',judge:'蚝油汁浓稠刚好，均匀裹在生菜上。',noviceNote:'蚝油本身有咸味，不要再加盐！觉得淡可以加生抽'},
   ],rescue:[
@@ -122,8 +122,8 @@ const RECIPES = [
 
   {id:'suan-ni-bai-rou',name:'蒜泥白肉',emoji:'🥩',difficulty:2,time:20,cookMethod:'煮+淋油',category:'肉类',tags:['下饭','请客'],tools:['煮锅'],mainIngredients:['五花肉'],subIngredients:['蒜','姜','葱'],seasonings:[{name:'生抽',required:true},{name:'红油',required:false,alt:'不放就是白肉蘸蒜泥酱油'},{name:'料酒',required:false,alt:'用姜片去腥'}],steps:[
     {stepNum:1,title:'煮五花肉',duration:15,emoji:'🍲',instruction:'五花肉整块冷水下锅，加姜片葱段。大火烧开转中小火煮15分钟。筷子能戳透就熟了。关火泡在汤里别捞。',judge:'筷子轻松戳穿整块肉，没有血水渗出。',noviceNote:'冷水下锅！热水下锅肉外层瞬间收紧里面不熟。中小火煮不是大火'},
-    {stepNum:2,title:'切薄片',duration:3,emoji:'🔪',instruction:'肉捞出稍微晾凉（不烫手就行），逆着纹路切成薄片。越薄越好，纸一样薄最棒。',judge:'肉片薄到能透光，大小均匀，没有碎。',noviceNote:'肉放凉到不烫手马上切——太凉了肥肉变硬不好切薄'},
-    {stepNum:3,title:'调蒜泥酱',duration:2,emoji:'🧄',instruction:'大蒜捣成泥（或切极碎）。加3勺生抽、1勺红油（有就加）、1勺煮肉汤搅匀。肉片蘸着吃。',judge:'蒜泥酱咸鲜微辣，肉片蘸了不腻。',noviceNote:'蒜泥剁得越碎越好——整粒蒜味道不进去'},
+    {stepNum:2,title:'切薄片',prep:true,duration:3,emoji:'🔪',instruction:'肉捞出稍微晾凉（不烫手就行），逆着纹路切成薄片。越薄越好，纸一样薄最棒。',judge:'肉片薄到能透光，大小均匀，没有碎。',noviceNote:'肉放凉到不烫手马上切——太凉了肥肉变硬不好切薄'},
+    {stepNum:3,title:'调蒜泥酱',prep:true,duration:2,emoji:'🧄',instruction:'大蒜捣成泥（或切极碎）。加3勺生抽、1勺红油（有就加）、1勺煮肉汤搅匀。肉片蘸着吃。',judge:'蒜泥酱咸鲜微辣，肉片蘸了不腻。',noviceNote:'蒜泥剁得越碎越好——整粒蒜味道不进去'},
   ],rescue:[
     {problem:'肉煮老了咬不动',fix:'切薄一点，越薄越好嚼。下次煮的时候火关小，水只要微微冒泡'},
     {problem:'肥肉太腻',fix:'蘸料多加蒜泥和醋能解腻。下次煮完放冰水里泡5分钟再切'},
@@ -131,8 +131,8 @@ const RECIPES = [
 
   {id:'bai-qie-ji-tui',name:'白切鸡腿',emoji:'🍗',difficulty:2,time:25,cookMethod:'煮+淋油',category:'肉类',tags:['下饭','请客','清淡'],tools:['煮锅'],mainIngredients:['鸡腿'],subIngredients:['姜','葱'],seasonings:[{name:'生抽',required:true},{name:'姜',required:true},{name:'食用油',required:true}],steps:[
     {stepNum:1,title:'煮鸡腿',duration:20,emoji:'🍲',instruction:'鸡腿冷水下锅，加姜片葱段。大火烧开后转最小火（水微微冒泡），盖盖子煮15分钟。关火再焖5分钟。',judge:'筷子戳鸡腿最厚处，没有血水流出。肉与骨头不粘连。',noviceNote:'不是大火煮！浸熟的才嫩。水只要微微冒泡就行，大火煮皮破肉柴'},
-    {stepNum:2,title:'过冰水',duration:3,emoji:'🧊',instruction:'鸡腿捞出立刻放进冰水或冷水中泡5分钟。让鸡皮收紧变脆。',judge:'鸡皮紧致有弹性，不软塌塌的。',noviceNote:'过冰水=皮脆的关键！嫌麻烦可以不过，但皮就没那么Q弹'},
-    {stepNum:3,title:'切块蘸料',duration:2,emoji:'🔪',instruction:'鸡腿斩成块（或手撕成条）。姜葱剁碎加生抽和热油做成姜葱酱蘸着吃。',judge:'鸡肉嫩滑，骨头带血丝但肉是熟的（正常！）。',noviceNote:'骨头边有点红是正常的！那是骨髓不是没煮熟。肉全白就是熟了'},
+    {stepNum:2,title:'过冰水',prep:true,duration:3,emoji:'🧊',instruction:'鸡腿捞出立刻放进冰水或冷水中泡5分钟。让鸡皮收紧变脆。',judge:'鸡皮紧致有弹性，不软塌塌的。',noviceNote:'过冰水=皮脆的关键！嫌麻烦可以不过，但皮就没那么Q弹'},
+    {stepNum:3,title:'切块蘸料',prep:true,duration:2,emoji:'🔪',instruction:'鸡腿斩成块（或手撕成条）。姜葱剁碎加生抽和热油做成姜葱酱蘸着吃。',judge:'鸡肉嫩滑，骨头带血丝但肉是熟的（正常！）。',noviceNote:'骨头边有点红是正常的！那是骨髓不是没煮熟。肉全白就是熟了'},
   ],rescue:[
     {problem:'鸡腿没熟透骨头边有血',fix:'放回锅里再煮5分钟。白切鸡骨头带一点红是正常风味但怕就多煮'},
     {problem:'鸡皮不脆软塌塌',fix:'下次煮好一定要过冰水。没过的话切块后可以煎一下皮'},
@@ -140,15 +140,15 @@ const RECIPES = [
 
   {id:'kou-shui-ji-tui',name:'口水鸡腿',emoji:'🍗',difficulty:2,time:25,cookMethod:'煮+淋油',category:'肉类',tags:['下饭','解馋','请客'],tools:['煮锅'],mainIngredients:['鸡腿'],subIngredients:['姜','葱','蒜'],seasonings:[{name:'生抽',required:true},{name:'红油',required:false,alt:'不放红油就少了灵魂，但也能吃。用辣椒油代替'},{name:'花椒油',required:false,alt:'不放也行，麻味少一点而已'},{name:'醋',required:true},{name:'糖',required:false,alt:'不放也行，加一点提鲜'}],steps:[
     {stepNum:1,title:'煮鸡腿',duration:20,emoji:'🍲',instruction:'鸡腿冷水下锅加姜片，大火烧开转中小火煮15分钟。关火焖5分钟。捞出来略凉。',judge:'筷子轻松戳透，没有血水。',noviceNote:'煮鸡腿的汤留半碗——调汁用，比自来水香十倍'},
-    {stepNum:2,title:'撕鸡丝',duration:3,emoji:'🔪',instruction:'鸡腿稍微晾凉（不烫手），用手撕成条。不用太细，筷子粗就行。',judge:'鸡丝长短均匀，没有大块。',noviceNote:'不烫手就撕——凉透了撕不动'},
-    {stepNum:3,title:'调口水汁',duration:2,emoji:'🥣',instruction:'碗里加：生抽3勺、醋1勺、糖半勺、蒜末、姜末、红油（有就加）、花椒油几滴、煮鸡腿汤2勺。搅匀淋在鸡丝上，撒葱花。',judge:'汁水刚好没过鸡丝一半。咸酸麻辣都有。',noviceNote:'先尝一下汁再淋！每个人的口味不一样。觉得淡了加生抽，酸了加糖'},
+    {stepNum:2,title:'撕鸡丝',prep:true,duration:3,emoji:'🔪',instruction:'鸡腿稍微晾凉（不烫手），用手撕成条。不用太细，筷子粗就行。',judge:'鸡丝长短均匀，没有大块。',noviceNote:'不烫手就撕——凉透了撕不动'},
+    {stepNum:3,title:'调口水汁',prep:true,duration:2,emoji:'🥣',instruction:'碗里加：生抽3勺、醋1勺、糖半勺、蒜末、姜末、红油（有就加）、花椒油几滴、煮鸡腿汤2勺。搅匀淋在鸡丝上，撒葱花。',judge:'汁水刚好没过鸡丝一半。咸酸麻辣都有。',noviceNote:'先尝一下汁再淋！每个人的口味不一样。觉得淡了加生抽，酸了加糖'},
   ],rescue:[
     {problem:'味道寡淡不够味',fix:'多加红油和生抽。口水鸡就是重口味——淡了不好吃'},
     {problem:'鸡腿太柴',fix:'撕细一点，多淋点汁泡着吃。下次煮鸡腿转最小火'},
   ],tips:'调好的汁泡着鸡丝放冰箱冷藏半小时更入味。夏天吃超爽。'},
 
   {id:'you-po-huang-gua',name:'油泼黄瓜',emoji:'🥒',difficulty:1,time:8,cookMethod:'煮+淋油',category:'蔬菜',tags:['快手','清淡'],tools:['煮锅'],mainIngredients:['黄瓜'],subIngredients:['蒜','干辣椒'],seasonings:[{name:'生抽',required:true},{name:'醋',required:true},{name:'糖',required:false,alt:'不放也无所谓'},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'拍黄瓜',duration:2,emoji:'🔪',instruction:'黄瓜用刀背拍裂（不是切！），再切成段。拍裂断面不规则更入味。',judge:'黄瓜裂而不碎，断面不规则。没有刀切的平整面。',noviceNote:'用刀背拍！不是刀刃切。刀背拍裂的黄瓜比切的好吃十倍'},
+    {stepNum:1,title:'拍黄瓜',prep:true,duration:2,emoji:'🔪',instruction:'黄瓜用刀背拍裂（不是切！），再切成段。拍裂断面不规则更入味。',judge:'黄瓜裂而不碎，断面不规则。没有刀切的平整面。',noviceNote:'用刀背拍！不是刀刃切。刀背拍裂的黄瓜比切的好吃十倍'},
     {stepNum:2,title:'焯水',duration:1,emoji:'🍲',instruction:'锅中水烧开，放入黄瓜焯水1分钟。不要煮太久，变翠绿就捞。',judge:'颜色从浅绿变翠绿，还是脆的。',noviceNote:'黄瓜可以生吃！焯水只是为了让颜色更好看。不焯也行'},
     {stepNum:3,title:'泼油激香',duration:2,emoji:'🔥',instruction:'黄瓜装盘，放上蒜末和干辣椒段。锅烧干倒2勺油烧到冒烟，关火淋在蒜末辣椒上。再淋生抽和醋。',judge:'滋啦一声，蒜香辣椒香全出来了。',noviceNote:'油要烧到冒烟！油不够热淋上去没有滋啦声就不香'},
   ],rescue:[
@@ -157,17 +157,17 @@ const RECIPES = [
   ]},
 
   {id:'jiang-zhi-pi-dan-dou-fu',name:'姜汁皮蛋豆腐',emoji:'🥟',difficulty:1,time:5,cookMethod:'凉拌',category:'豆制品',tags:['快手','请客','懒人'],tools:['刀','盘子'],mainIngredients:['嫩豆腐','皮蛋'],subIngredients:['姜','葱'],seasonings:[{name:'生抽',required:true},{name:'醋',required:true},{name:'香油',required:false,alt:'不放也行，少点香味'}],steps:[
-    {stepNum:1,title:'摆豆腐',duration:1,emoji:'🔪',instruction:'嫩豆腐从盒子里倒扣出来，放在盘子中间。用刀直接在盘子里划成片（横几刀竖几刀）。',judge:'豆腐完整没有碎，排列整齐。',noviceNote:'豆腐倒扣前在盒子底部四角各剪一个小口——空气进去豆腐就完整倒出来了'},
-    {stepNum:2,title:'切皮蛋',duration:2,emoji:'🔪',instruction:'皮蛋剥壳。刀蘸水（防粘），把皮蛋切成4-6瓣。摆在豆腐周围。',judge:'皮蛋切面光洁不粘刀，每瓣大小均匀。',noviceNote:'刀蘸水再切皮蛋——蛋黄就不粘刀了。切一下蘸一下水'},
-    {stepNum:3,title:'调姜汁',duration:2,emoji:'🥣',instruction:'姜剁成极细的末（越细越好）。加生抽3勺、醋1勺、几滴香油搅匀。淋在豆腐皮蛋上，撒葱花。',judge:'姜汁均匀覆盖，豆腐和皮蛋都沾上汁。',noviceNote:'姜一定要剁细！粗姜末吃起来一口姜很冲。剁到像泥一样'},
+    {stepNum:1,title:'摆豆腐',prep:true,duration:1,emoji:'🔪',instruction:'嫩豆腐从盒子里倒扣出来，放在盘子中间。用刀直接在盘子里划成片（横几刀竖几刀）。',judge:'豆腐完整没有碎，排列整齐。',noviceNote:'豆腐倒扣前在盒子底部四角各剪一个小口——空气进去豆腐就完整倒出来了'},
+    {stepNum:2,title:'切皮蛋',prep:true,duration:2,emoji:'🔪',instruction:'皮蛋剥壳。刀蘸水（防粘），把皮蛋切成4-6瓣。摆在豆腐周围。',judge:'皮蛋切面光洁不粘刀，每瓣大小均匀。',noviceNote:'刀蘸水再切皮蛋——蛋黄就不粘刀了。切一下蘸一下水'},
+    {stepNum:3,title:'调姜汁',prep:true,duration:2,emoji:'🥣',instruction:'姜剁成极细的末（越细越好）。加生抽3勺、醋1勺、几滴香油搅匀。淋在豆腐皮蛋上，撒葱花。',judge:'姜汁均匀覆盖，豆腐和皮蛋都沾上汁。',noviceNote:'姜一定要剁细！粗姜末吃起来一口姜很冲。剁到像泥一样'},
   ],rescue:[
     {problem:'豆腐碎了不成形',fix:'不要紧，碎了就当凉拌豆腐吃味道一样。下次剪盒角再倒扣'},
     {problem:'皮蛋太腥',fix:'姜汁里多加醋能去腥。下次切皮蛋前煮一下（煮5分钟）去腥'},
   ],tips:'这道菜是真的不用开火。如果你连这个都不想做——那今天点外卖吧。'},
 
   {id:'suan-rong-fen-si-xia',name:'蒜蓉粉丝虾',emoji:'🦐',difficulty:2,time:15,cookMethod:'蒸',category:'水产',tags:['请客','解馋'],tools:['蒸锅','盘子'],mainIngredients:['虾','粉丝'],subIngredients:['蒜','葱'],seasonings:[{name:'生抽',required:true},{name:'蚝油',required:false,alt:'不放也行'},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'泡粉丝',duration:3,emoji:'💧',instruction:'粉丝用温水泡软（约3分钟）。泡到能用指甲掐断就行。捞出铺在盘底。',judge:'粉丝变软不硬心，没有泡成坨。',noviceNote:'冷水泡太慢，开水泡粉丝会烂。温水和手指温度差不多就行'},
-    {stepNum:2,title:'处理虾',duration:5,emoji:'🔪',instruction:'虾去壳留尾。用刀在虾背上划一刀（不要切断），去掉虾线。摆在粉丝上。',judge:'虾背划开摊平，虾线去干净。',noviceNote:'开背不要切到底——切断就卷不起来了。浅浅一刀能打开就行'},
+    {stepNum:1,title:'泡粉丝',prep:true,duration:3,emoji:'💧',instruction:'粉丝用温水泡软（约3分钟）。泡到能用指甲掐断就行。捞出铺在盘底。',judge:'粉丝变软不硬心，没有泡成坨。',noviceNote:'冷水泡太慢，开水泡粉丝会烂。温水和手指温度差不多就行'},
+    {stepNum:2,title:'处理虾',prep:true,duration:5,emoji:'🔪',instruction:'虾去壳留尾。用刀在虾背上划一刀（不要切断），去掉虾线。摆在粉丝上。',judge:'虾背划开摊平，虾线去干净。',noviceNote:'开背不要切到底——切断就卷不起来了。浅浅一刀能打开就行'},
     {stepNum:3,title:'炒蒜蓉',duration:3,emoji:'🧄',instruction:'蒜切成细末。小锅加2勺油，放一半蒜末小火炒到微黄（不要炒糊）。关火后加入另一半生蒜末，加生抽和蚝油搅匀。铺在虾上。',judge:'蒜蓉一半金黄一半白，铺在虾上薄薄一层。',noviceNote:'蒜蓉一半炒一半生=金银蒜。全炒熟少了蒜的鲜辣味，全生少了焦香'},
     {stepNum:4,title:'上锅蒸',duration:6,emoji:'♨️',instruction:'蒸锅水开后放入虾盘，大火蒸5-6分钟（虾变红卷起）。出锅撒葱花。',judge:'虾变红卷成C形，粉丝吸饱了汤汁。',noviceNote:'不要蒸超过7分钟——虾老了肉缩成一小团'},
   ],rescue:[
@@ -177,8 +177,8 @@ const RECIPES = [
 
   {id:'liang-ban-ji-si',name:'凉拌鸡丝',emoji:'🍗',difficulty:2,time:15,cookMethod:'凉拌',category:'肉类',tags:['快手','清淡','备餐'],tools:['煮锅'],mainIngredients:['鸡胸肉','黄瓜'],subIngredients:['姜','蒜'],seasonings:[{name:'生抽',required:true},{name:'醋',required:true},{name:'香油',required:false,alt:'不放也行，但放了更香'},{name:'辣椒油',required:false,alt:'不放就是清淡版'}],steps:[
     {stepNum:1,title:'煮鸡胸',duration:8,emoji:'🍲',instruction:'鸡胸肉冷水下锅加姜片，大火烧开转中小火煮8分钟。关火焖2分钟。捞出晾凉。',judge:'筷子夹开中间完全白色，没有粉色。',noviceNote:'大火煮鸡胸必柴！水烧开后立刻转中小火，保持微微冒泡就行'},
-    {stepNum:2,title:'撕鸡丝刨黄瓜',duration:4,emoji:'🔪',instruction:'鸡胸肉晾凉后用手撕成丝。黄瓜先切片再切丝（或直接用刨丝器）。',judge:'鸡丝粗细均匀，黄瓜丝长短一致。',noviceNote:'鸡胸顺着纹路撕——撕出来的丝比切的好吃。不烫手了就撕，凉透了硬'},
-    {stepNum:3,title:'拌匀',duration:2,emoji:'🥣',instruction:'鸡丝和黄瓜丝放大碗里。加生抽3勺、醋1勺、蒜末、香油和辣椒油（有就加）。拌匀装盘。',judge:'每一根鸡丝都裹上料汁，黄瓜丝还脆。',noviceNote:'先拌匀尝尝味道再决定要不要加盐——生抽和醋已经够咸了'},
+    {stepNum:2,title:'撕鸡丝刨黄瓜',prep:true,duration:4,emoji:'🔪',instruction:'鸡胸肉晾凉后用手撕成丝。黄瓜先切片再切丝（或直接用刨丝器）。',judge:'鸡丝粗细均匀，黄瓜丝长短一致。',noviceNote:'鸡胸顺着纹路撕——撕出来的丝比切的好吃。不烫手了就撕，凉透了硬'},
+    {stepNum:3,title:'拌匀',prep:true,duration:2,emoji:'🥣',instruction:'鸡丝和黄瓜丝放大碗里。加生抽3勺、醋1勺、蒜末、香油和辣椒油（有就加）。拌匀装盘。',judge:'每一根鸡丝都裹上料汁，黄瓜丝还脆。',noviceNote:'先拌匀尝尝味道再决定要不要加盐——生抽和醋已经够咸了'},
   ],rescue:[
     {problem:'鸡胸肉太柴',fix:'撕细一点多拌汁——泡一会儿会回软。下次一定要中小火煮'},
     {problem:'黄瓜出太多水',fix:'把水倒掉再加料。下次黄瓜丝用盐腌5分钟挤干水分再用'},
@@ -186,7 +186,7 @@ const RECIPES = [
 
   {id:'jiao-yan-yu-mi',name:'椒盐玉米',emoji:'🌽',difficulty:1,time:15,cookMethod:'煮+加工',category:'主食',tags:['快手','下饭'],tools:['煮锅'],mainIngredients:['玉米'],subIngredients:[],seasonings:[{name:'椒盐',required:true},{name:'黄油',required:false,alt:'没有就用食用油'}],steps:[
     {stepNum:1,title:'煮玉米',duration:12,emoji:'🍲',instruction:'玉米剥去外皮留一两层叶子。冷水下锅，水开后煮10分钟。捞出。',judge:'玉米粒颜色变深变亮，咬开没有生粉味。',noviceNote:'玉米冷水下锅更甜！和鸡蛋一样。带着一两层叶子煮更香'},
-    {stepNum:2,title:'切段',duration:2,emoji:'🔪',instruction:'煮好的玉米切成段（每段约3指宽）。用刀切到底，小心烫。',judge:'每段大小均匀，切面整齐。',noviceNote:'刚出锅巨烫！用叉子固定再切。竖着切比横着切省力'},
+    {stepNum:2,title:'切段',prep:true,duration:2,emoji:'🔪',instruction:'煮好的玉米切成段（每段约3指宽）。用刀切到底，小心烫。',judge:'每段大小均匀，切面整齐。',noviceNote:'刚出锅巨烫！用叉子固定再切。竖着切比横着切省力'},
     {stepNum:3,title:'撒椒盐',duration:1,emoji:'🧂',instruction:'玉米段上抹一层黄油（有就抹），撒上椒盐。也可以直接撒椒盐吃。',judge:'椒盐均匀撒在玉米粒上，每一粒都有味道。',noviceNote:'椒盐本身有盐味，不用再加盐。先少撒尝尝'},
   ],rescue:[
     {problem:'玉米不甜',fix:'不是你的问题——玉米本身不够甜。撒椒盐吃咸的也不错'},
@@ -204,18 +204,18 @@ const RECIPES = [
 
   // ════════ 三、蒸菜 ════════
   {id:'zheng-shui-dan',name:'蒸水蛋',emoji:'🥚',difficulty:2,time:12,cookMethod:'蒸',category:'禽蛋',tags:['快手','清淡','懒人'],tools:['蒸锅','碗'],mainIngredients:['鸡蛋'],subIngredients:['葱'],seasonings:[{name:'盐',required:true},{name:'生抽',required:false,alt:'不放也行，蒸好了淋一点更香'},{name:'香油',required:false,alt:'不放也行'}],yield:'成品约一小碗：2个蛋蒸出一碗蛋羹，够一顿早餐或配饭。',texture:'嫩滑——像布丁一样颤巍巍，不是硬块也不是蛋花汤。',pan:'蒸锅+深碗（碗口别太浅，蛋液会扑出来）。',pitfalls:'三个坑：①用了冷水或热水（必须温水）②没滤泡没盖膜（表面蜂窝）③大火蒸（必出蜂窝）。',relatedKnowledge:['huo-hou','shu-mei-shu','kou-gan-mu-biao'],steps:[
-    {stepNum:1,title:'打蛋液',duration:2,emoji:'🥚',instruction:'鸡蛋打碗里，加一小撮盐（拇指和食指捏起的量）。筷子搅匀打散。加温水（手摸不烫）——用量法：半个蛋壳装满水，倒3次进碗（这就是标准的1:1.5），继续搅匀。',judge:'蛋液和水完全融合，没有蛋清丝。表面有少量泡沫。',noviceNote:'蛋壳就是量杯！半个蛋壳装满水×3次=标准水量，不用猜。冷水蒸出来不嫩，热水直接成蛋花汤'},
-    {stepNum:2,title:'过滤去泡',duration:1,emoji:'🥣',instruction:'蛋液用滤网过滤到蒸碗里（或拿勺子撇掉表面泡沫）。盖上一层保鲜膜或扣个盘子。',judge:'蛋液表面没有气泡，光滑得像水面。',noviceNote:'不过滤不盖保鲜膜→蒸出来表面全是蜂窝坑。这一步决定了颜值'},
+    {stepNum:1,title:'打蛋液',prep:true,duration:2,emoji:'🥚',instruction:'鸡蛋打碗里，加一小撮盐（拇指和食指捏起的量）。筷子搅匀打散。加温水（手摸不烫）——用量法：半个蛋壳装满水，倒3次进碗（这就是标准的1:1.5），继续搅匀。',judge:'蛋液和水完全融合，没有蛋清丝。表面有少量泡沫。',noviceNote:'蛋壳就是量杯！半个蛋壳装满水×3次=标准水量，不用猜。冷水蒸出来不嫩，热水直接成蛋花汤'},
+    {stepNum:2,title:'过滤去泡',prep:true,duration:1,emoji:'🥣',instruction:'蛋液用滤网过滤到蒸碗里（或拿勺子撇掉表面泡沫）。盖上一层保鲜膜或扣个盘子。',judge:'蛋液表面没有气泡，光滑得像水面。',noviceNote:'不过滤不盖保鲜膜→蒸出来表面全是蜂窝坑。这一步决定了颜值'},
     {stepNum:3,title:'上锅蒸',duration:8,emoji:'♨️',instruction:'蒸锅水开后转中小火，放入蛋碗。蒸到蛋液表面凝固、轻轻晃动碗，蛋羹整体跟着颤——大约8分钟，以状态为准。关火再焖2分钟。',judge:'蛋羹表面光滑如镜，晃动碗时整体颤巍巍，没有蜂窝孔。',noviceNote:'一定要转中小火！大火蒸=必出蜂窝。判断熟没熟看“晃动碗它跟着颤”，别死盯时间',authority:'为什么听“晃动”不听时间？你的蒸锅大小、水量、碗深浅都会改变时间，8分钟只是参考。蛋羹熟没熟只有它自己知道：晃动碗，中间还水汪汪就再蒸一会儿，整体跟着颤就是好了'},
-    {stepNum:4,title:'调味',duration:1,emoji:'🥣',instruction:'取出蒸蛋，淋半勺生抽（沿碗边转一圈的量）和几滴香油。撒葱花。',judge:'蒸蛋口感像布丁一样嫩滑，入口即化。',noviceNote:'生抽沿碗边淋下去，别直接倒在蛋面上——会破坏光滑表面'},
+    {stepNum:4,title:'调味',prep:true,duration:1,emoji:'🥣',instruction:'取出蒸蛋，淋半勺生抽（沿碗边转一圈的量）和几滴香油。撒葱花。',judge:'蒸蛋口感像布丁一样嫩滑，入口即化。',noviceNote:'生抽沿碗边淋下去，别直接倒在蛋面上——会破坏光滑表面'},
   ],rescue:[
     {problem:'蒸出来全是蜂窝孔',fix:'下次用温水+滤泡+中小火，三件事缺一不可。这次淋上生抽葱花，假装是故意的'},
     {problem:'蛋水分离析出水了',fix:'倒掉析出的水，味道不影响。下次水再少一点（半个蛋壳装满水×2次半）'},
   ],tips:'蒸水蛋是检验厨房水平的试金石——步骤不多但细节决定成败。'},
 
   {id:'duo-jiao-zheng-yu-pian',name:'剁椒蒸鱼片',emoji:'🐟',difficulty:1,time:10,cookMethod:'蒸',category:'水产',tags:['快手','下饭'],tools:['蒸锅','盘子'],mainIngredients:['巴沙鱼'],subIngredients:['剁椒','姜'],seasonings:[{name:'蒸鱼豉油',required:false,alt:'用生抽可以'},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'切鱼片',duration:2,emoji:'🔪',instruction:'巴沙鱼柳切厚片（麻将牌大小）。用厨房纸吸干水分。平铺在盘子里。',judge:'鱼片大小均匀，厚薄一致。盘子底没有积水。',noviceNote:'一定要吸干水分！鱼片水分越多蒸出来越腥'},
-    {stepNum:2,title:'铺剁椒',duration:2,emoji:'🌶️',instruction:'在鱼片上均匀铺上一层剁椒。铺满但不要太厚。放几片姜去腥。',judge:'剁椒均匀覆盖每片鱼，没有重叠太多。',noviceNote:'剁椒有盐味——不用再加盐了！超市买的剁椒已经很咸'},
+    {stepNum:1,title:'切鱼片',prep:true,duration:2,emoji:'🔪',instruction:'巴沙鱼柳切厚片（麻将牌大小）。用厨房纸吸干水分。平铺在盘子里。',judge:'鱼片大小均匀，厚薄一致。盘子底没有积水。',noviceNote:'一定要吸干水分！鱼片水分越多蒸出来越腥'},
+    {stepNum:2,title:'铺剁椒',prep:true,duration:2,emoji:'🌶️',instruction:'在鱼片上均匀铺上一层剁椒。铺满但不要太厚。放几片姜去腥。',judge:'剁椒均匀覆盖每片鱼，没有重叠太多。',noviceNote:'剁椒有盐味——不用再加盐了！超市买的剁椒已经很咸'},
     {stepNum:3,title:'蒸鱼',duration:6,emoji:'♨️',instruction:'蒸锅水开后放入鱼盘，大火蒸6分钟。出锅淋上蒸鱼豉油，撒葱花。锅烧1勺热油淋上去。',judge:'鱼肉完全变白，用筷子一夹就开。剁椒的香味和鱼肉融合。',noviceNote:'冷水上锅蒸→鱼肉老。一定要水开后放鱼'},
   ],rescue:[
     {problem:'鱼肉很腥',fix:'多铺姜片在鱼下面。下次买鱼柳回来先用料酒腌10分钟'},
@@ -223,8 +223,8 @@ const RECIPES = [
   ],tips:'这道菜的成本不到10块钱但看起来像餐馆水平。'},
 
   {id:'fen-zheng-rou',name:'粉蒸肉',emoji:'🥩',difficulty:2,time:40,cookMethod:'蒸',category:'肉类',tags:['下饭','解馋'],tools:['蒸锅','碗'],mainIngredients:['五花肉'],subIngredients:['蒸肉粉','土豆'],seasonings:[{name:'生抽',required:true},{name:'老抽',required:false,alt:'没有颜色浅一点但味道一样'},{name:'料酒',required:false,alt:'不放也行'}],steps:[
-    {stepNum:1,title:'切肉腌肉',duration:5,emoji:'🔪',instruction:'五花肉切厚片（筷子尖厚）。加生抽、老抽（有就加）抓匀，腌10分钟。',judge:'每片肉大小均匀，酱色均匀裹上。',noviceNote:'肉片不要太薄——太薄蒸出来没了。筷子尖厚度刚好'},
-    {stepNum:2,title:'裹蒸肉粉',duration:3,emoji:'🫓',instruction:'超市买的蒸肉粉倒盘子里。腌好的肉片两面沾上蒸肉粉，抖掉多余的。',judge:'每片肉均匀裹上粉，没有大块干粉堆积。',noviceNote:'超市蒸肉粉已经有盐味了！不用再加盐。买的时候注意买五香味还是辣味'},
+    {stepNum:1,title:'切肉腌肉',prep:true,duration:5,emoji:'🔪',instruction:'五花肉切厚片（筷子尖厚）。加生抽、老抽（有就加）抓匀，腌10分钟。',judge:'每片肉大小均匀，酱色均匀裹上。',noviceNote:'肉片不要太薄——太薄蒸出来没了。筷子尖厚度刚好'},
+    {stepNum:2,title:'裹蒸肉粉',prep:true,duration:3,emoji:'🫓',instruction:'超市买的蒸肉粉倒盘子里。腌好的肉片两面沾上蒸肉粉，抖掉多余的。',judge:'每片肉均匀裹上粉，没有大块干粉堆积。',noviceNote:'超市蒸肉粉已经有盐味了！不用再加盐。买的时候注意买五香味还是辣味'},
     {stepNum:3,title:'摆盘上锅',duration:32,emoji:'♨️',instruction:'碗底铺上切块的土豆。肉片一片片码在土豆上（不重叠）。蒸锅水开后放入，大火蒸30分钟。',judge:'肉蒸到软烂，筷子一夹就断。土豆吸饱了肉汁。',noviceNote:'水一次加足！蒸30分钟水会烧干。中途加水要加热水'},
   ],rescue:[
     {problem:'蒸肉粉掉了一碗底都是',fix:'倒出来加点水搅匀浇回去。下次裹粉后轻轻拍一下让粉粘牢'},
@@ -232,7 +232,7 @@ const RECIPES = [
   ],tips:'超市蒸肉粉品牌推荐：好人家或者桥头。别买太便宜的——粉粗口感差。'},
 
   {id:'suan-rong-zheng-jin-zhen-gu',name:'蒜蓉蒸金针菇',emoji:'🍄',difficulty:1,time:8,cookMethod:'蒸',category:'菌菇',tags:['快手','下饭','懒人'],tools:['蒸锅','盘子'],mainIngredients:['金针菇'],subIngredients:['蒜','葱'],seasonings:[{name:'生抽',required:true},{name:'蚝油',required:false,alt:'不放也行'},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'铺金针菇',duration:2,emoji:'🔪',instruction:'金针菇去根散开，冲洗沥干。平铺在盘子里（铺薄一点别堆太厚）。',judge:'金针菇均匀铺开，没有一坨一坨的。',noviceNote:'铺越厚越难熟——薄薄一层铺开，3分钟就熟'},
+    {stepNum:1,title:'铺金针菇',prep:true,duration:2,emoji:'🔪',instruction:'金针菇去根散开，冲洗沥干。平铺在盘子里（铺薄一点别堆太厚）。',judge:'金针菇均匀铺开，没有一坨一坨的。',noviceNote:'铺越厚越难熟——薄薄一层铺开，3分钟就熟'},
     {stepNum:2,title:'做蒜蓉酱',duration:2,emoji:'🧄',instruction:'蒜切末。小锅加2勺油小火炒一半蒜末到微黄，关火加另一半生蒜、生抽、蚝油。铺在金针菇上。',judge:'蒜蓉酱均匀淋在金针菇上，每一处都有蒜。',noviceNote:'同蒜蓉粉丝虾的金银蒜做法——一半炒一半生'},
     {stepNum:3,title:'上锅蒸',duration:4,emoji:'♨️',instruction:'蒸锅水开后放入，大火蒸3-4分钟。金针菇变软出水就出锅。撒葱花。',judge:'金针菇完全变软，盘底有汤汁。',noviceNote:'金针菇蒸了会出水——盘子选深一点的，别用平盘'},
   ],rescue:[
@@ -241,8 +241,8 @@ const RECIPES = [
   ]},
 
   {id:'zheng-wu-can-rou-dan',name:'蒸午餐肉蛋',emoji:'🥫',difficulty:1,time:10,cookMethod:'蒸',category:'禽蛋',tags:['快手','懒人'],tools:['蒸锅','碗'],mainIngredients:['午餐肉','鸡蛋'],subIngredients:[],seasonings:[{name:'盐',required:false,alt:'午餐肉本身就有盐味，一般不用加'}],steps:[
-    {stepNum:1,title:'切午餐肉',duration:2,emoji:'🔪',instruction:'午餐肉切成小丁（指甲盖大小）。铺在碗底。',judge:'丁大小均匀，铺满碗底一层。',noviceNote:'不用加油！午餐肉本身有油，蒸的时候会出油'},
-    {stepNum:2,title:'打蛋',duration:1,emoji:'🥚',instruction:'鸡蛋直接打在午餐肉上（不打散）。用筷子把蛋黄戳破，让蛋液流到肉丁缝里。',judge:'蛋液均匀分布在肉丁之间。',noviceNote:'蛋黄戳破！整颗蛋黄蒸出来太干了，戳破让蛋液渗到肉里'},
+    {stepNum:1,title:'切午餐肉',prep:true,duration:2,emoji:'🔪',instruction:'午餐肉切成小丁（指甲盖大小）。铺在碗底。',judge:'丁大小均匀，铺满碗底一层。',noviceNote:'不用加油！午餐肉本身有油，蒸的时候会出油'},
+    {stepNum:2,title:'打蛋',prep:true,duration:1,emoji:'🥚',instruction:'鸡蛋直接打在午餐肉上（不打散）。用筷子把蛋黄戳破，让蛋液流到肉丁缝里。',judge:'蛋液均匀分布在肉丁之间。',noviceNote:'蛋黄戳破！整颗蛋黄蒸出来太干了，戳破让蛋液渗到肉里'},
     {stepNum:3,title:'蒸',duration:6,emoji:'♨️',instruction:'蒸锅水开后放入，大火蒸5-6分钟。蛋液完全凝固就出锅。',judge:'蛋液完全凝固，午餐肉出油了，香味扑鼻。',noviceNote:'蒸太久蛋会变老发硬——看到蛋液凝固就关火'},
   ],rescue:[
     {problem:'午餐肉太咸了',fix:'下次切薄一点铺开。已经蒸好的可以配白粥或者米饭吃'},
@@ -250,7 +250,7 @@ const RECIPES = [
   ],tips:'家里没菜时的救命菜。午餐肉换成火腿肠也行。'},
 
   {id:'zheng-shan-yao',name:'蒸山药',emoji:'🥬',difficulty:1,time:12,cookMethod:'蒸',category:'主食',tags:['快手','清淡','备餐'],tools:['蒸锅'],mainIngredients:['山药'],subIngredients:[],seasonings:[{name:'白糖',required:false,alt:'直接吃也行，原味养生'}],steps:[
-    {stepNum:1,title:'削皮切段',duration:4,emoji:'🔪',instruction:'山药戴手套削皮！切成指节长的段。',judge:'皮削干净没有黑点。山药段大小一致。',noviceNote:'必须戴手套！山药皮汁液含草酸钙会让手痒到怀疑人生。如果不小心碰到了用醋洗手'},
+    {stepNum:1,title:'削皮切段',prep:true,duration:4,emoji:'🔪',instruction:'山药戴手套削皮！切成指节长的段。',judge:'皮削干净没有黑点。山药段大小一致。',noviceNote:'必须戴手套！山药皮汁液含草酸钙会让手痒到怀疑人生。如果不小心碰到了用醋洗手'},
     {stepNum:2,title:'蒸山药',duration:10,emoji:'♨️',instruction:'蒸锅水开后放入山药段，大火蒸8-10分钟。筷子能轻松戳穿。',judge:'筷子轻松戳透，表面微微变透亮。',noviceNote:'切越小段熟越快。但太短容易蒸碎——一个指节长度正好'},
     {stepNum:3,title:'开吃',duration:1,emoji:'🍴',instruction:'山药取出装盘。直接吃原味（微甜绵软）或蘸白糖吃。',judge:'口感绵软微甜，没有生硬感。',noviceNote:'山药蒸好直接吃最养生。蘸白糖是小朋友爱吃的方法'},
   ],rescue:[
@@ -259,7 +259,7 @@ const RECIPES = [
   ],tips:'山药是养生食材——健脾养胃。蒸着吃比煮着吃营养保留更多。'},
 
   {id:'zheng-yu-mi',name:'蒸玉米',emoji:'🌽',difficulty:1,time:15,cookMethod:'蒸',category:'主食',tags:['快手','清淡','备餐'],tools:['蒸锅'],mainIngredients:['玉米'],subIngredients:[],seasonings:[],steps:[
-    {stepNum:1,title:'处理玉米',duration:2,emoji:'🔪',instruction:'玉米剥掉外面老叶子，留里面一两层嫩叶子。玉米须可以留着（煮水喝）。',judge:'玉米表面剩1-2层叶子包裹着。',noviceNote:'留一两层叶子蒸更香！全剥光蒸出来少了玉米的清香味'},
+    {stepNum:1,title:'处理玉米',prep:true,duration:2,emoji:'🔪',instruction:'玉米剥掉外面老叶子，留里面一两层嫩叶子。玉米须可以留着（煮水喝）。',judge:'玉米表面剩1-2层叶子包裹着。',noviceNote:'留一两层叶子蒸更香！全剥光蒸出来少了玉米的清香味'},
     {stepNum:2,title:'上锅蒸',duration:12,emoji:'♨️',instruction:'蒸锅水开后放入玉米，大火蒸10-12分钟。关火焖2分钟。',judge:'玉米粒颜色变深变亮，用筷子能戳透。香味飘满厨房。',noviceNote:'蒸的玉米比煮的玉米更甜——营养不流失到水里'},
     {stepNum:3,title:'开吃',duration:1,emoji:'🍴',instruction:'稍微晾凉，剥掉叶子直接啃。也可以切成段吃。',judge:'玉米粒饱满多汁，咬开没有生粉味。',noviceNote:'刚出锅巨烫！晾2分钟再吃。别心急烫了嘴'},
   ],rescue:[
@@ -268,7 +268,7 @@ const RECIPES = [
   ]},
 
   {id:'dou-chi-zheng-pai-gu',name:'豆豉蒸排骨',emoji:'🍖',difficulty:2,time:30,cookMethod:'蒸',category:'肉类',tags:['下饭','请客','解馋'],tools:['蒸锅','碗'],mainIngredients:['排骨'],subIngredients:['豆豉','蒜','姜'],seasonings:[{name:'生抽',required:true},{name:'蚝油',required:false,alt:'不放也行'},{name:'料酒',required:false,alt:'用姜去腥'},{name:'淀粉',required:true},{name:'糖',required:false,alt:'不放也行'}],steps:[
-    {stepNum:1,title:'腌排骨',duration:10,emoji:'🥣',instruction:'排骨斩小段（拇指长），冲洗掉血水沥干。加生抽、蚝油、料酒、蒜末、豆豉、一小勺淀粉、一点糖抓匀。腌10分钟。',judge:'排骨均匀裹上酱色，没有积水。',noviceNote:'加淀粉是排骨嫩滑的关键——不加淀粉蒸出来肉柴。一小勺就够'},
+    {stepNum:1,title:'腌排骨',prep:true,duration:10,emoji:'🥣',instruction:'排骨斩小段（拇指长），冲洗掉血水沥干。加生抽、蚝油、料酒、蒜末、豆豉、一小勺淀粉、一点糖抓匀。腌10分钟。',judge:'排骨均匀裹上酱色，没有积水。',noviceNote:'加淀粉是排骨嫩滑的关键——不加淀粉蒸出来肉柴。一小勺就够'},
     {stepNum:2,title:'摆盘蒸',duration:25,emoji:'♨️',instruction:'腌好的排骨平铺在碗里（不堆叠）。蒸锅水开后放入，大火蒸20-25分钟。',judge:'排骨肉能轻松从骨头上剥离，没有血水。',noviceNote:'排骨一定不要堆叠！平铺一层才熟得均匀。堆两层的下面那层还是生的'},
     {stepNum:3,title:'出锅',duration:1,emoji:'🍴',instruction:'撒上葱花。直接上桌。',judge:'排骨嫩滑脱骨，豆豉和蒜香浓郁。',noviceNote:'如果盘底汤汁多，可以倒出来勾个薄芡再淋回去'},
   ],rescue:[
@@ -278,8 +278,8 @@ const RECIPES = [
 
   // ════════ 四、简单煎/炒 ════════
   {id:'fan-qie-chao-dan',name:'番茄炒蛋',emoji:'🍅',difficulty:1,time:10,cookMethod:'炒',category:'禽蛋',tags:['快手','下饭','懒人'],tools:['炒锅','炒勺'],mainIngredients:['番茄','鸡蛋'],subIngredients:['葱'],seasonings:[{name:'盐',required:true},{name:'糖',required:false,alt:'不放也行，番茄酸的话加一点'},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'切番茄',duration:2,emoji:'🔪',instruction:'番茄去蒂，切成麻将牌大小。不去皮，煮了皮自己会脱落。',judge:'块大小均匀，番茄汁没挤得到处都是。',noviceNote:'切太碎炒出来成番茄酱了——麻将牌大小刚好'},
-    {stepNum:2,title:'打蛋',duration:1,emoji:'🥚',instruction:'鸡蛋打碗里加一小撮盐搅匀。搅到筷子挑起来没有蛋清丝。',judge:'蛋液均匀一色，没有透明蛋清团。',noviceNote:'不搅匀炒出来一块白一块黄——多搅20秒'},
+    {stepNum:1,title:'切番茄',prep:true,duration:2,emoji:'🔪',instruction:'番茄去蒂，切成麻将牌大小。不去皮，煮了皮自己会脱落。',judge:'块大小均匀，番茄汁没挤得到处都是。',noviceNote:'切太碎炒出来成番茄酱了——麻将牌大小刚好'},
+    {stepNum:2,title:'打蛋',prep:true,duration:1,emoji:'🥚',instruction:'鸡蛋打碗里加一小撮盐搅匀。搅到筷子挑起来没有蛋清丝。',judge:'蛋液均匀一色，没有透明蛋清团。',noviceNote:'不搅匀炒出来一块白一块黄——多搅20秒'},
     {stepNum:3,title:'炒蛋',duration:2,emoji:'🍳',instruction:'锅烧热倒油，油微冒烟倒入蛋液。等底部凝固再用铲子推，刚熟就盛出。',judge:'蛋块嫩黄还带湿润感，不是干巴巴的。',noviceNote:'蛋下锅就急着翻——变成炒蛋碎。等底部凝固了再推'},
     {stepNum:4,title:'炒番茄',duration:3,emoji:'🍲',instruction:'不用洗锅再加一点油，倒入番茄。中火炒到出汁变软，用铲子压一压。',judge:'番茄明显出汁，皮开始卷起脱落。锅底有红色汤汁。',noviceNote:'火太小不出汁——中火炒才能把番茄汁逼出来'},
     {stepNum:5,title:'合炒',duration:2,emoji:'🔄',instruction:'把炒好的蛋倒回锅里和番茄翻炒几下。加一小撮糖提鲜。翻匀就出锅。',judge:'蛋块均匀裹上红色汤汁，每一块都有味道。',noviceNote:'倒回去又炒很久——蛋会变老。翻匀就出锅10秒搞定'},
@@ -290,7 +290,7 @@ const RECIPES = [
   ],tips:'这道菜没有固定公式——甜口多加糖，咸口多加盐。先做一次找到自己的口味。'},
 
   {id:'suan-rong-xia-ren',name:'蒜蓉虾仁',emoji:'🦐',difficulty:2,time:8,cookMethod:'炒',category:'水产',tags:['快手','下饭'],tools:['炒锅'],mainIngredients:['虾仁'],subIngredients:['蒜'],seasonings:[{name:'盐',required:true},{name:'料酒',required:false,alt:'不放也行'},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'处理虾仁',duration:2,emoji:'🔪',instruction:'虾仁解冻透冲洗沥干。用厨房纸吸干水分。加一小撮盐抓一下。',judge:'虾仁表面干爽没有水。',noviceNote:'虾仁一定要吸干！带水下锅变成煮虾仁，不是炒虾仁'},
+    {stepNum:1,title:'处理虾仁',prep:true,duration:2,emoji:'🔪',instruction:'虾仁解冻透冲洗沥干。用厨房纸吸干水分。加一小撮盐抓一下。',judge:'虾仁表面干爽没有水。',noviceNote:'虾仁一定要吸干！带水下锅变成煮虾仁，不是炒虾仁'},
     {stepNum:2,title:'爆蒜',duration:1,emoji:'🧄',instruction:'锅烧热倒油，放入蒜末爆香（约15秒）。蒜末刚变黄就下虾仁。',judge:'闻到蒜香，蒜末微黄还没焦。',noviceNote:'蒜末在油里炸超过20秒就糊了发苦——闻到蒜香立刻放虾仁'},
     {stepNum:3,title:'炒虾仁',duration:2,emoji:'🍳',instruction:'虾仁下锅大火快炒。看到虾仁变红卷起立刻出锅。整个过程不到2分钟。',judge:'虾仁变红卷成C形，表面微微焦黄。',noviceNote:'虾仁变色就是熟了！多炒10秒就老。C形是最好的状态'},
   ],rescue:[
@@ -299,8 +299,8 @@ const RECIPES = [
   ],tips:'冷冻虾仁解冻后加一小勺小苏打抓一下再冲洗，炒出来更脆。'},
 
   {id:'qing-jiao-rou-si',name:'青椒肉丝',emoji:'🫑',difficulty:2,time:15,cookMethod:'炒',category:'肉类',tags:['下饭','家常'],tools:['炒锅'],mainIngredients:['猪肉','青椒'],subIngredients:['姜','蒜'],seasonings:[{name:'生抽',required:true},{name:'老抽',required:false,alt:'没有颜色浅一点'},{name:'淀粉',required:false,alt:'不放肉质会老一点也能吃'},{name:'盐',required:true}],steps:[
-    {stepNum:1,title:'切肉腌肉',duration:5,emoji:'🔪',instruction:'猪肉切丝（筷子粗）。加一小勺生抽、半勺淀粉抓匀腌5分钟。',judge:'肉丝粗细均匀，表面裹上薄薄一层酱色。',noviceNote:'猪肉冷冻到半硬状态最好切——太软切不动，太硬切不均匀。肉丝顺纹切不散'},
-    {stepNum:2,title:'切青椒',duration:2,emoji:'🔪',instruction:'青椒去蒂去籽，切丝（和肉丝差不多粗细）。',judge:'青椒丝粗细和肉丝一致。籽去干净了。',noviceNote:'青椒籽不去干净吃到嘴里发苦。切开后用力抖一抖'},
+    {stepNum:1,title:'切肉腌肉',prep:true,duration:5,emoji:'🔪',instruction:'猪肉切丝（筷子粗）。加一小勺生抽、半勺淀粉抓匀腌5分钟。',judge:'肉丝粗细均匀，表面裹上薄薄一层酱色。',noviceNote:'猪肉冷冻到半硬状态最好切——太软切不动，太硬切不均匀。肉丝顺纹切不散'},
+    {stepNum:2,title:'切青椒',prep:true,duration:2,emoji:'🔪',instruction:'青椒去蒂去籽，切丝（和肉丝差不多粗细）。',judge:'青椒丝粗细和肉丝一致。籽去干净了。',noviceNote:'青椒籽不去干净吃到嘴里发苦。切开后用力抖一抖'},
     {stepNum:3,title:'炒肉丝',duration:3,emoji:'🍳',instruction:'锅烧热倒油，油热后放入肉丝大火快炒。炒到变色（约1分钟）盛出。',judge:'肉丝完全变色，表面微焦香。没有出水。',noviceNote:'肉下锅先别翻！等10秒让底面煎香再翻炒——不然粘锅'},
     {stepNum:4,title:'合炒',duration:3,emoji:'🔄',instruction:'锅中留底油，放入青椒丝大火炒30秒。倒入肉丝，加生抽和盐。大火翻炒几下出锅。',judge:'青椒还带一点脆，肉丝嫩。颜色青绿配酱色好看。',noviceNote:'青椒不要炒太久——软了就不好吃了。下锅后30秒就放肉丝'},
   ],rescue:[
@@ -318,7 +318,7 @@ const RECIPES = [
   ]},
 
   {id:'hao-you-xing-bao-gu',name:'蚝油杏鲍菇',emoji:'🍄',difficulty:1,time:8,cookMethod:'炒',category:'菌菇',tags:['快手','下饭','懒人'],tools:['炒锅'],mainIngredients:['杏鲍菇'],subIngredients:[],seasonings:[{name:'蚝油',required:true},{name:'生抽',required:true},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'切杏鲍菇',duration:2,emoji:'🔪',instruction:'杏鲍菇冲洗一下，手撕成条（食指粗）。不要用刀切——手撕口感更好。',judge:'杏鲍菇撕成均匀长条，每条约食指粗。',noviceNote:'手撕比刀切口感好！手撕顺着纤维走，炒出来有嚼劲'},
+    {stepNum:1,title:'切杏鲍菇',prep:true,duration:2,emoji:'🔪',instruction:'杏鲍菇冲洗一下，手撕成条（食指粗）。不要用刀切——手撕口感更好。',judge:'杏鲍菇撕成均匀长条，每条约食指粗。',noviceNote:'手撕比刀切口感好！手撕顺着纤维走，炒出来有嚼劲'},
     {stepNum:2,title:'煎杏鲍菇',duration:4,emoji:'🍳',instruction:'锅烧热倒油，放入杏鲍菇条。中火煎到两面微焦出水，体积缩小一半左右。',judge:'杏鲍菇表面微焦金黄，变软了但还有嚼劲。',noviceNote:'杏鲍菇刚下锅是干的，煎一煎会自己出水——不要加水！让它自己出'},
     {stepNum:3,title:'加蚝油',duration:2,emoji:'🔄',instruction:'加入2勺蚝油、半勺生抽，大火翻炒均匀。酱汁裹在每根杏鲍菇上就出锅。',judge:'杏鲍菇均匀裹上蚝油色，亮晶晶的。汁收干了。',noviceNote:'蚝油本身有咸味——不要另外加盐了！觉得淡加生抽'},
   ],rescue:[
@@ -327,7 +327,7 @@ const RECIPES = [
   ],tips:'杏鲍菇口感像鲍鱼但价格是鲍鱼的1/100。贫穷料理之光。'},
 
   {id:'cong-bao-yang-rou-juan',name:'葱爆羊肉卷',emoji:'🥩',difficulty:2,time:8,cookMethod:'炒',category:'肉类',tags:['快手','下饭','解馋'],tools:['炒锅'],mainIngredients:['羊肉卷'],subIngredients:['大葱','姜'],seasonings:[{name:'生抽',required:true},{name:'孜然',required:false,alt:'不加就是葱爆原味，加就是新疆风味'},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'切葱',duration:1,emoji:'🔪',instruction:'大葱切斜段（指节长）。姜切片。',judge:'葱段大小均匀，斜切面大更出味。',noviceNote:'大葱切斜段比直切好——切面大，葱味更容易爆出来'},
+    {stepNum:1,title:'切葱',prep:true,duration:1,emoji:'🔪',instruction:'大葱切斜段（指节长）。姜切片。',judge:'葱段大小均匀，斜切面大更出味。',noviceNote:'大葱切斜段比直切好——切面大，葱味更容易爆出来'},
     {stepNum:2,title:'爆炒羊肉',duration:5,emoji:'🍳',instruction:'锅烧到冒烟倒油，放入姜片爆香。放入羊肉卷大火快炒。变色就加葱段。',judge:'羊肉变色没有粉红色，边缘微焦。',noviceNote:'锅要烧到冒烟再倒油！羊肉卷温度不够会出水变煮羊肉'},
     {stepNum:3,title:'调味出锅',duration:2,emoji:'🔄',instruction:'加生抽、孜然（有就加）。大火翻炒几下立刻出锅。从羊肉下锅到出锅不超过3分钟。',judge:'羊肉嫩，葱还带一点脆。酱色均匀。',noviceNote:'调味后不要恋战——翻匀就出锅。多炒10秒肉就老了'},
   ],rescue:[
@@ -336,7 +336,7 @@ const RECIPES = [
   ]},
 
   {id:'tang-cu-ou-pian',name:'糖醋藕片',emoji:'🥬',difficulty:2,time:12,cookMethod:'炒',category:'蔬菜',tags:['下饭','清淡'],tools:['煮锅','炒锅'],mainIngredients:['莲藕'],subIngredients:[],seasonings:[{name:'醋',required:true},{name:'糖',required:true},{name:'盐',required:true},{name:'生抽',required:true},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'切藕片',duration:3,emoji:'🔪',instruction:'莲藕去皮，切成薄片（筷子尖厚）。切好的藕片立刻泡进水里防氧化变黑。',judge:'藕片薄厚均匀，泡在水里没有变色。',noviceNote:'藕切完立刻泡水！暴露在空气中10秒就开始变黑。水里加几滴醋更好'},
+    {stepNum:1,title:'切藕片',prep:true,duration:3,emoji:'🔪',instruction:'莲藕去皮，切成薄片（筷子尖厚）。切好的藕片立刻泡进水里防氧化变黑。',judge:'藕片薄厚均匀，泡在水里没有变色。',noviceNote:'藕切完立刻泡水！暴露在空气中10秒就开始变黑。水里加几滴醋更好'},
     {stepNum:2,title:'焯水',duration:2,emoji:'🍲',instruction:'锅中水烧开，放入藕片焯水2分钟。捞出沥干。',judge:'藕片变微透明，但还是脆的。',noviceNote:'藕片焯水不要超过2分钟——脆口才是藕片的灵魂'},
     {stepNum:3,title:'糖醋调味',duration:5,emoji:'🔄',instruction:'锅烧热倒油，放入藕片大火翻炒几下。调糖醋汁：生抽1勺+醋2勺+糖2勺+少许水搅匀倒进锅里。大火翻炒到汁收干。',judge:'每片藕均匀裹上糖醋汁，亮晶晶的。酸甜适中。',noviceNote:'糖醋汁比例=1:2:2（生抽1:醋2:糖2）。先调好碗汁再倒'},
   ],rescue:[
@@ -345,8 +345,8 @@ const RECIPES = [
   ]},
 
   {id:'he-lan-dou-chao-la-chang',name:'荷兰豆炒腊肠',emoji:'🫛',difficulty:2,time:10,cookMethod:'炒',category:'蔬菜',tags:['快手','下饭'],tools:['炒锅'],mainIngredients:['荷兰豆','腊肠'],subIngredients:['蒜'],seasonings:[{name:'盐',required:false,alt:'腊肠本身有咸味，一般不用加盐'},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'处理荷兰豆',duration:3,emoji:'🔪',instruction:'荷兰豆掐头去筋（掐掉两头，顺势拉掉两侧的老筋）。大的可以掰成两段。',judge:'两侧筋都去掉了，两头掐干净。',noviceNote:'不去筋咬不动！掰断一头顺势拉——整条筋就下来了。两面都要拉'},
-    {stepNum:2,title:'切腊肠',duration:1,emoji:'🔪',instruction:'腊肠斜切片（筷子尖厚）。斜切比直切好看，切面大更容易出味。',judge:'腊肠片薄厚均匀，斜切面椭圆。',noviceNote:'腊肠不用煮不用泡——直接切片炒。广式腊肠偏甜，川式腊肠偏辣'},
+    {stepNum:1,title:'处理荷兰豆',prep:true,duration:3,emoji:'🔪',instruction:'荷兰豆掐头去筋（掐掉两头，顺势拉掉两侧的老筋）。大的可以掰成两段。',judge:'两侧筋都去掉了，两头掐干净。',noviceNote:'不去筋咬不动！掰断一头顺势拉——整条筋就下来了。两面都要拉'},
+    {stepNum:2,title:'切腊肠',prep:true,duration:1,emoji:'🔪',instruction:'腊肠斜切片（筷子尖厚）。斜切比直切好看，切面大更容易出味。',judge:'腊肠片薄厚均匀，斜切面椭圆。',noviceNote:'腊肠不用煮不用泡——直接切片炒。广式腊肠偏甜，川式腊肠偏辣'},
     {stepNum:3,title:'炒',duration:4,emoji:'🍳',instruction:'锅烧热倒油，先放腊肠片中小火炒到出油（约1分钟）。放入蒜末爆香。转大火放入荷兰豆炒2分钟，炒到颜色变鲜绿。',judge:'荷兰豆翠绿还脆，腊肠出油卷起。颜色搭配好看。',noviceNote:'荷兰豆不能生吃！但炒太久会变黄。颜色变鲜绿就是熟了，立刻出锅'},
   ],rescue:[
     {problem:'荷兰豆炒黄了不脆',fix:'下次大火快炒不要超过2分钟。这次加点水焖一下将就吃'},
@@ -354,7 +354,7 @@ const RECIPES = [
   ]},
 
   {id:'jia-chang-dou-fu',name:'家常豆腐',emoji:'🥬',difficulty:2,time:15,cookMethod:'炒',category:'豆制品',tags:['下饭','家常'],tools:['炒锅'],mainIngredients:['老豆腐'],subIngredients:['青椒','木耳'],seasonings:[{name:'生抽',required:true},{name:'蚝油',required:false,alt:'不放也行'},{name:'盐',required:true},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'切豆腐',duration:2,emoji:'🔪',instruction:'老豆腐切厚片（一指厚，麻将牌大小）。用厨房纸吸干表面水分。',judge:'豆腐片大小均匀，表面干爽。',noviceNote:'一定要用老豆腐（北豆腐）！嫩豆腐一下锅就碎。吸干水分防粘锅'},
+    {stepNum:1,title:'切豆腐',prep:true,duration:2,emoji:'🔪',instruction:'老豆腐切厚片（一指厚，麻将牌大小）。用厨房纸吸干表面水分。',judge:'豆腐片大小均匀，表面干爽。',noviceNote:'一定要用老豆腐（北豆腐）！嫩豆腐一下锅就碎。吸干水分防粘锅'},
     {stepNum:2,title:'煎豆腐',duration:6,emoji:'🍳',instruction:'锅烧热倒油，放入豆腐片中小火煎。一面煎到金黄（约3分钟）再翻面。两面金黄盛出。',judge:'两面金黄焦脆，豆腐没有碎。',noviceNote:'不要频繁翻面！一面煎到金黄定型了再翻。翻太勤豆腐碎成渣'},
     {stepNum:3,title:'红烧',duration:5,emoji:'🍲',instruction:'锅中留底油，放入青椒块和木耳翻炒几下。倒入煎好的豆腐。加生抽、蚝油、半碗水。中小火煮3分钟让豆腐入味。大火收汁。',judge:'豆腐吸饱了汤汁，表面还是焦的里面入味了。',noviceNote:'煮3分钟让豆腐吸汁！不是10秒翻炒就出锅。但也别煮太久豆腐会散'},
   ],rescue:[
@@ -363,7 +363,7 @@ const RECIPES = [
   ]},
 
   {id:'tu-dou-si',name:'土豆丝',emoji:'🥔',difficulty:2,time:10,cookMethod:'炒',category:'主食',tags:['快手','下饭'],tools:['炒锅'],mainIngredients:['土豆'],subIngredients:['青椒','干辣椒'],seasonings:[{name:'盐',required:true},{name:'醋',required:true},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'切丝泡水',duration:4,emoji:'🔪',instruction:'土豆去皮切细丝（火柴棍粗）。立刻泡进冷水里，换水2-3次直到水变清。',judge:'土豆丝粗细一致，泡的水清澈没有白色淀粉。',noviceNote:'切好一定要泡水去淀粉！不去淀粉炒出来糊成一团不脆。水清才算泡好了'},
+    {stepNum:1,title:'切丝泡水',prep:true,duration:4,emoji:'🔪',instruction:'土豆去皮切细丝（火柴棍粗）。立刻泡进冷水里，换水2-3次直到水变清。',judge:'土豆丝粗细一致，泡的水清澈没有白色淀粉。',noviceNote:'切好一定要泡水去淀粉！不去淀粉炒出来糊成一团不脆。水清才算泡好了'},
     {stepNum:2,title:'焯水',duration:1,emoji:'🍲',instruction:'锅中水烧开，放入土豆丝焯水30秒。捞出沥干（不要过凉水）。',judge:'土豆丝变微透明但还是很脆，没有变软。',noviceNote:'30秒！不是3分钟。焯水只是去一下生味，炒的时候还会加热'},
     {stepNum:3,title:'爆炒',duration:3,emoji:'🍳',instruction:'锅烧热倒油，放入干辣椒和青椒丝爆香。放入土豆丝大火快炒。加盐和醋，翻炒均匀立刻出锅。',judge:'土豆丝脆爽不粘锅，醋香扑鼻。每根都裹上味道。',noviceNote:'全程大火！土豆丝下锅到出锅不超过2分钟。炒久了就不脆了'},
   ],rescue:[
@@ -393,7 +393,7 @@ const RECIPES = [
 
   {id:'lu-dan',name:'卤蛋',emoji:'🥚',difficulty:1,time:30,cookMethod:'红烧/炖',category:'禽蛋',tags:['备餐','解馋','懒人'],tools:['煮锅'],mainIngredients:['鸡蛋'],subIngredients:[],seasonings:[{name:'生抽',required:true},{name:'老抽',required:false,alt:'没有颜色浅一点'},{name:'八角',required:false,alt:'不放也行'},{name:'茶叶',required:false,alt:'不放就是卤蛋，放了就是茶叶蛋'}],steps:[
     {stepNum:1,title:'煮鸡蛋',duration:10,emoji:'🥚',instruction:'鸡蛋冷水下锅，水开后煮8分钟。捞出过冷水，剥壳。',judge:'蛋壳完整没有煮裂。剥壳后蛋白光滑。',noviceNote:'冷水下锅！热水下锅蛋壳会裂。煮完立刻过冷水才好剥壳'},
-    {stepNum:2,title:'划花刀',duration:1,emoji:'🔪',instruction:'剥好的鸡蛋表面划几刀（浅浅的，只划到蛋白），方便入味。',judge:'蛋白表面有刀痕但不深，蛋黄没有露出来。',noviceNote:'划太深蛋黄露出来→卤的时候蛋黄跑出来蛋白只剩一半'},
+    {stepNum:2,title:'划花刀',prep:true,duration:1,emoji:'🔪',instruction:'剥好的鸡蛋表面划几刀（浅浅的，只划到蛋白），方便入味。',judge:'蛋白表面有刀痕但不深，蛋黄没有露出来。',noviceNote:'划太深蛋黄露出来→卤的时候蛋黄跑出来蛋白只剩一半'},
     {stepNum:3,title:'卤煮',duration:15,emoji:'🍲',instruction:'锅中加开水，加生抽3勺、老抽1勺、八角1个、茶叶（有就加）。放入鸡蛋小火煮15分钟。关火泡着。',judge:'鸡蛋变成酱色，蛋白上色均匀。切开里面蛋黄还是黄的。',noviceNote:'卤好了别急着吃！泡在卤水里过夜更好吃——味道才进去'},
   ],rescue:[
     {problem:'鸡蛋剥壳撕得坑坑洼洼',fix:'不影响味道！下次煮好立刻过冰水泡5分钟再剥'},
@@ -401,7 +401,7 @@ const RECIPES = [
   ],tips:'卤水别倒！可以反复用——下次再煮几个蛋放进去。越卤越香。'},
 
   {id:'ke-le-ji-chi',name:'可乐鸡翅',emoji:'🍗',difficulty:1,time:25,cookMethod:'红烧/炖',category:'肉类',tags:['下饭','解馋'],tools:['炒锅','锅盖'],mainIngredients:['鸡翅'],subIngredients:['姜'],seasonings:[{name:'可乐',required:true},{name:'生抽',required:true},{name:'老抽',required:false,alt:'颜色浅一点但味道一样'},{name:'料酒',required:false,alt:'用姜片代替去腥'},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'鸡翅划刀',duration:3,emoji:'🔪',instruction:'鸡翅两面各划两刀，刀口到骨头。',judge:'每根鸡翅正反两面都有两刀，能看到骨头。',noviceNote:'划太浅没效果——刀口要到骨头'},
+    {stepNum:1,title:'鸡翅划刀',prep:true,duration:3,emoji:'🔪',instruction:'鸡翅两面各划两刀，刀口到骨头。',judge:'每根鸡翅正反两面都有两刀，能看到骨头。',noviceNote:'划太浅没效果——刀口要到骨头'},
     {stepNum:2,title:'煎鸡翅',duration:5,emoji:'🍳',instruction:'锅烧热倒油，中小火放入鸡翅煎到两面金黄，每面约2分钟。',judge:'两面金黄微焦，不是惨白也不是全黑。',noviceNote:'大火煎外面糊了里面还是生的——中小火慢煎'},
     {stepNum:3,title:'炖煮',duration:15,emoji:'🍲',instruction:'倒入可乐没过鸡翅大半。加生抽2勺、老抽半勺、姜片。大火烧开转中小火盖盖子炖15分钟。',judge:'汤汁变浓稠，鸡翅颜色红亮。筷子轻松戳透。',noviceNote:'可乐别倒一整瓶——没过鸡翅大半就够了'},
     {stepNum:4,title:'收汁',duration:3,emoji:'🔥',instruction:'开盖转大火收汁，翻动防止粘锅。收到汤汁浓稠裹在鸡翅上。',judge:'汤汁像糖浆一样挂在勺子上。冒大泡泡就要关火。',noviceNote:'收到干了糊锅——留一点汤汁拌饭超香'},
@@ -422,7 +422,7 @@ const RECIPES = [
 
   // ════════ 六、空气炸锅 ════════
   {id:'kong-qi-zha-guo-ji-xiong',name:'空气炸锅鸡胸肉块',emoji:'🍗',difficulty:1,time:25,cookMethod:'空气炸锅',category:'肉类',tags:['快手','备餐','懒人'],tools:['空气炸锅'],mainIngredients:['鸡胸肉'],subIngredients:[],seasonings:[{name:'盐',required:true},{name:'黑胡椒',required:false,alt:'不放也行'},{name:'生抽',required:true},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'切块腌制',duration:15,emoji:'🔪',instruction:'鸡胸肉切块（麻将牌大）。加生抽1勺、盐、黑胡椒抓匀，腌15分钟。',judge:'鸡块大小均匀，酱色裹匀。',noviceNote:'切大块一点！太小块炸出来干硬。麻将牌大小最合适'},
+    {stepNum:1,title:'切块腌制',prep:true,duration:15,emoji:'🔪',instruction:'鸡胸肉切块（麻将牌大）。加生抽1勺、盐、黑胡椒抓匀，腌15分钟。',judge:'鸡块大小均匀，酱色裹匀。',noviceNote:'切大块一点！太小块炸出来干硬。麻将牌大小最合适'},
     {stepNum:2,title:'入炸锅',duration:12,emoji:'🔥',instruction:'腌好的鸡块淋一点点油抓匀。放入空气炸锅，180度12分钟。中间拉出来翻一次面（6分钟时翻）。',judge:'表面金黄，筷子夹开完全变白没有粉色。',noviceNote:'不要堆叠！铺成一层。堆叠的地方熟不透。一次放不下就分两锅'},
     {stepNum:3,title:'开吃',duration:1,emoji:'🍴',instruction:'拿出来稍晾一下。可以直接吃或者蘸番茄酱。',judge:'外焦里嫩，咬开有汁水不柴。',noviceNote:'刚出锅巨烫！晾2分钟再吃。趁热吃最香'},
   ],rescue:[
@@ -431,8 +431,8 @@ const RECIPES = [
   ],tips:'鸡胸肉腌过夜更入味。早上腌好放冰箱，晚上回来直接炸。'},
 
   {id:'kong-qi-zha-guo-shu-jiao',name:'空气炸锅薯角',emoji:'🥔',difficulty:1,time:25,cookMethod:'空气炸锅',category:'主食',tags:['快手','解馋','懒人'],tools:['空气炸锅'],mainIngredients:['土豆'],subIngredients:[],seasonings:[{name:'盐',required:true},{name:'食用油',required:true},{name:'黑胡椒粉',required:false,alt:'不放也行'},{name:'辣椒粉',required:false,alt:'不放就是原味'}],steps:[
-    {stepNum:1,title:'切薯角',duration:5,emoji:'🔪',instruction:'土豆带皮洗净，切成角形（先对半切，再每半切3-4个角）。每角约2指宽。',judge:'薯角大小均匀，带皮的那面完整。',noviceNote:'带皮切更好吃！皮烤了焦香。切太大不容易熟，太小会烤成薯条'},
-    {stepNum:2,title:'拌调料',duration:3,emoji:'🥣',instruction:'薯角放大碗里，加2勺油、盐、黑胡椒、辣椒粉（有就加）。用手抓匀让每块都裹上油和调料。',judge:'每块薯角油亮亮的，调料均匀。',noviceNote:'油不能太少——没油的薯角烤出来像石头。2勺油是起码的'},
+    {stepNum:1,title:'切薯角',prep:true,duration:5,emoji:'🔪',instruction:'土豆带皮洗净，切成角形（先对半切，再每半切3-4个角）。每角约2指宽。',judge:'薯角大小均匀，带皮的那面完整。',noviceNote:'带皮切更好吃！皮烤了焦香。切太大不容易熟，太小会烤成薯条'},
+    {stepNum:2,title:'拌调料',prep:true,duration:3,emoji:'🥣',instruction:'薯角放大碗里，加2勺油、盐、黑胡椒、辣椒粉（有就加）。用手抓匀让每块都裹上油和调料。',judge:'每块薯角油亮亮的，调料均匀。',noviceNote:'油不能太少——没油的薯角烤出来像石头。2勺油是起码的'},
     {stepNum:3,title:'炸',duration:18,emoji:'🔥',instruction:'空气炸锅200度预热3分钟。放入薯角，200度炸15分钟。拉出来翻一下，再炸3-5分钟到表面金黄焦脆。',judge:'表面金黄焦脆，用筷子戳中间是软的。',noviceNote:'每个炸锅温度不一样！第一次做看着点——金黄了就停'},
   ],rescue:[
     {problem:'薯角外面糊了里面没熟',fix:'下次切小一点或者温度降到180度炸20分钟'},
@@ -440,7 +440,7 @@ const RECIPES = [
   ],tips:'蘸番茄酱或者沙拉酱吃。有芝士粉撒一点更高级。'},
 
   {id:'kong-qi-zha-guo-ji-chi',name:'空气炸锅鸡翅',emoji:'🍗',difficulty:1,time:25,cookMethod:'空气炸锅',category:'肉类',tags:['快手','解馋','懒人'],tools:['空气炸锅'],mainIngredients:['鸡翅'],subIngredients:[],seasonings:[{name:'生抽',required:true},{name:'蚝油',required:false,alt:'不放也行'},{name:'料酒',required:false,alt:'不放也行'},{name:'孜然',required:false,alt:'不放是原味'},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'腌鸡翅',duration:15,emoji:'🥣',instruction:'鸡翅两面各划两刀。加生抽2勺、蚝油1勺、料酒抓匀，腌15分钟。',judge:'鸡翅均匀裹上酱色，刀口明显。',noviceNote:'腌的时间不要少于15分钟——不入味炸出来只有肉味没有咸味'},
+    {stepNum:1,title:'腌鸡翅',prep:true,duration:15,emoji:'🥣',instruction:'鸡翅两面各划两刀。加生抽2勺、蚝油1勺、料酒抓匀，腌15分钟。',judge:'鸡翅均匀裹上酱色，刀口明显。',noviceNote:'腌的时间不要少于15分钟——不入味炸出来只有肉味没有咸味'},
     {stepNum:2,title:'入炸锅',duration:20,emoji:'🔥',instruction:'腌好的鸡翅排入空气炸锅（不重叠）。200度炸15分钟。拉出来翻面，刷一层油撒孜然，再炸5分钟。',judge:'鸡翅表面金黄焦脆，用筷子戳肉轻松穿透。',noviceNote:'鸡翅之间留空隙！挨太近受热不均。中间翻面那步不能省'},
     {stepNum:3,title:'开吃',duration:1,emoji:'🍴',instruction:'拿出来稍晾一下。',judge:'外皮焦脆，里面肉嫩多汁。咬开有汁水。',noviceNote:'刚出锅很烫！晾2分钟再啃。小心骨头也烫'},
   ],rescue:[
@@ -450,9 +450,9 @@ const RECIPES = [
 
   // ════════ 七、一锅出/懒人 ════════
   {id:'dian-fan-bao-la-chang-men-fan',name:'电饭煲腊肠焖饭',emoji:'🍚',difficulty:1,time:40,cookMethod:'电饭煲',category:'主食',tags:['懒人','一锅出','备餐'],tools:['电饭煲'],mainIngredients:['腊肠','大米'],subIngredients:['胡萝卜','玉米粒'],seasonings:[{name:'生抽',required:true},{name:'食用油',required:true}],steps:[
-    {stepNum:1,title:'准备食材',duration:5,emoji:'🔪',instruction:'腊肠切片。胡萝卜切丁。米淘洗干净。',judge:'腊肠片均匀，胡萝卜丁大小一致。',noviceNote:'腊肠不要切太薄——太薄焖完找不到了。筷子尖厚最好'},
-    {stepNum:2,title:'放电饭煲',duration:2,emoji:'🍚',instruction:'米放进电饭煲，加正常煮饭的水量。铺上腊肠、胡萝卜丁、玉米粒。加1勺生抽、半勺油。按下煮饭键。',judge:'食材均匀铺在米上，水没过了食材。',noviceNote:'水量=正常煮饭的水！不要多加——腊肠和蔬菜也会出水。水多了变成粥'},
-    {stepNum:3,title:'焖好拌匀',duration:1,emoji:'🔄',instruction:'电饭煲跳闸后，开盖把饭菜拌匀。盖盖子再焖3分钟。',judge:'米饭粒粒分明，腊肠油渗进饭里。颜色金黄均匀。',noviceNote:'跳闸后别开盖马上吃——焖3分钟让味道融合。这一步很关键'},
+    {stepNum:1,title:'准备食材',prep:true,duration:5,emoji:'🔪',instruction:'腊肠切片。胡萝卜切丁。米淘洗干净。',judge:'腊肠片均匀，胡萝卜丁大小一致。',noviceNote:'腊肠不要切太薄——太薄焖完找不到了。筷子尖厚最好'},
+    {stepNum:2,title:'放电饭煲',prep:true,duration:2,emoji:'🍚',instruction:'米放进电饭煲，加正常煮饭的水量。铺上腊肠、胡萝卜丁、玉米粒。加1勺生抽、半勺油。按下煮饭键。',judge:'食材均匀铺在米上，水没过了食材。',noviceNote:'水量=正常煮饭的水！不要多加——腊肠和蔬菜也会出水。水多了变成粥'},
+    {stepNum:3,title:'焖好拌匀',prep:true,duration:1,emoji:'🔄',instruction:'电饭煲跳闸后，开盖把饭菜拌匀。盖盖子再焖3分钟。',judge:'米饭粒粒分明，腊肠油渗进饭里。颜色金黄均匀。',noviceNote:'跳闸后别开盖马上吃——焖3分钟让味道融合。这一步很关键'},
   ],rescue:[
     {problem:'饭太湿了像粥',fix:'开盖不盖再按一次煮饭键蒸发水分。下次少加水'},
     {problem:'腊肠太咸了整个饭都咸',fix:'多加点米饭进去拌匀。下次少放腊肠或先煮一下去咸味'},
@@ -487,8 +487,8 @@ const RECIPES = [
 
   // ════════ 八、家常炒菜（从老乡鸡开源菜谱改编，家庭版+教学化） ════════
   {id:'gong-bao-ji-ding',name:'宫保鸡丁',emoji:'🍗',difficulty:2,time:20,cookMethod:'炒',category:'肉类',tags:['下饭','解馋','盖饭'],tools:['炒锅','炒勺'],mainIngredients:['鸡腿肉'],subIngredients:['胡萝卜','花生米','大葱','干辣椒'],seasonings:[{name:'生抽',required:true},{name:'醋',required:true},{name:'糖',required:true},{name:'料酒',required:false,alt:'不放也行，味道差一点'},{name:'淀粉',required:true},{name:'盐',required:false,alt:'碗汁有咸味，一般不用加'},{name:'食用油',required:true}],yield:'成品约一盘——够吃2顿盖浇饭。',texture:'鸡丁嫩+花生脆+酸甜微辣。',pan:'不粘锅（鸡丁容易粘锅，不粘锅新手友好）。',pitfalls:'四个坑：①不上浆（鸡丁柴）②碗汁比例错（酸甜失衡）③干辣椒炒糊（发苦）④鸡丁炒太久（老）。',relatedKnowledge:['qu-xing','huo-hou','shu-mei-shu','kou-gan-mu-biao','wei-dao-yan-shou'],steps:[
-    {stepNum:1,title:'备料+调碗汁',duration:5,emoji:'🔪',instruction:'鸡腿肉去骨切丁（约指尖大）。胡萝卜切丁，大葱切段，干辣椒剪成小段。碗里调宫保汁：生抽2勺+醋1勺+糖1勺+料酒半勺+淀粉半勺+水2勺，搅匀。',judge:'鸡丁大小均匀，碗汁搅匀没有淀粉疙瘩。',noviceNote:'碗汁提前调好！炒菜时手忙脚乱再调汁必翻车——这是"备料先行"的标准示范'},
-    {stepNum:2,title:'腌鸡丁（上浆）',duration:10,emoji:'🥣',instruction:'鸡丁加料酒1勺、生抽半勺、淀粉1勺、食用油1勺，用手抓匀，腌10分钟。',judge:'鸡丁均匀裹上浆，碗底没有多余水分。',noviceNote:'上浆是鸡丁嫩的关键——淀粉在表面形成保护膜锁住水分，炒的时候不柴',authority:'为什么鸡丁必须上浆？——不上浆直接炒，鸡丁表面水分瞬间蒸发，炒出来又干又柴。淀粉保护膜+快炒=嫩。这一步别省'},
+    {stepNum:1,title:'备料+调碗汁',prep:true,duration:5,emoji:'🔪',instruction:'鸡腿肉去骨切丁（约指尖大）。胡萝卜切丁，大葱切段，干辣椒剪成小段。碗里调宫保汁：生抽2勺+醋1勺+糖1勺+料酒半勺+淀粉半勺+水2勺，搅匀。',judge:'鸡丁大小均匀，碗汁搅匀没有淀粉疙瘩。',noviceNote:'碗汁提前调好！炒菜时手忙脚乱再调汁必翻车——这是"备料先行"的标准示范'},
+    {stepNum:2,title:'腌鸡丁（上浆）',prep:true,duration:10,emoji:'🥣',instruction:'鸡丁加料酒1勺、生抽半勺、淀粉1勺、食用油1勺，用手抓匀，腌10分钟。',judge:'鸡丁均匀裹上浆，碗底没有多余水分。',noviceNote:'上浆是鸡丁嫩的关键——淀粉在表面形成保护膜锁住水分，炒的时候不柴',authority:'为什么鸡丁必须上浆？——不上浆直接炒，鸡丁表面水分瞬间蒸发，炒出来又干又柴。淀粉保护膜+快炒=嫩。这一步别省'},
     {stepNum:3,title:'滑炒鸡丁',duration:2,emoji:'🔥',instruction:'锅烧热倒油（比平时多一点），油微微冒烟下鸡丁，快速划散，炒到全部变白立刻盛出。',judge:'鸡丁全部变白、表面微微金黄，没有粉色。',noviceNote:'鸡丁变白=熟了，再炒就老。这一步全程大火只要1-2分钟',oil:true},
     {stepNum:4,title:'爆香+炒配菜',duration:2,emoji:'🌶️',instruction:'锅里的油留着，下干辣椒和葱段，小火炒香（10秒），下胡萝卜丁，中火炒到微软。',judge:'干辣椒变深红（没糊），葱香出来，胡萝卜微软。',noviceNote:'干辣椒小火炒！大火10秒就糊，糊了发苦整盘废',oil:true},
     {stepNum:5,title:'回锅+碗汁收尾',duration:1,emoji:'🥘',instruction:'鸡丁回锅，倒入调好的宫保汁，大火翻炒到汁水裹匀变浓稠，加花生米，翻两下出锅。',judge:'汤汁浓稠裹在每块鸡丁上，没有稀汤。花生米还是脆的。',noviceNote:'花生米出锅前最后放！放早了吸水变软就不脆了',oil:true},
@@ -500,7 +500,7 @@ const RECIPES = [
   ],tips:'花生米买超市现成的熟花生米最省事。怕辣少放干辣椒，辣味在辣椒不在汁。'},
 
   {id:'nong-jia-xiao-chao-rou',name:'农家小炒肉',emoji:'🥩',difficulty:2,time:15,cookMethod:'炒',category:'肉类',tags:['下饭','快手'],tools:['炒锅','炒勺'],mainIngredients:['五花肉','青椒'],subIngredients:['蒜'],seasonings:[{name:'生抽',required:true},{name:'老抽',required:false,alt:'没有就颜色浅一点，味道一样'},{name:'盐',required:false,alt:'酱油有咸味，一般不用加'},{name:'食用油',required:true}],yield:'成品约一盘——够吃2顿盖浇饭。',texture:'肉片焦香+青椒脆+辣。',pan:'不粘锅（肉片薄容易粘）。',pitfalls:'三个坑：①肉切不薄（冻30分钟再切）②青椒炒过火（软塌不脆）③盐放多（酱油本身咸）。',relatedKnowledge:['qu-xing','huo-hou','shu-mei-shu','wei-dao-yan-shou','she-you-an-quan'],steps:[
-    {stepNum:1,title:'备料',duration:3,emoji:'🔪',instruction:'五花肉切薄片，肥肉和瘦肉分开切、分开放。青椒斜切块，蒜拍碎切片。',judge:'肉片薄厚均匀，肥瘦肉分开放，青椒块大小一致。',noviceNote:'肉不好切就冷冻30分钟再切——冻硬了好切薄。肉片越薄越好吃'},
+    {stepNum:1,title:'备料',prep:true,duration:3,emoji:'🔪',instruction:'五花肉切薄片，肥肉和瘦肉分开切、分开放。青椒斜切块，蒜拍碎切片。',judge:'肉片薄厚均匀，肥瘦肉分开放，青椒块大小一致。',noviceNote:'肉不好切就冷冻30分钟再切——冻硬了好切薄。肉片越薄越好吃'},
     {stepNum:2,title:'煸肥肉出油',duration:3,emoji:'🔥',instruction:'锅烧热，倒一点点油，下肥肉片，中火煸炒到出油、边缘焦黄。',judge:'肥肉变透明、边缘焦黄，锅底有一层猪油。',noviceNote:'这步是香味的来源——煸出来的猪油是这道菜的灵魂。别怕油多，等会炒青椒全靠它',authority:'为什么肥肉先下？——肥肉煸出的猪油让整道菜香，瘦肉直接下会柴，青椒用猪油炒才香。顺序不能乱',oil:true},
     {stepNum:3,title:'下瘦肉+蒜',duration:2,emoji:'🥩',instruction:'下瘦肉片，大火炒到变色，加蒜片炒香。',judge:'肉片全部变色没有粉色，蒜香出来了。',noviceNote:'瘦肉炒到变色就停——再炒就老了',oil:true},
     {stepNum:4,title:'调味盛出',duration:2,emoji:'🥣',instruction:'加生抽2勺、老抽半勺（有就加），翻炒到肉片均匀上色，盛出来暂存。',judge:'肉片均匀上色，锅里的油和肉分开（肉不粘连）。',noviceNote:'肉先盛出来！不然等会炒青椒，肉会被炒老'},
@@ -513,8 +513,8 @@ const RECIPES = [
   ],tips:'螺丝椒最配这道菜，没有就用普通青椒。想要更香加一勺豆豉。'},
 
   {id:'yu-xiang-rou-si',name:'鱼香肉丝',emoji:'🥕',difficulty:2,time:20,cookMethod:'炒',category:'肉类',tags:['下饭','快手','盖饭'],tools:['炒锅','炒勺'],mainIngredients:['猪里脊','木耳','胡萝卜'],subIngredients:['青椒','葱','姜','蒜'],seasonings:[{name:'生抽',required:true},{name:'醋',required:true},{name:'糖',required:true},{name:'料酒',required:false,alt:'不放也行'},{name:'淀粉',required:true},{name:'食用油',required:true}],yield:'成品约一盘，汁多——盖浇饭之王，够2顿。',texture:'肉丝嫩+配菜脆+酸甜咸鲜。',pan:'不粘锅（肉丝容易粘）。',pitfalls:'三个坑：①鱼香汁糖醋比例（2勺醋+1.5勺糖）②肉丝柴（上浆+变白就盛出）③葱姜蒜末省不得（鱼香味的来源）。',relatedKnowledge:['qu-xing','huo-hou','shu-mei-shu','wei-dao-yan-shou','kou-gan-mu-biao'],steps:[
-    {stepNum:1,title:'备料+调鱼香汁',duration:5,emoji:'🔪',instruction:'里脊肉切丝，木耳泡发切丝，胡萝卜切丝，青椒切丝，葱姜蒜切末。碗里调鱼香汁：生抽2勺+醋2勺+糖1.5勺+料酒1勺+淀粉1勺+水3勺，搅匀。',judge:'所有丝粗细均匀，鱼香汁调好没有疙瘩。',noviceNote:'鱼香汁的糖醋比例是关键：2勺醋配1.5勺糖，酸甜平衡。先按这个调，尝了再微调'},
-    {stepNum:2,title:'腌肉丝（上浆）',duration:10,emoji:'🥣',instruction:'肉丝加料酒1勺、生抽半勺、淀粉1勺、食用油1勺，抓匀腌10分钟。',judge:'肉丝均匀裹浆，不粘连。',noviceNote:'和宫保鸡丁一样——上浆=不柴的保证'},
+    {stepNum:1,title:'备料+调鱼香汁',prep:true,duration:5,emoji:'🔪',instruction:'里脊肉切丝，木耳泡发切丝，胡萝卜切丝，青椒切丝，葱姜蒜切末。碗里调鱼香汁：生抽2勺+醋2勺+糖1.5勺+料酒1勺+淀粉1勺+水3勺，搅匀。',judge:'所有丝粗细均匀，鱼香汁调好没有疙瘩。',noviceNote:'鱼香汁的糖醋比例是关键：2勺醋配1.5勺糖，酸甜平衡。先按这个调，尝了再微调'},
+    {stepNum:2,title:'腌肉丝（上浆）',prep:true,duration:10,emoji:'🥣',instruction:'肉丝加料酒1勺、生抽半勺、淀粉1勺、食用油1勺，抓匀腌10分钟。',judge:'肉丝均匀裹浆，不粘连。',noviceNote:'和宫保鸡丁一样——上浆=不柴的保证'},
     {stepNum:3,title:'滑炒肉丝',duration:2,emoji:'🔥',instruction:'油热下肉丝，划散，炒到全部变白盛出。',judge:'肉丝全部变白、散开不粘连。',noviceNote:'变白就盛出！大火快炒，多一秒都老',oil:true},
     {stepNum:4,title:'炒配菜',duration:2,emoji:'🧄',instruction:'锅里的油留一点，下葱姜蒜末炒香（蒜末是灵魂，多放），下胡萝卜丝和木耳丝炒到微软。',judge:'蒜香呛鼻，胡萝卜丝微软，木耳丝卷曲。',noviceNote:'蒜末不能省！鱼香味的核心就是蒜香',authority:'为什么叫鱼香却没有鱼？——鱼香味是川菜的复合味型：葱姜蒜的香+糖醋的酸甜。蒜末是灵魂，省了它这道菜直接变酱油炒肉丝',oil:true},
     {stepNum:5,title:'回锅+碗汁收尾',duration:2,emoji:'🥘',instruction:'肉丝回锅，倒入鱼香汁，大火翻炒到汤汁浓稠裹匀，下青椒丝，翻两下出锅。',judge:'汤汁浓稠裹匀每根肉丝，青椒丝还脆，没有稀汤。',noviceNote:'看到汤汁变浓稠挂勺就是好了，别炒到汤汁全干',oil:true},
@@ -525,8 +525,8 @@ const RECIPES = [
   ],tips:'没有笋丝没关系，胡萝卜+木耳+青椒就是经典家常版。木耳提前半小时温水泡发。'},
 
   {id:'xia-ren-zheng-ji-dan',name:'虾仁蒸鸡蛋',emoji:'🥚',difficulty:2,time:15,cookMethod:'蒸',category:'禽蛋',tags:['快手','清淡','懒人'],tools:['蒸锅','碗'],mainIngredients:['鸡蛋','虾仁'],subIngredients:['葱'],seasonings:[{name:'盐',required:true},{name:'生抽',required:false,alt:'不放也行，蒸好了淋一点更香'},{name:'料酒',required:false,alt:'腌虾仁用，不放腥一点'},{name:'香油',required:false,alt:'不放也行'}],yield:'2个蛋+5-6只虾仁=一碗，一人份正好。',texture:'蛋嫩滑+虾仁弹。',pan:'蒸锅+深碗（碗口别太浅）。',pitfalls:'三个坑：①虾仁放太早（沉底+蒸老）②盐多（虾仁腌过有咸味）③大火蒸（蜂窝）。',relatedKnowledge:['qu-xing','huo-hou','shu-mei-shu','kou-gan-mu-biao'],steps:[
-    {stepNum:1,title:'处理虾仁',duration:3,emoji:'🦐',instruction:'虾仁解冻（或剥鲜虾），开背挑虾线，加料酒1勺+一小撮盐腌5分钟。',judge:'虾线挑干净，虾仁裹着薄薄一层腌料。',noviceNote:'冻虾仁直接买处理好的也行，省事。鲜虾记得先冰镇再剥，不跳'},
-    {stepNum:2,title:'打蛋液',duration:2,emoji:'🥚',instruction:'鸡蛋打碗里加一小撮盐搅匀。加温水（手摸不烫）——半个蛋壳装满水倒3次。再搅匀，滤泡，盖保鲜膜。',judge:'蛋液光滑无泡，像水面。',noviceNote:'和蒸水蛋一模一样——蛋壳量水×3，温水，滤泡，一个都不能少'},
+    {stepNum:1,title:'处理虾仁',prep:true,duration:3,emoji:'🦐',instruction:'虾仁解冻（或剥鲜虾），开背挑虾线，加料酒1勺+一小撮盐腌5分钟。',judge:'虾线挑干净，虾仁裹着薄薄一层腌料。',noviceNote:'冻虾仁直接买处理好的也行，省事。鲜虾记得先冰镇再剥，不跳'},
+    {stepNum:2,title:'打蛋液',prep:true,duration:2,emoji:'🥚',instruction:'鸡蛋打碗里加一小撮盐搅匀。加温水（手摸不烫）——半个蛋壳装满水倒3次。再搅匀，滤泡，盖保鲜膜。',judge:'蛋液光滑无泡，像水面。',noviceNote:'和蒸水蛋一模一样——蛋壳量水×3，温水，滤泡，一个都不能少'},
     {stepNum:3,title:'蒸到半凝固',duration:5,emoji:'♨️',instruction:'蒸锅水开转中小火，蛋碗上锅，蒸到蛋液表面凝固、里面还微微晃动（约5分钟）。',judge:'蛋液表面凝固，晃动碗里面还有一点点晃。',noviceNote:'这里只蒸半熟！等会还要放虾仁再蒸，全熟再放虾仁就蒸太老了'},
     {stepNum:4,title:'放虾仁再蒸',duration:4,emoji:'🦐',instruction:'开盖，把虾仁摆在蛋面上，继续蒸3-4分钟，到虾仁变红卷曲、蛋羹整体凝固。',judge:'虾仁变红卷成C形，蛋羹晃动时整体颤巍巍，没有蜂窝。',noviceNote:'虾仁卷成C形=正好，卷成O形=老了。看到C形立刻关火',authority:'为什么虾仁要等蛋半熟再放？——一起放，虾仁会沉到碗底，而且蛋要蒸8分钟，虾仁跟着蒸那么久早老了。半熟时放，虾仁浮在表面，只蒸3-4分钟，正好弹'},
     {stepNum:5,title:'调味出锅',duration:1,emoji:'🥣',instruction:'取出，淋半勺生抽（沿碗边转一圈）和几滴香油，撒葱花。',judge:'蛋羹像布丁一样嫩滑，虾仁弹牙。',noviceNote:'生抽沿碗边淋，别倒在蛋面上——破坏光滑表面'},
