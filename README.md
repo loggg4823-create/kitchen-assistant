@@ -19,9 +19,10 @@
 
 ## 使用方式
 
-1. 双击 `start-server.cmd`（自动显示电脑/手机访问地址）
-2. 手机同 WiFi 打开 `http://<电脑IP>:8123` → 菜单「添加到主屏幕」→ 离线可用
-3. 内容更新后需在家重新打开一次刷新缓存
+1. 手机浏览器打开 **https://loggg4823-create.github.io/kitchen-assistant/**（公开仓库 + GitHub Pages，免费）
+2. 菜单「添加到主屏幕」→ 离线可用（HTTPS 下 SW 真离线生效）
+3. 内容更新：改完 `git push origin master` 即上线；每次更新顺手 bump `sw.js` 的 `CACHE_NAME`，手机下次打开自动换缓存
+4. 本地开发预览：双击 `start-server.cmd`（电脑/手机同 WiFi 局域网访问）
 
 ## 设计体系（定稿，不可随意偏离）
 
