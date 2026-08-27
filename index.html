@@ -38,7 +38,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .view.active{display:block}
 
 /* ─── 分类标签 ─── */
-.cat-scroll{display:flex;gap:6px;padding:6px 12px 8px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;white-space:nowrap}
+.cat-scroll{display:flex;gap:6px;padding:6px 12px 8px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;white-space:nowrap;touch-action:pan-x}
 .cat-scroll::-webkit-scrollbar{display:none}
 .cat-chip{padding:6px 14px;border-radius:20px;font-size:13px;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;flex-shrink:0;transition:all .15s;user-select:none}
 .cat-chip:active{transform:scale(.95)}
@@ -86,7 +86,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .tab-item.active{color:var(--accent);font-weight:600}
 
 /* ─── 详情覆盖层 ─── */
-.overlay{position:fixed;inset:0;z-index:100;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:env(safe-area-inset-bottom);display:none}
+.overlay{position:fixed;inset:0;z-index:100;background:var(--bg);overflow-y:auto;overscroll-behavior:contain;padding-bottom:env(safe-area-inset-bottom);display:none}
 .overlay.open{display:block}
 .overlay-header{position:sticky;top:0;z-index:5;background:var(--bg);padding:12px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
 .overlay-back{background:none;border:none;color:var(--accent);font-size:16px;cursor:pointer;padding:4px 8px;flex-shrink:0;font-weight:600}
@@ -201,7 +201,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .log-history .lh-item{margin-bottom:4px;line-height:1.5}
 
 /* ─── 组合模式覆盖层 ─── */
-.combo-overlay{position:fixed;inset:0;z-index:90;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:env(safe-area-inset-bottom);display:none}
+.combo-overlay{position:fixed;inset:0;z-index:90;background:var(--bg);overflow-y:auto;overscroll-behavior:contain;padding-bottom:env(safe-area-inset-bottom);display:none}
 .combo-overlay.open{display:block}
 .combo-header{position:sticky;top:0;z-index:5;background:var(--bg);padding:12px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
 .combo-header h2{font-size:18px}
@@ -217,9 +217,16 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 
 /* ─── PWA splash ─── */
 @media(display-mode:standalone){body{padding-top:0}}
+
+/* ─── 离线提示 ─── */
+.offline-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(58px + env(safe-area-inset-bottom));z-index:50;background:var(--yellow);color:#1a1a1a;font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.4);display:none;white-space:nowrap}
+.offline-bar.show{display:block}
 </style>
 </head>
 <body>
+
+<!-- 离线提示（SW 缓存下离线功能不受影响，仅提示防误判） -->
+<div class="offline-bar" id="offlineBar">📶 已离线 — 菜谱/知识已缓存，可正常查看</div>
 
 <!-- 顶部搜索 -->
 <div class="top-bar">
@@ -333,7 +340,7 @@ function getFlags(id){
 function setFlag(id,key,val){
   const f = getFlags(id);
   f[key]=val;
-  localStorage.setItem('ka_flags_'+id, JSON.stringify(f));
+  try{ localStorage.setItem('ka_flags_'+id, JSON.stringify(f)); }catch(e){ /* 存储满/隐私模式：静默降级，标记不持久化 */ }
 }
 function getLogs(id){
   try{ return JSON.parse(localStorage.getItem('ka_log_'+id))||[]; }catch(e){ return []; }
@@ -342,7 +349,7 @@ function addLog(id,rating,note){
   const logs = getLogs(id);
   logs.push({t:new Date().toLocaleDateString('zh-CN',{month:'numeric',day:'numeric'}), r:rating, n:note||''});
   if(logs.length>12) logs.shift();
-  localStorage.setItem('ka_log_'+id, JSON.stringify(logs));
+  try{ localStorage.setItem('ka_log_'+id, JSON.stringify(logs)); }catch(e){ /* 存储满：本次记录不入库，不阻塞操作 */ }
 }
 
 // ═══════════════════════════════════════════
@@ -969,6 +976,15 @@ function registerSW(){
 if(location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1'){
   registerSW();
 }
+
+// 离线提示：SW cache-first 下离线功能正常，横幅防止用户误以为崩溃
+const $offlineBar = document.getElementById('offlineBar');
+function updateOffline(){
+  $offlineBar.classList.toggle('show', !navigator.onLine);
+}
+window.addEventListener('online', updateOffline);
+window.addEventListener('offline', updateOffline);
+updateOffline();
 
 // ═══════════════════════════════════════════
 // 初始化

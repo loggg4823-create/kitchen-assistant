@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kitchen-assistant-v3';
+const CACHE_NAME = 'kitchen-assistant-v4';
 const CACHE_FILES = [
   './',
   './index.html',
@@ -30,15 +30,21 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
+  // 只处理 GET；Cache.put 对非 GET 请求会抛 TypeError
+  if (event.request.method !== 'GET') return;
+
+  // stale-while-revalidate：命中缓存立即返回，同时后台回源刷新缓存——
+  // 内容更新不再依赖人工 bump CACHE_NAME，下次打开自动是新版本
   event.respondWith(
     caches.match(event.request).then(cached => {
-      if (cached) return cached;
-      return fetch(event.request).then(response => {
-        if (!response || response.status !== 200 || response.type !== 'basic') return response;
-        const clone = response.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+      const refresh = fetch(event.request).then(response => {
+        if (response && response.status === 200 && response.type === 'basic') {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+        }
         return response;
-      });
+      }).catch(() => cached);   // 离线时回源失败，静默退回缓存
+      return cached || refresh;
     })
   );
 });
