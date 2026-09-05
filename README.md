@@ -12,7 +12,7 @@
 |---|---|
 | `index.html` | 单页应用，全部 UI/CSS/JS 内联 |
 | `recipes.js` | 56 道菜数据，教学化结构（全局 `RECIPES`） |
-| `knowledge.js` | 9 张原理卡 + 12 张食材卡（全局 `PRINCIPLES` / `INGREDIENTS`） |
+| `knowledge.js` | 9 张原理卡 + 13 张食材卡（全局 `PRINCIPLES` / `INGREDIENTS`） |
 | `sw.js` | PWA 离线缓存（v2，cache-first） |
 | `manifest.json` | PWA 清单 |
 | `start-server.cmd` / `.ps1` | 一键启动本地服务，手机同 WiFi 访问 |
