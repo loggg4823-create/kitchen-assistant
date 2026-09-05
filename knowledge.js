@@ -164,20 +164,35 @@ const INGREDIENTS = [
     keep:'冷藏1-2天，冷冻1个月。',
     prep:'去腥：冷水下锅+姜片料酒。想皮脆：煮熟后过一遍凉水/冰水。',
     shrink:'一个琵琶腿约一人份。',
-    dishes:['bai-qie-ji-tui','kou-shui-ji-tui','gong-bao-ji-ding'],
-    principles:['qu-xing','shu-mei-shu']
+    dishes:['bai-qie-ji-tui','kou-shui-ji-tui','gong-bao-ji-ding','hong-shao-ji-tui'],
+    principles:['qu-xing','shu-mei-shu'],
+    alias:['鸡腿肉','琵琶腿','手枪腿']
   },
   {
     id:'wu-hua-rou',
     name:'五花肉',
     emoji:'🥩',
-    about:'肥瘦相间，红烧、回锅、白切都靠它。便宜大碗，超市打折常客。',
+    about:'肥瘦相间，红烧、回锅、白切都靠它。便宜大碗，超市打折常客。注意：瘦肉替不了它——煸油出香靠的是肥肉，手里是瘦肉/里脊就去看猪瘦肉卡，别硬套小炒肉、红烧这类菜。',
     fresh:'瘦肉鲜红、肥肉洁白、按压回弹。肥肉发黄=不新鲜。',
     keep:'冷藏2天，冷冻1个月。',
     prep:'去腥：冷水下锅焯水，撇掉血沫。想不腻：煮完过冰水再切薄片。',
     shrink:'缩到7-8成，看着多其实还好。',
     dishes:['suan-ni-bai-rou','fen-zheng-rou','nong-jia-xiao-chao-rou'],
-    principles:['qu-xing','shu-mei-shu','fu-re']
+    principles:['qu-xing','shu-mei-shu','fu-re'],
+    alias:['五花肉片','去皮五花肉','切片五花肉']
+  },
+  {
+    id:'zhu-shou-rou',
+    name:'猪瘦肉（里脊/瘦肉片）',
+    emoji:'🥩',
+    about:'超市打折常客——瘦肉片、里脊肉、纯瘦肉都是它。和五花肉是两个世界：五花肉靠煸肥油出香，瘦肉没有油可煸，天生容易柴。柴不是你的问题，是这食材的脾气——它有自己的做法（见下方预处理）。',
+    fresh:'粉红色有光泽不发灰，按压回弹，没有异味。发灰发黏=别买。',
+    keep:'冷藏1-2天；冷冻1个月。解冻放冷藏层过夜，别泡水（泡水肉变柴）。',
+    prep:'防柴三板斧（一步都不能省）：①上浆——切好后加料酒1勺+生抽半勺+淀粉1勺抓匀，腌10分钟（没有淀粉至少料酒+食用油）②锅烧热再下，大火快炒 ③全部变白立刻盛出，绝不恋战——瘦肉两轮大火必老。注意：小炒肉、红烧这类靠肥油出香的菜，瘦肉做不了，换青椒肉丝、鱼香肉丝这类滑炒做法。',
+    shrink:'缩到7-8成。',
+    dishes:['qing-jiao-rou-si','yu-xiang-rou-si'],
+    principles:['qu-xing','shu-mei-shu','kou-gan-mu-biao'],
+    alias:['瘦肉','瘦肉片','里脊','里脊肉','猪里脊','纯瘦肉','猪肉','通脊']
   },
   {
     id:'xia',
@@ -189,7 +204,8 @@ const INGREDIENTS = [
     prep:'活虾先冰镇 5-10 分钟（冷冻层或冰水泡），不跳了再处理——这是标准操作，不是偷懒。开背挑虾线（腥线）。不用去虾壳，整只煮最嫩。',
     shrink:'一斤虾煮完约一盘。',
     dishes:['bai-zhuo-xia','suan-rong-fen-si-xia','xia-ren-zheng-ji-dan'],
-    principles:['qu-xing','shu-mei-shu','kou-gan-mu-biao']
+    principles:['qu-xing','shu-mei-shu','kou-gan-mu-biao'],
+    alias:['虾仁','基围虾','冻虾仁','鲜虾']
   },
   {
     id:'ge-li',
@@ -248,8 +264,9 @@ const INGREDIENTS = [
     keep:'冷藏2-3天，别洗了再放（洗了容易烂）。',
     prep:'根部藏泥，掰开冲。菠菜焯水时水里加点盐能去涩。',
     shrink:'缩到1/3——一人份放心抓两大把。',
-    dishes:['shui-zhu-bo-cai','hao-you-sheng-cai'],
-    principles:['sheng-shou-bi','shu-mei-shu']
+    dishes:['shui-zhu-bo-cai','hao-you-sheng-cai','shui-zhu-wa-wa-cai'],
+    principles:['sheng-shou-bi','shu-mei-shu'],
+    alias:['菠菜','生菜','小白菜','娃娃菜','油麦菜','上海青']
   },
   {
     id:'gan-huo',
@@ -260,8 +277,9 @@ const INGREDIENTS = [
     keep:'密封阴凉处，能放半年。',
     prep:'温水泡发。木耳两三朵就够一盘。泡发后蒂头剪掉。',
     shrink:'膨胀5-10倍，重灾区！',
-    dishes:['yu-xiang-rou-si'],
-    principles:['sheng-shou-bi']
+    dishes:['yu-xiang-rou-si','jia-chang-dou-fu'],
+    principles:['sheng-shou-bi'],
+    alias:['木耳','香菇','银耳','干木耳','干香菇']
   },
   {
     id:'mian-tiao',
@@ -272,8 +290,9 @@ const INGREDIENTS = [
     keep:'干面常温半年；鲜面冷藏2天。',
     prep:'水大开再下面，用筷子拨散防粘连。',
     shrink:'膨胀2-3倍。配菜目标：熟后总量不超过面的1/2，装碗时看一眼。',
-    dishes:[],
-    principles:['sheng-shou-bi']
+    dishes:['fan-qie-ji-dan-mian'],
+    principles:['sheng-shou-bi'],
+    alias:['挂面','鲜面','手工面','细面']
   },
   {
     id:'qing-jiao',

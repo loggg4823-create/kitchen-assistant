@@ -321,12 +321,25 @@ const CATEGORIES = [
   {key:'懒人',label:'懒人',type:'tag'},
 ];
 
-// 用于组合模式的所有食材集合
+// 食材名匹配：先精确，再名字/别名双向包含。
+// 菜谱叫法（猪里脊/虾仁/鸡腿肉）和超市叫法（瘦肉片/里脊肉）都要能对上同一张卡
+function findIngredient(term){
+  return INGREDIENTS.find(i=>i.name===term) ||
+    INGREDIENTS.find(i=>[i.name,...(i.alias||[])].some(t=>t.includes(term)||term.includes(t)));
+}
+function ingTerms(name){
+  const card = INGREDIENTS.find(i=>i.name===name);
+  return card ? [card.name,...(card.alias||[])] : [name];
+}
+
+// 用于组合模式的所有食材集合（同物多名归一到食材卡，无卡的保留原名）
 function getAllIngredients(){
   const set = new Set();
   RECIPES.forEach(r=>{
-    r.mainIngredients.forEach(i=>set.add(i));
-    r.subIngredients.forEach(i=>set.add(i));
+    [...r.mainIngredients, ...r.subIngredients].forEach(i=>{
+      const card = findIngredient(i);
+      set.add(card ? card.name : i);
+    });
   });
   return [...set].sort();
 }
@@ -441,10 +454,14 @@ function filterRecipes(){
   }
   if(searchQuery){
     const q = searchQuery.toLowerCase();
+    const card = findIngredient(q);
+    const terms = card ? [card.name,...(card.alias||[])] : null;
     list = list.filter(r=>{
-      return r.name.includes(q) ||
-        r.mainIngredients.some(i=>i.includes(q)) ||
+      const ingHit = r.mainIngredients.some(i=>i.includes(q)) ||
         r.subIngredients.some(i=>i.includes(q)) ||
+        (terms && [...r.mainIngredients,...r.subIngredients].some(i=>terms.some(t=>i.includes(t)||t.includes(i))));
+      return r.name.includes(q) ||
+        ingHit ||
         r.tags.some(t=>t.includes(q)) ||
         r.cookMethod.includes(q) ||
         r.tools.some(t=>t.includes(q));
@@ -493,7 +510,8 @@ function renderIngList(){
   const list = INGREDIENTS.filter(i=>{
     if(!searchQuery) return true;
     const q = searchQuery.toLowerCase();
-    return i.name.includes(q) || i.about.includes(q);
+    return i.name.includes(q) || i.about.includes(q) ||
+      (i.alias||[]).some(a=>a.includes(q)||q.includes(a));
   });
   $ingCount.textContent = `共 ${list.length} 种食材`;
   if(!list.length){
@@ -792,11 +810,11 @@ function openDetail(id){
     }).join('');
   });
 
-  // 主料标签点击 → 食材知识
+  // 主料标签点击 → 食材知识（别名兼容：猪里脊/虾仁/五花肉片都能跳到对应卡）
   $detailBody.querySelectorAll('[data-inglook]').forEach(tag=>{
     tag.style.cursor = 'pointer';
     tag.addEventListener('click',()=>{
-      const ing = INGREDIENTS.find(i=>i.name===tag.dataset.inglook);
+      const ing = findIngredient(tag.dataset.inglook);
       if(ing){
         closeDetail();
         openKnowList('ingredient');
@@ -848,7 +866,10 @@ function renderComboResult(){
   const sels = [...comboSelected];
   const matched = RECIPES.filter(r=>{
     const allIngs = [...r.mainIngredients, ...r.subIngredients];
-    return sels.every(s=>allIngs.some(i=>i.includes(s)||s.includes(i)));
+    return sels.every(s=>{
+      const terms = ingTerms(s);
+      return allIngs.some(i=>terms.some(t=>i.includes(t)||t.includes(i)));
+    });
   });
   if(!matched.length){
     $comboResultTitle.style.display = 'block';
